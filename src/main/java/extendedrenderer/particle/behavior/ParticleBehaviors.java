@@ -14,13 +14,15 @@ import extendedrenderer.particle.entity.EntityIconFX;
 import extendedrenderer.particle.entity.EntityIconWindFX;
 import extendedrenderer.particle.entity.EntityRotFX;
 
+import org.bogdang.modifications.random.XSTR;
+
 @SideOnly(Side.CLIENT)
 public class ParticleBehaviors {
 
 	public List<EntityRotFX> particles = new ArrayList<EntityRotFX>();
 	public Vec3 coordSource;
 	public Entity sourceEntity = null;
-	public Random rand = new Random();
+	public Random rand = new XSTR();
 	
 	//Visual tweaks
 	public float rateDarken = 0.025F;
@@ -190,14 +192,14 @@ public class ParticleBehaviors {
 	}
 	
 	public static EntityRotFX setParticleRandoms(EntityRotFX particle, boolean yaw, boolean pitch) {
-		Random rand = new Random();
+		Random rand = new XSTR();
 		if (yaw) particle.rotationYaw = rand.nextInt(360);
 		if (pitch) particle.rotationPitch = rand.nextInt(360);
 		return particle;
 	}
 	
 	public static EntityRotFX setParticleFire(EntityRotFX particle) {
-		Random rand = new Random();
+		Random rand = new XSTR();
 		particle.setRBGColorF(0.6F + (rand.nextFloat() * 0.4F), 0.2F + (rand.nextFloat() * 0.2F), 0);
 		particle.setScale(0.25F + 0.2F * rand.nextFloat());
 		particle.brightness = 1F;

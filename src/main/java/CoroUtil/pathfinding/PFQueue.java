@@ -31,6 +31,8 @@ import CoroUtil.componentAI.ICoroAI;
 import CoroUtil.config.ConfigCoroAI;
 import CoroUtil.util.CoroUtilBlock;
 
+import org.bogdang.modifications.random.XSTR;
+
 //import org.lwjgl.opengl.GL11;
 
 public class PFQueue implements Runnable {
@@ -181,7 +183,7 @@ public class PFQueue implements Runnable {
     	
     	//l
     	
-    	Random rand = new Random();
+    	Random rand = new XSTR();
     	
     	//statsPerSecondLastReset = System.currentTimeMillis() / 10000;
     	
@@ -354,8 +356,8 @@ public class PFQueue implements Runnable {
 						    			        d1 = y+0.5F - (ent.posY + (double)ent.getEyeHeight());
 						    			        
 						    			        double d3 = MathHelper.sqrt_double(d * d + d2 * d2);
-						    			        float f2 = (float)((Math.atan2(d2, d) * 180D) / 3.1415927410125732D) - 90F;
-						    			        float f3 = (float)(-((Math.atan2(d1, d3) * 180D) / 3.1415927410125732D));
+						    			        float f2 = (((float)Math.atan2(d2, d) * 180F) / 3.14F) - 90F;
+						    			        float f3 = (-(((float)Math.atan2(d1, d3) * 180F) / 3.14F));
 						    			        float rotationPitch = -f3;//-ent.updateRotation(rotationPitch, f3, 180D);
 						    			        float rotationYaw = f2;//updateRotation(rotationYaw, f2, 180D);
 						    			        
@@ -663,7 +665,7 @@ public class PFQueue implements Runnable {
 		    		int pos = 0;
 		    		while (queue.size() > 0 && parJob.priority < queue.get(pos++).priority) { } queue.add(pos, parJob);
 		    	}
-	    	} catch (Exception ex) { if (false/*mod_EntMover.masterDebug*/) System.out.println("pfqueue job aborted: " + ex); }
+	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) System.out.println("pfqueue job aborted: " + ex);*/ }
 	    	
 	    	//instance.manageQueue();
 	    	//if (var1 != null) {
@@ -697,7 +699,7 @@ public class PFQueue implements Runnable {
     	/*int id = var1.worldObj.getBlockId(MathHelper.floor_double(var1.posX), MathHelper.floor_double(var1.boundingBox.minY), MathHelper.floor_double(var1.posZ)x, y-1, z);
     	if (id != 0 && Block.blocksList[id] instanceof BlockFence) {
     		System.out.println("fence fix test");
-    		Random rand = new Random();
+    		Random rand = new XSTR();
     		
     		//derp attempt
     		var1.posX += rand.nextInt(2)-1;
@@ -800,7 +802,7 @@ public class PFQueue implements Runnable {
 		    		
 		    		queue.add(pos, job);
 		    	}
-	    	} catch (Exception ex) { if (false/*mod_EntMover.masterDebug*/) System.out.println("pfqueue job aborted: " + ex); }
+	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) System.out.println("pfqueue job aborted: " + ex);*/ }
 	    	
 	    	//instance.manageQueue();
 	    	if (var1 != null) {
@@ -909,7 +911,7 @@ public class PFQueue implements Runnable {
     			double bestDist = 99999;
     			ChunkCoordinatesSize bestCoords = null;
     			
-    			Random rand = new Random();
+    			Random rand = new XSTR();
     			
     			double dist = parJob.sourceEntity.getDistance(parJob.source.posX+1.5D, parJob.source.posY, parJob.source.posZ+0.5D);
     			ChunkCoordinatesSize coords = new ChunkCoordinatesSize(parJob.source.posX+1, parJob.source.posY, parJob.source.posZ, parJob.source.dimensionId, parJob.source.width, parJob.source.height);

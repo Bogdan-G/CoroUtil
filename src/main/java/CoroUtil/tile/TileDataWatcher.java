@@ -72,8 +72,8 @@ public class TileDataWatcher
     {
         WatchableObject watchableobject = new WatchableObject(par2, par1, (Object)null);
         this.lock.writeLock().lock();
-        this.watchedObjects.put(Integer.valueOf(par1), watchableobject);
-        this.lock.writeLock().unlock();
+        try {this.watchedObjects.put(Integer.valueOf(par1), watchableobject);}
+        finally {this.lock.writeLock().unlock();}
         this.isBlank = false;
     }
 

@@ -21,6 +21,9 @@ version = "1.1.4"
 group= "coroutil" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "coroutil-1.7.10"
 
+sourceCompatibility = 7
+targetCompatibility = 7
+
 minecraft {
     version = "1.7.10-10.13.0.1180"
     assetDir = "eclipse/assets"
@@ -61,4 +64,22 @@ processResources
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task devJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'dev'
+    manifest {
+        //attributes 'FMLCorePlugin': 'WhateverLoaderClass'
+        //attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
+artifacts {
+    archives devJar
 }

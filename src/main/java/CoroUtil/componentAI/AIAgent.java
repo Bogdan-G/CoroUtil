@@ -36,6 +36,8 @@ import CoroUtil.world.WorldDirectorManager;
 import CoroUtil.world.location.ISimulationTickable;
 import CoroUtil.world.location.ManagedLocation;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AIAgent {
 
 	//Main
@@ -164,7 +166,7 @@ public class AIAgent {
 		}*/
 		entInv = new AIInventory(ent);
 		jobMan = new JobManager(this);
-		rand = new Random();
+		rand = new XSTR();
 		setState(EnumActState.IDLE);
 
 		if (entID == -1) entID = rand.nextInt(999999999);
@@ -425,7 +427,7 @@ public class AIAgent {
     				double d2 = entityplayer.posZ - ent.posZ;
     				double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 
-    				Random rand = new Random();
+    				Random rand = new XSTR();
 
 					boolean despawn = false;
 
@@ -466,7 +468,7 @@ public class AIAgent {
 		if (ent.isInWater()) {
 				
 				//pathfollow fix
-				if (true) {
+				//if (true) {
 					if (ent.getNavigator().getPath() != null) {
 						PathEntity pEnt = ent.getNavigator().getPath();
 						int index = pEnt.getCurrentPathIndex()+1;
@@ -489,11 +491,11 @@ public class AIAgent {
 		                	}
 		                }
 					}
-				}
+				//}
 				
-				if (!ent.getNavigator().noPath()) {
+				/*if (!ent.getNavigator().noPath()) {
 					
-				}
+				}*/
 		}
 		
 		//No movement on x z
@@ -556,15 +558,15 @@ public class AIAgent {
 		//fix for last node being too high
 		if (!ent.worldObj.isRemote) {
 			PathEntity pe = ent.getNavigator().getPath();
-			if (pe != null) {
-				if (pe.getCurrentPathLength() == 1) {
+			if (pe != null && pe.getCurrentPathLength() == 1 && pe.getFinalPathPoint().yCoord - ent.posY > 0.01F) {
+				//if (pe.getCurrentPathLength() == 1) {
 					//if (job.priJob == EnumJob.TRADING) {
-						if (pe.getFinalPathPoint().yCoord - ent.posY > 0.01F) {
+						//if (pe.getFinalPathPoint().yCoord - ent.posY > 0.01F) {
 							//System.out.println("tickMovementHelp:" + (pe.getFinalPathPoint().yCoord - ent.posY));
 							ent.getNavigator().clearPathEntity();
-						}
+						//}
 					//}
-				}
+				//}
 			}
 		}
 		
@@ -586,7 +588,8 @@ public class AIAgent {
 				var1 = pEnt.getVectorFromIndex(ent, index);
 			} catch (Exception ex) {
 				ex.printStackTrace();
-				System.out.println("errrrrrrrrrrrrrrr");
+				//System.out.println("errrrrrrrrrrrrrrr");
+				cpw.mods.fml.common.FMLLog.warning("errrrrrrrrrrrrrrr");
 				var1 = pEnt.getVectorFromIndex(ent, pEnt.getCurrentPathLength()-1);
 			}
 
@@ -639,11 +642,11 @@ public class AIAgent {
         //Remove retaliate target on tick 0 if it is not a natural enemy
         if (retaliateTicks > 0) {
         	retaliateTicks--;
-        	if (retaliateTicks == 0 && retaliateEntity != null) {
-        		if (retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity)) {
+        	if (retaliateTicks == 0 && retaliateEntity != null && retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity)) {
+        		//if (retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity)) {
         			entityToAttack = null;
         			retaliateEntity = null;
-        		}
+        		//}
         	}
         }
         
@@ -764,9 +767,9 @@ public class AIAgent {
 	        for(int j = 0; j < list.size(); j++)
 	        {
 	            Entity entity1 = (Entity)list.get(j);
-	            if(jobMan.getPrimaryJob().isEnemy(entity1))
+	            if(jobMan.getPrimaryJob().isEnemy(entity1) && (ent).canEntityBeSeen(entity1))
 	            {
-	            	if ((ent).canEntityBeSeen(entity1)) {
+	            	//if ((ent).canEntityBeSeen(entity1)) {
 	            		float dist = ent.getDistanceToEntity(entity1);
             			if (dist < closest) {
             				closest = dist;
@@ -774,7 +777,7 @@ public class AIAgent {
             			}
 	            		
 	            		//break;
-	            	}
+	            	//}
 	            }
 	        }
 	        
@@ -860,8 +863,8 @@ public class AIAgent {
         	}
     	} else if (rangedInUse) {
     		//updates elsewhere so doesnt need this method to get called (DIRTY LIES)
-    	} else if (var2 < maxReach_Ranged) {
-    		if (curCooldown_Ranged <= 0 && curCooldown_Melee < maxReach_Melee - (maxReach_Melee / 4)) {
+    	} else if (var2 < maxReach_Ranged && (curCooldown_Ranged <= 0 && curCooldown_Melee < maxReach_Melee - (maxReach_Melee / 4))) {
+    		//if (curCooldown_Ranged <= 0 && curCooldown_Melee < maxReach_Melee - (maxReach_Melee / 4)) {
     			ent.faceEntity(var1, 180, 180);
     			if (useInv) {
     				entInv.attackRanged(var1, var2);
@@ -869,7 +872,7 @@ public class AIAgent {
     				entInt.attackRanged(var1, var2);
     			}
         		this.curCooldown_Ranged = entInt.getCooldownRanged(); //keep here for fallback when charging items not used
-    		}
+    		//}
     	}
     	
     	//prevent locking in on target
@@ -1021,14 +1024,14 @@ public class AIAgent {
 	
 	public void faceCoord(int x, int y, int z, float f, float f1)
     {
-        double d = x+0.5F - ent.posX;
-        double d2 = z+0.5F - ent.posZ;
-        double d1;
-        d1 = y+0.5F - (ent.posY + (double)ent.getEyeHeight());
+        float d = x+0.5F - (float)ent.posX;
+        float d2 = z+0.5F - (float)ent.posZ;
+        float d1;
+        d1 = y+0.5F - ((float)ent.posY + ent.getEyeHeight());
         
-        double d3 = MathHelper.sqrt_double(d * d + d2 * d2);
-        float f2 = (float)((Math.atan2(d2, d) * 180D) / 3.1415927410125732D) - 90F;
-        float f3 = (float)(-((Math.atan2(d1, d3) * 180D) / 3.1415927410125732D));
+        float d3 = (float)MathHelper.sqrt_double((double)(d * d) + (double)(d2 * d2));
+        float f2 = (((float)Math.atan2((double)d2, (double)d) * 180F) / 3.14F) - 90F;//rly? what double?
+        float f3 = (-(((float)Math.atan2((double)d1, (double)d3) * 180F) / 3.14F));
         ent.rotationPitch = -updateRotation(ent.rotationPitch, f3, f1);
         ent.rotationYaw = updateRotation(ent.rotationYaw, f2, f);
     }
@@ -1106,14 +1109,14 @@ public class AIAgent {
 	}
 	
 	public void hookSetDead() {
-		if (!ent.worldObj.isRemote) {
-			if (coordsManagedLocation != null) {
+		if (!ent.worldObj.isRemote && coordsManagedLocation != null) {
+			//if (coordsManagedLocation != null) {
 				WorldDirector wd = WorldDirectorManager.instance().getCoroUtilWorldDirector(ent.worldObj);
 				ISimulationTickable ml = wd.getTickingSimluationByLocation(coordsManagedLocation);
 				if (ml != null && ml instanceof ManagedLocation) {
 					((ManagedLocation) ml).hookEntityDied(ent);
 				}
-			}
+			//}
 		}
 	}
 	

@@ -382,9 +382,9 @@ public class OldUtil {
     	if (CoroUtilBlock.isAir(parBlock)) return false;
     	//if (id == 0) return false;
     	//Block block = Block.blocksList[id];
-    	if (parBlock != null) {
+    	//if (parBlock != null) {//Nullcheck of value previously dereferenced + instanceof include null-check
     		if (parBlock instanceof BlockChest) return true;
-    	}
+    	//}
 		return false;
 	}
     
@@ -400,10 +400,10 @@ public class OldUtil {
 		try {
 			for (int i = 0; i < world.loadedEntityList.size(); i++) {
 				Entity ent = (Entity)world.loadedEntityList.get(i);
-				if (ent instanceof ICoroAI) {
-					if (((ICoroAI) ent).getAIAgent().entID == id && id != -1) {
+				if (ent instanceof ICoroAI && ((ICoroAI) ent).getAIAgent().entID == id && id != -1) {
+					//if (((ICoroAI) ent).getAIAgent().entID == id && id != -1) {
 						return (Entity)ent;
-					}
+					//}
 				}
 			}
 		} catch (Exception ex) {

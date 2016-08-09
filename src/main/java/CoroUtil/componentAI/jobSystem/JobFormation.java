@@ -11,6 +11,8 @@ import CoroUtil.formation.Formation;
 import CoroUtil.formation.Manager;
 import CoroUtil.util.CoroUtilBlock;
 
+import org.bogdang.modifications.random.XSTR;
+
 
 public class JobFormation extends JobBase {
 	
@@ -36,7 +38,7 @@ public class JobFormation extends JobBase {
 			
 			//if a Group of 10 or more, do advanced wandering
 			if (ai.activeFormation.listEntities.size() >= 6 && ai.activeFormation.leader == entInt) {
-				Random rand = new Random();
+				Random rand = new XSTR();
 				if (ent.getNavigator().noPath() && rand.nextInt(20) == 0) {
 					
 					int size = 96;
@@ -69,7 +71,7 @@ public class JobFormation extends JobBase {
 		for(int j = 0; j < list.size(); j++)
         {
             Entity entity1 = (Entity)list.get(j);
-            if(entity1 instanceof ICoroAI) {
+            //if(entity1 instanceof ICoroAI) {
             	ICoroAI otherEnt = (ICoroAI)entity1;
 	            if(entity1 instanceof ICoroAI && otherEnt.getAIAgent() != null && otherEnt.getAIAgent().jobMan.getPrimaryJob().shouldTickFormation()) {
 	            	if (otherEnt.getAIAgent().activeFormation.listEntities.size() > formationSize) {
@@ -77,7 +79,7 @@ public class JobFormation extends JobBase {
 	            		foundFormation = otherEnt.getAIAgent().activeFormation;
 	            	}
 	            }
-            }
+            //}
         }
 		
 		if (foundFormation != null) {

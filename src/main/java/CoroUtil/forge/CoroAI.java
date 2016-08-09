@@ -91,7 +91,8 @@ public class CoroAI {
     
     public static void initTry() {
     	if (initProperNeededForInstance) {
-    		System.out.println("CoroUtil being reinitialized");
+    		//System.out.println("CoroUtil being reinitialized");
+    		cpw.mods.fml.common.FMLLog.info("CoroUtil being reinitialized");
     		initProperNeededForInstance = false;
 	    	CoroUtilFile.getWorldFolderName();
 	    	//PetsManager.instance().nbtReadFromDisk();
@@ -113,9 +114,10 @@ public class CoroAI {
     }
     
 	public static void dbg(Object obj) {
-		if (true) {
+		//if (true) {
 			//MinecraftServer.getServer().getLogAgent().logInfo(String.valueOf(obj));
-			System.out.println(obj);
-		}
+			//System.out.println(obj);
+			cpw.mods.fml.common.FMLLog.fine("%s", obj);
+		//}
 	}
 }

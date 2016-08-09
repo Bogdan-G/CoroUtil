@@ -24,6 +24,8 @@ import extendedrenderer.particle.ParticleRegistry;
 import extendedrenderer.particle.behavior.ParticleBehaviorCharge;
 import extendedrenderer.particle.entity.EntityRotFX;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AbilityShootArrow extends Ability {
 	
 	public EntityLivingBase target;
@@ -95,7 +97,7 @@ public class AbilityShootArrow extends Ability {
 		
 		if (owner.worldObj.isRemote) {
 			
-			Random rand = new Random();
+			Random rand = new XSTR();
 			//double speed = 0.3D;
 			//owner.worldObj.spawnParticle("flame", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, (rand.nextDouble() - 0.5D) * speed, (rand.nextDouble() - 0.5D) * speed, (rand.nextDouble() - 0.5D) * speed);
 			//flame hugeexplosion
@@ -158,11 +160,11 @@ public class AbilityShootArrow extends Ability {
 		//System.out.println("isRemote: " + owner.worldObj.isRemote);
 		if (owner.worldObj.isRemote) {
 			particleBehavior.particles.clear();
-			Random rand = new Random();
+			//Random rand = new XSTR();//dead code?
 			//owner.worldObj.spawnParticle("largeexplode", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
 		} else {
 			
-			if (target != null && (target.isDead || /*target.getHealth() <= 0 || */(target instanceof EntityLivingBase && ((EntityLivingBase)target).deathTime > 0))) {
+			if (/*target != null && */(target.isDead || /*target.getHealth() <= 0 || */(target instanceof EntityLivingBase && ((EntityLivingBase)target).deathTime > 0))) {
 				//this.setFinishedPerform();
 			} else {
 				if (!hasAppliedDamage) {

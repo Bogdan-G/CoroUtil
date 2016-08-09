@@ -14,6 +14,8 @@ import CoroUtil.bt.IBTAgent;
 import CoroUtil.bt.selector.Selector;
 import CoroUtil.util.CoroUtilBlock;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class SelectorMoveToPathClose extends Selector {
 
 	public IBTAgent entInt;
@@ -59,7 +61,7 @@ public class SelectorMoveToPathClose extends Selector {
 							if (lastPathTime % 5 == 0) {
 								//PFQueue based retry code goes here
 								//System.out.println("trying partial pf - " + ent);
-								Random rand = new Random();
+								Random rand = new XSTR();
 								Vec3 vec = Vec3.createVectorHelper(blackboard.posMoveTo.xCoord - ent.posX, blackboard.posMoveTo.yCoord - ent.posY, blackboard.posMoveTo.zCoord - ent.posZ);
 								vec = vec.normalize();
 								float dist = 16;//+rand.nextInt(10);

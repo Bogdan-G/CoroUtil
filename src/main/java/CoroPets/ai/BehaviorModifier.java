@@ -54,8 +54,7 @@ public class BehaviorModifier {
         {
         	EntityCreature ent = (EntityCreature)list.get(j);
             
-        	if (ent != null && !ent.isDead) {
-        		if (!aiEnhanced.containsKey(ent.getEntityId())) {
+        	if (ent != null && !ent.isDead && !aiEnhanced.containsKey(ent.getEntityId())) {
         			for (Class clazz : taskToInject) {
 		        		try {
 		        			Constructor<?> cons = clazz.getConstructor();
@@ -63,7 +62,8 @@ public class BehaviorModifier {
 		    				if (obj instanceof ITaskInitializer) {
 		    					ITaskInitializer task = (ITaskInitializer) obj;
 		    					task.setEntity(ent);
-		    					System.out.println("adding task into zombie: " + taskToInject);
+		    					//System.out.println("adding task into zombie: " + taskToInject);
+		    					cpw.mods.fml.common.FMLLog.fine("adding task into zombie: %s", taskToInject);
 		    					ent.tasks.addTask(priorityOfTask, (EntityAIBase) task);
 		    					aiEnhanced.put(ent.getEntityId(), true);
 		    					ent.getEntityData().setBoolean("CoroAI_HW_GravelDeath", true);
@@ -72,7 +72,6 @@ public class BehaviorModifier {
 							e.printStackTrace();
 						}
         			}
-        		}
         		
         	}
         }
@@ -89,11 +88,10 @@ public class BehaviorModifier {
         {
         	EntityCreature ent = (EntityCreature)list.get(j);
             
-        	if (ent != null && !ent.isDead) {
-        		if (!ent.getEntityData().getBoolean(CoroPets.tameString)) {
+        	if (ent != null && !ent.isDead && !ent.getEntityData().getBoolean(CoroPets.tameString)) {
         			
         			//ffffffaaaaaiiiiiiillllllllll - but should work in 1.8 where EVERYTHING uses task system
-        			if (ent instanceof EntitySpider) {
+        			//if (ent instanceof EntitySpider) {//emty body if?
         				/*EntityCreature oldEnt = ent;
 	        			if (ent instanceof EntityCaveSpider) {
 	        				ent = new EntityCaveSpider(parWorld) {
@@ -118,11 +116,10 @@ public class BehaviorModifier {
 	        			
 	        			//oldEnt.setDead();
 	        			//ent.worldObj.spawnEntityInWorld(ent);
-        			}
+        			//}
         			
         			tameMob(ent, player.getGameProfile().getId(), true);
 	        		
-        		}
         	}
         }
 	}
@@ -166,7 +163,8 @@ public class BehaviorModifier {
 				if (entry.action instanceof EntityAINearestAttackableTarget) {
 					Class clazz = (Class)OldUtil.getPrivateValueSRGMCP(EntityAINearestAttackableTarget.class, entry.action, "field_75307_b", "targetClass");
 					if (EntityPlayer.class.isAssignableFrom(clazz) || EntityVillager.class.isAssignableFrom(clazz)) {
-						System.out.println("removing target task for: " + clazz);
+						//System.out.println("removing target task for: " + clazz);
+						cpw.mods.fml.common.FMLLog.fine("removing target task for: %s", clazz);
 						parEnt.targetTasks.removeTask(entry.action);
 						parEnt.setAttackTarget(null);
 						i--;

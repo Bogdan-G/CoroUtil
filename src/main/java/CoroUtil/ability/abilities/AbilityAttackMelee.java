@@ -17,6 +17,8 @@ import CoroUtil.inventory.AIInventory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AbilityAttackMelee extends Ability {
 	
 	//a generic / example class
@@ -65,10 +67,10 @@ public class AbilityAttackMelee extends Ability {
 		}
 		
 		//System.out.println("isRemote: " + owner.worldObj.isRemote);
-		if (owner.worldObj.isRemote) {
-			Random rand = new Random();
+		if (!owner.worldObj.isRemote) {
+			//Random rand = new XSTR();//dead code?
 			//owner.worldObj.spawnParticle("largesmoke", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
-		} else {
+		//} else {
 			
 			if (switchToMeleeSlot) {
 				//System.out.println("melee slot use!");
@@ -83,7 +85,7 @@ public class AbilityAttackMelee extends Ability {
 			double speed = 0.8D;
 			double hitRange = 1.5D;
 			
-			if (target != null && (target.isDead || /*target.getHealth() <= 0 || */(target instanceof EntityLivingBase && ((EntityLivingBase)target).deathTime > 0))) {
+			if (/*target != null && */(target.isDead || /*target.getHealth() <= 0 || */(/*target instanceof EntityLivingBase && */((EntityLivingBase)target).deathTime > 0))) {
 				this.setFinishedPerform();
 			}
 			

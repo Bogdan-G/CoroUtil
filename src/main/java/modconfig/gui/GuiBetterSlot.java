@@ -327,7 +327,7 @@ public abstract class GuiBetterSlot
                     {
                         l2 = -1;
                     }
-                    else if (l2 < 0)
+                    else// if (l2 < 0)
                     {
                         l2 = 1;
                     }

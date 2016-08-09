@@ -15,6 +15,8 @@ import CoroUtil.music.NoteEntry;
 import CoroUtil.music.NoteHelper;
 import CoroUtil.music.Sequencer;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class SoundTest {
 	
 	//all these vars are deprecated \\
@@ -112,7 +114,7 @@ public class SoundTest {
 		curBar = ticksPlaying / tickRate;
 		curPosInBar = ticksPlaying % tickRate;
 		
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
 		List<Integer> listNotes = new ArrayList<Integer>();
 		listNotes.add(0);

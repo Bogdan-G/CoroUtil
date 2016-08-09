@@ -88,9 +88,10 @@ public class CoroPets {
     }
     
 	public static void dbg(Object obj) {
-		if (true) {
+		//if (true) {
 			//MinecraftServer.getServer().getLogAgent().logInfo(String.valueOf(obj));
-			System.out.println(obj);
-		}
+			//System.out.println(obj);//not only console, save in FMLLog
+			cpw.mods.fml.common.FMLLog.fine("%s", obj);
+		//}
 	}
 }

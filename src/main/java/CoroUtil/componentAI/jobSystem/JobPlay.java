@@ -5,6 +5,8 @@ import java.util.Random;
 import CoroUtil.componentAI.AITamable;
 import CoroUtil.entity.EnumActState;
 
+import org.bogdang.modifications.random.XSTR;
+
 
 public class JobPlay extends JobBase {
 	
@@ -70,7 +72,7 @@ public class JobPlay extends JobBase {
 					
 					
 					
-					Random rand = new Random();
+					Random rand = new XSTR();
 					
 					rotationYaw += rand.nextInt(randChange) - randChange/2;
 					float speed = 0.38F;
@@ -92,7 +94,7 @@ public class JobPlay extends JobBase {
 		} else {
 			AITamable tamable = entInt.getAIAgent().jobMan.getPrimaryJob().tamable;
 			if (tamable.isTame()) {
-				Random rand = new Random();
+				Random rand = new XSTR();
 				if (ent.getNavigator().noPath() && rand.nextInt(playTimeRandomSize) == 0) {
 					//System.out.println("play start");
 					playStart();

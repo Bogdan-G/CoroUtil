@@ -13,6 +13,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import CoroUtil.componentAI.ICoroAI;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class Formation {
 
 	public double distMax = 96D;
@@ -180,7 +182,7 @@ public class Formation {
 				if (!tryID.getMaterial().isSolid()) {
 					
 				} else {
-					Random rand = new Random();
+					Random rand = new XSTR();
 					double range = 3D;
 					return pos.addVector(rand.nextDouble()*range - rand.nextDouble()*range, 0D, rand.nextDouble()*range - rand.nextDouble()*range);
 				}

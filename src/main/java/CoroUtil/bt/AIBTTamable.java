@@ -11,6 +11,8 @@ import net.minecraft.util.ChunkCoordinates;
 import CoroUtil.OldUtil;
 import CoroUtil.util.CoroUtilEntity;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AIBTTamable {
 
 	//i think this classes ticking/follow owner routine would work best in the form of an order dispatched on the side
@@ -82,7 +84,7 @@ public class AIBTTamable {
 				
 				if (!shouldStayStill() && (ent.onGround || ent.isInWater()) && teleportFromFarDist != -1 && agent.ent.getDistanceToEntity(ent) > teleportFromFarDist) {
 					double range = 0D;
-					Random rand = new Random();
+					Random rand = new XSTR();
 					agent.ent.setPosition(ent.posX + (rand.nextDouble() * range) - (rand.nextDouble() * range), ent.posY, ent.posZ + (rand.nextDouble() * range) - (rand.nextDouble() * range));
 					agent.ent.fallDistance = -100;
 					agent.blackboard.setMoveTo(null, true);
@@ -102,7 +104,7 @@ public class AIBTTamable {
 	}
 	
 	public void onIdleTick() {
-		/*Random rand = new Random();
+		/*Random rand = new XSTR();
 		if(((agent.ent.getNavigator().noPath()) && rand.nextInt(40) == 0))
         {
 			if (occupyCoord == null || OldUtil.getDistanceXZ(agent.ent, occupyCoord) < followDistMax) {

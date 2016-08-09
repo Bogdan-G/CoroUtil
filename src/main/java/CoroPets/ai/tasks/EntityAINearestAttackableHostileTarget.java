@@ -51,7 +51,8 @@ public class EntityAINearestAttackableHostileTarget extends EntityAITarget
              */
             public boolean isEntityApplicable(Entity p_82704_1_)
             {
-                return !(p_82704_1_ instanceof EntityLivingBase) ? false : (p_i1665_6_ != null && !p_i1665_6_.isEntityApplicable(p_82704_1_) ? false : EntityAINearestAttackableHostileTarget.this.isSuitableTarget((EntityLivingBase)p_82704_1_, false));
+                //return !(p_82704_1_ instanceof EntityLivingBase) ? false : (p_i1665_6_ != null && !p_i1665_6_.isEntityApplicable(p_82704_1_) ? false : EntityAINearestAttackableHostileTarget.this.isSuitableTarget((EntityLivingBase)p_82704_1_, false));
+                return (p_82704_1_ instanceof EntityLivingBase) && (p_i1665_6_ == null && p_i1665_6_.isEntityApplicable(p_82704_1_) && EntityAINearestAttackableHostileTarget.this.isSuitableTarget((EntityLivingBase)p_82704_1_, false));
             }
         };
     }
@@ -104,7 +105,7 @@ public class EntityAINearestAttackableHostileTarget extends EntityAITarget
         super.startExecuting();
     }
 
-    public static class Sorter implements Comparator
+    public static class Sorter implements Comparator, java.io.Serializable
         {
             private final Entity theEntity;
             private static final String __OBFID = "CL_00001622";
@@ -116,8 +117,8 @@ public class EntityAINearestAttackableHostileTarget extends EntityAITarget
 
             public int compare(Entity p_compare_1_, Entity p_compare_2_)
             {
-                double d0 = this.theEntity.getDistanceSqToEntity(p_compare_1_);
-                double d1 = this.theEntity.getDistanceSqToEntity(p_compare_2_);
+                float d0 = (float)this.theEntity.getDistanceSqToEntity(p_compare_1_);
+                float d1 = (float)this.theEntity.getDistanceSqToEntity(p_compare_2_);
                 return d0 < d1 ? -1 : (d0 > d1 ? 1 : 0);
             }
 

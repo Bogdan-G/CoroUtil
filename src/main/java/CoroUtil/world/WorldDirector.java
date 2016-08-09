@@ -93,7 +93,8 @@ public class WorldDirector implements Runnable {
 			threadedDirector = new Thread(this, "World Simulation Thread");
 			threadedDirector.start();
 		} else {
-			System.out.println("tried to start thread when already running for CoroUtil world director");
+			//System.out.println("tried to start thread when already running for CoroUtil world director");
+			cpw.mods.fml.common.FMLLog.fine("tried to start thread when already running for CoroUtil world director");
 		}
 	}
 	
@@ -153,7 +154,8 @@ public class WorldDirector implements Runnable {
 				//relocated to a ticking first time init so it can be after readnbt
 				//if (init) location.init();
 			} else {
-				System.out.println("warning: location already exists at these coords: " + location.getOrigin());
+				//System.out.println("warning: location already exists at these coords: " + location.getOrigin());
+				cpw.mods.fml.common.FMLLog.warning("warning: location already exists at these coords: %s", location.getOrigin());
 			}
 		}
 		listTickingLocations.add(location);
@@ -166,7 +168,8 @@ public class WorldDirector implements Runnable {
 				lookupTickingManagedLocations.remove(hash);
 				location.cleanup();
 			} else {
-				System.out.println("Error, couldnt find location for removal");
+				//System.out.println("Error, couldnt find location for removal");
+				cpw.mods.fml.common.FMLLog.warning("Error, couldnt find location for removal");
 			}
 		}
 		listTickingLocations.remove(location);
@@ -396,7 +399,7 @@ public class WorldDirector implements Runnable {
 		for (ISimulationTickable entry : listTickingLocations) {
 			NBTTagCompound nbt = new NBTTagCompound();
 			entry.writeToNBT(nbt);
-			nbtSet.setTag("" + index++, nbt);
+			nbtSet.setTag(String.valueOf(index++), nbt);
 		}
 		parData.setTag("tickingLocations", nbtSet);
 		

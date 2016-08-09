@@ -127,8 +127,8 @@ public class EntityTropicalFishHook extends Entity implements IEntityAdditionalS
       this.motionY = var3;
       this.motionZ = var5;
       float var10 = MathHelper.sqrt_double(var1 * var1 + var5 * var5);
-      this.prevRotationYaw = this.rotationYaw = (float)(Math.atan2(var1, var5) * 180.0D / 3.1415927410125732D);
-      this.prevRotationPitch = this.rotationPitch = (float)(Math.atan2(var3, (double)var10) * 180.0D / 3.1415927410125732D);
+      this.prevRotationYaw = this.rotationYaw = ((float)Math.atan2(var1, var5) * 180.0F / 3.14F);
+      this.prevRotationPitch = this.rotationPitch = ((float)Math.atan2(var3, (double)var10) * 180.0F / 3.14F);
       this.ticksInGround = 0;
    }
 
@@ -277,9 +277,9 @@ public class EntityTropicalFishHook extends Entity implements IEntityAdditionalS
          if(!this.inGround) {
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
             float var24 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-            this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / 3.1415927410125732D);
+            this.rotationYaw = ((float)Math.atan2(this.motionX, this.motionZ) * 180.0F / 3.14F);
 
-            for(this.rotationPitch = (float)(Math.atan2(this.motionY, (double)var24) * 180.0D / 3.1415927410125732D); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
+            for(this.rotationPitch = ((float)Math.atan2(this.motionY, (double)var24) * 180.0F / 3.14F); this.rotationPitch - this.prevRotationPitch < -180.0F; this.prevRotationPitch -= 360.0F) {
                ;
             }
 

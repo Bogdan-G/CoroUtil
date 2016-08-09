@@ -34,6 +34,8 @@ import CoroUtil.world.WorldDirectorManager;
 import CoroUtil.world.location.ISimulationTickable;
 import CoroUtil.world.location.ManagedLocation;
 
+import org.bogdang.modifications.random.XSTR;
+
 
 public class AIBTAgent {
 
@@ -272,7 +274,7 @@ public class AIBTAgent {
 		if (ent.isInWater() && !blackboard.canFlyPath.getValue() && !blackboard.canSwimPath.getValue()) {
 			//bah!
 			//ent.setDead();
-			Random rand = new Random();
+			Random rand = new XSTR();
 			if (entSpeed < 0.5F) {
 				ent.motionX *= 1.4F;
 				ent.motionZ *= 1.4F;
@@ -286,7 +288,7 @@ public class AIBTAgent {
 		double speed = 0.2D;
 		Block block = ent.worldObj.getBlock(MathHelper.floor_double(ent.posX), (int)ent.boundingBox.minY, MathHelper.floor_double(ent.posZ));
 		if (PFQueue.isFenceLike(block)) {
-			Random rand = new Random();
+			Random rand = new XSTR();
 			ent.motionX += rand.nextDouble()*speed - rand.nextDouble()*speed;
 			ent.motionY = 0.2F;
 			ent.motionZ += rand.nextDouble()*speed - rand.nextDouble()*speed;
@@ -294,7 +296,7 @@ public class AIBTAgent {
 		} else {
 			block = ent.worldObj.getBlock(MathHelper.floor_double(ent.posX), (int)ent.boundingBox.minY-1, MathHelper.floor_double(ent.posZ));
 			if (PFQueue.isFenceLike(block)) {
-				Random rand = new Random();
+				Random rand = new XSTR();
 				ent.motionX += rand.nextDouble()*speed - rand.nextDouble()*speed;
 				ent.motionY = 0.2F;
 				ent.motionZ += rand.nextDouble()*speed - rand.nextDouble()*speed;
@@ -473,7 +475,7 @@ public class AIBTAgent {
     				double d2 = entityplayer.posZ - ent.posZ;
     				double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
 
-    				Random rand = new Random();
+    				Random rand = new XSTR();
 
 					boolean despawn = false;
 

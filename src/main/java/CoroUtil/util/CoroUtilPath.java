@@ -55,8 +55,8 @@ public class CoroUtilPath {
 		        d1 = y+0.5F - (ent.posY + (double)ent.getEyeHeight());
 		        
 		        double d3 = MathHelper.sqrt_double(d * d + d2 * d2);
-		        float f2 = (float)((Math.atan2(d2, d) * 180D) / 3.1415927410125732D) - 90F;
-		        float f3 = (float)(-((Math.atan2(d1, d3) * 180D) / 3.1415927410125732D));
+		        float f2 = (((float)Math.atan2(d2, d) * 180F) / 3.14F) - 90F;
+		        float f3 = (-(((float)Math.atan2(d1, d3) * 180F) / 3.14F));
 		        float rotationPitch = -f3;//-ent.updateRotation(rotationPitch, f3, 180D);
 		        float rotationYaw = f2;//updateRotation(rotationYaw, f2, 180D);
 		        

@@ -132,7 +132,8 @@ public class BuildMod
 	}
 
 	public static void dbg(String string) {
-		System.out.println(string);
+		//System.out.println(string);
+		cpw.mods.fml.common.FMLLog.fine(string);
 	}
     
 }

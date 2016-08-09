@@ -32,6 +32,8 @@ import CoroUtil.util.CoroUtilBlock;
 import CoroUtil.util.CoroUtilInventory;
 import CoroUtil.util.CoroUtilItem;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class JobBase {
 	
 	public JobManager jm = null;
@@ -372,6 +374,7 @@ public class JobBase {
 	
 	public void fleeFrom(Entity fleeFrom) {
 		
+		//wut double?
 		fleeDelay = 10;
 		/*this.faceEntity(fleeFrom, 180F, 180F);
 		//this.rotationYaw += 180;
@@ -383,27 +386,27 @@ public class JobBase {
         
         rotationYaw = updateRotation2(rotationYaw, f3, 360F);*/
 		
-		double d = fleeFrom.posX - ent.posX;
-        double d1;
-        for (d1 = fleeFrom.posZ - ent.posZ; d * d + d1 * d1 < 0.0001D; d1 = (Math.random() - Math.random()) * 0.01D)
+		float d = (float)fleeFrom.posX - (float)ent.posX;
+        float d1;
+        for (d1 = (float)fleeFrom.posZ - (float)ent.posZ; d * d + d1 * d1 < 0.0001F; d1 = ((new XSTR()).nextFloat() - (new XSTR()).nextFloat()) * 0.01F)
         {
-            d = (Math.random() - Math.random()) * 0.01D;
+            d = ((new XSTR()).nextFloat() - (new XSTR()).nextFloat()) * 0.01F;
         }
-        float f = MathHelper.sqrt_double(d * d + d1 * d1);
+        float f = MathHelper.sqrt_float(d * d + d1 * d1);
 
         //knockBack(entity, i, d, d1);
         
-        float yaw = (float)((Math.atan2(d1, d) * 180D) / 3.1415927410125732D) - ent.rotationYaw;;
+        float yaw = (((float)Math.atan2((double)d1, (double)d) * 180F) / 3.14F) - ent.rotationYaw;;
 		
 		float look = ai.rand.nextInt(8)-4;
         //int height = 10;
-        double dist = ai.rand.nextInt(8)+8;
-        int gatherX = (int)(ent.posX + ((double)(-Math.sin((yaw+look) / 180.0F * 3.1415927F) * Math.cos(ent.rotationPitch / 180.0F * 3.1415927F)) * dist));
-        int gatherY = (int)(ent.posY-0.5 + (double)(-MathHelper.sin(ent.rotationPitch / 180.0F * 3.1415927F) * dist) - 0D); //center.posY - 0D;
-        int gatherZ = (int)(ent.posZ + ((double)(Math.cos((yaw+look) / 180.0F * 3.1415927F) * Math.cos(ent.rotationPitch / 180.0F * 3.1415927F)) * dist));
+        int dist = ai.rand.nextInt(8)+8;
+        int gatherX = (int)((float)ent.posX + ((-(float)Math.sin((double)((yaw+look) / 180.0F * 3.14F)) * Math.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
+        int gatherY = (int)((float)ent.posY-0.5 + (-(float)MathHelper.sin(ent.rotationPitch / 180.0F * 3.14F) * dist) - 0F); //center.posY - 0D;
+        int gatherZ = (int)((float)ent.posZ + (((float)Math.cos((double)((yaw+look) / 180.0F * 3.14F)) * (float)Math.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
         
-        gatherX = (int)(ent.posX - (d / f * dist));
-        gatherZ = (int)(ent.posZ - (d1 / f * dist));
+        gatherX = (int)((float)ent.posX - (d / f * dist));
+        gatherZ = (int)((float)ent.posZ - (d1 / f * dist));
         
         Block id = ent.worldObj.getBlock(gatherX, gatherY, gatherZ);
         
@@ -417,7 +420,7 @@ public class JobBase {
         	id = ent.worldObj.getBlock(gatherX, gatherY+offset++, gatherZ);
         }
         
-        double homeDist = ent.getDistance(ai.homeX, ai.homeY, ai.homeZ);
+        //double homeDist = ent.getDistance(ai.homeX, ai.homeY, ai.homeZ);//dead code?
         
         //System.out.println("TEMP OFF FOR REFACTOR");
         
@@ -581,7 +584,8 @@ public class JobBase {
             			int addCount = ourStack.stackSize;
             			
             			if (ourStack.stackSize < 0) {
-            				System.out.println("!! ourStack.stackSize < 0");
+            				//System.out.println("!! ourStack.stackSize < 0");
+            				cpw.mods.fml.common.FMLLog.fine("!! ourStack.stackSize < 0");
             			}
             			
             			//if (space < ourStack.stackSize) addCount = space;

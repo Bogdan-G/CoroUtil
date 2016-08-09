@@ -20,6 +20,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import extendedrenderer.ExtendedRenderer;
 import extendedrenderer.particle.entity.EntityRotFX;
+
+import org.bogdang.modifications.random.XSTR;
+
 @SideOnly(Side.CLIENT)
 public class RotatingEffectRenderer
 {
@@ -33,7 +36,7 @@ public class RotatingEffectRenderer
     public List[] fxLayers = new List[layers];
     //public RenderEngine renderer;
     public TextureManager renderer;
-    public Random rand = new Random();
+    public Random rand = new XSTR();
     
     public static final ResourceLocation particleTextures = new ResourceLocation("textures/particle/particles.png");
     public static final ResourceLocation resLayer4 = new ResourceLocation(ExtendedRenderer.modid + ":textures/particles/particles_64.png");
@@ -218,6 +221,6 @@ public class RotatingEffectRenderer
     			" - Particle Sheet 64x: " + this.fxLayers[1].size() + 
     			" - Particle Sheet 16x: " + this.fxLayers[1].size();*/
     	//item sheet seems only one used now
-        return "" + count;
+        return String.valueOf(count);
     }
 }

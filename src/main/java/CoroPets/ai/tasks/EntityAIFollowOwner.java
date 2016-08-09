@@ -117,18 +117,18 @@ public class EntityAIFollowOwner extends EntityAIBase
         
         this.thePet.getLookHelper().setLookPositionWithEntity(entitylivingbase, 10.0F, (float)this.thePet.getVerticalFaceSpeed());
 
-        if (canMove())
+        if (canMove() && (--this.followTimer <= 0))
         {
-            if (--this.followTimer <= 0)
-            {
+            //if (--this.followTimer <= 0)
+            //{
                 this.followTimer = 10;
 
-                if (!this.petPathfinder.tryMoveToEntityLiving(entitylivingbase, this.moveSpeedAdj))
+                if (!this.petPathfinder.tryMoveToEntityLiving(entitylivingbase, this.moveSpeedAdj) && !this.thePet.getLeashed() && this.thePet.getDistanceSqToEntity(entitylivingbase) >= 144.0D)
                 {
-                    if (!this.thePet.getLeashed())
-                    {
-                        if (this.thePet.getDistanceSqToEntity(entitylivingbase) >= 144.0D)
-                        {
+                    //if (!this.thePet.getLeashed())
+                    //{
+                        //if (this.thePet.getDistanceSqToEntity(entitylivingbase) >= 144.0D)
+                        //{
                             int i = MathHelper.floor_double(entitylivingbase.posX) - 2;
                             int j = MathHelper.floor_double(entitylivingbase.posZ) - 2;
                             int k = MathHelper.floor_double(entitylivingbase.boundingBox.minY);
@@ -145,10 +145,10 @@ public class EntityAIFollowOwner extends EntityAIBase
                                     }
                                 }
                             }
-                        }
-                    }
+                        //}
+                    //}
                 }
-            }
+            //}
         }
     }
 }

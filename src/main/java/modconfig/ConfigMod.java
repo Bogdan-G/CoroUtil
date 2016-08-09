@@ -79,7 +79,8 @@ public class ConfigMod {
         	processHashMap(modid, data.valsBoolean);
         	processHashMap(modid, data.valsString);
         } else {
-        	System.out.println("error: cant find config data for gui");
+        	//System.out.println("error: cant find config data for gui");
+        	cpw.mods.fml.common.FMLLog.fine("error: cant find config data for gui");
         }
         
         //sort it here!
@@ -122,10 +123,11 @@ public class ConfigMod {
 	}
     
     public static void dbg(Object obj) {
-		if (true) {
-			System.out.println(obj);
+		//if (true) {
+			//System.out.println(obj);
+			cpw.mods.fml.common.FMLLog.fine("%s", obj);
 			//MinecraftServer.getServer().getLogAgent().logInfo(String.valueOf(obj));
-		}
+		//}
 	}
     
     /* Main Usage Methods Start */

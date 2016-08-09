@@ -148,13 +148,13 @@ public class JobHunt extends JobBase {
 		            }
 		        }
 		        if (clEnt != null) {
-		        	if (ai.entityToAttack != clEnt) {
+		        	//if (ai.entityToAttack != clEnt) {
 		        		ai.huntTarget(clEnt);
-		        	} else {
+		        	//} else {
 		        		//if (ent.getNavigator().noPath()) {
-		        			ai.huntTarget(clEnt);
+		        			//ai.huntTarget(clEnt);
 		        		//}
-		        	}
+		        	//}
 		        	
 		        }
 		        /*if (!found) {

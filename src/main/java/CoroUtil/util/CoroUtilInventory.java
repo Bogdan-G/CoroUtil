@@ -64,14 +64,16 @@ public class CoroUtilInventory {
 	
 	public static boolean chestTryTransfer(World world, ICoroAI ai, int x, int y, int z) {
     	
-    	TileEntity tEnt = (TileEntityChest)world.getTileEntity(x, y, z);
-		if (tEnt instanceof TileEntityChest) {
-			TileEntityChest chest = (TileEntityChest)tEnt;
+    	//TileEntity tEnt = (TileEntityChest)world.getTileEntity(x, y, z);
+		//if (tEnt instanceof TileEntityChest) {
+			try {
+			TileEntityChest chest = (TileEntityChest)world.getTileEntity(x, y, z)/*(TileEntityChest)tEnt*/;
 			chestOpen(world, x, y, z);
 			ai.getAIAgent().jobMan.getPrimaryJob().transferItems(ai.getAIAgent().entInv.inventory, chest, "-1", -1, true);
 			return true;
-		}
-		return false;
+			} catch (Exception e) {return false;}
+		//}
+		//return false;
     }
 	
 }

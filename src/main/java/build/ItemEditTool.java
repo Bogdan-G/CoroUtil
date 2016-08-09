@@ -65,12 +65,12 @@ public class ItemEditTool extends Item {
     	} else if (mode == 1) {
     		if (subMode == 0) {
     			x1 = i; y1 = j; z1 = k;
-    			System.out.println("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
+    			System.out.println("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			subMode++;
     		} else {
     			x2 = i; y2 = j; z2 = k;
-    			System.out.println("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
+    			System.out.println("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			buildData.resetData();
     			buildData.recalculateLevelSize(x1, y1, z1, x2, y2, z2);
@@ -91,21 +91,21 @@ public class ItemEditTool extends Item {
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int i, int j, int k, int par7, float f1, float f2, float f3)
     {
     	
-    	if (true) return false;
+    	/*if (true) */return false;
     	
-    	if (par3World.isRemote) return false;
+    	/*if (par3World.isRemote) return false; //func always return false
     	
     	if (mode == 0) {
     		
     	} else if (mode == 1) {
     		if (subMode == 0) {
     			x1 = i; y1 = j; z1 = k;
-    			System.out.println("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
+    			System.out.println("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			subMode++;
     		} else {
     			x2 = i; y2 = j; z2 = k;
-    			System.out.println("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
+    			System.out.println("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			buildData.recalculateLevelSize(x1, y1, z1, x2, y2, z2);
     			buildData.writeNBT();
@@ -115,7 +115,7 @@ public class ItemEditTool extends Item {
     	
     		onItemRightClick(par1ItemStack, par3World, par2EntityPlayer);
     	}
-    	return true;
+    	return true;*/
     }
     
     public boolean wasKeyDown = false;
@@ -123,17 +123,17 @@ public class ItemEditTool extends Item {
     @Override
     public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
     	
-    	if (par5) {
-    		if (!par2World.isRemote) {
+    	if (par5 && !par2World.isRemote) {
+    		//if (!par2World.isRemote) {
     			if (temp()) {
-    				if (!wasKeyDown) {
+    				//if (!wasKeyDown) {
     					//ServerTickHandler.buildMan.addBuild(new BuildJob(0, (int)par3Entity.posX, (int)par3Entity.posY, (int)par3Entity.posZ, buildData));
-    				}
+    				//}
     				wasKeyDown = true;
     			} else {
     				wasKeyDown = false;
     			}
-    		}
+    		//}
     	}
     	
     	/*mode = ZCGame.instance.mapMan.editToolMode;

@@ -181,8 +181,8 @@ public class Ability {
 		//System.out.println("finished ability!");
 		
 		//incase something bypasses setFinishedPerform()
-		if (isActiveOrCoolingDown()) {
-			if (callback != null) callback.abilityFinished(this);
+		if (isActiveOrCoolingDown() && callback != null) {
+			/*if (callback != null) */callback.abilityFinished(this);
 		}
 		
 		isActive = false;

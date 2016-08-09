@@ -16,6 +16,8 @@ import CoroUtil.bt.IBTAgent;
 import CoroUtil.bt.PersonalityProfile;
 import CoroUtil.bt.selector.Selector;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AttackMeleeBest extends Selector implements IAbilityUsageCallback {
 
 	//Convert default melee into a default melee ability, for all the benefits of ability system for all attacks
@@ -64,7 +66,7 @@ public class AttackMeleeBest extends Selector implements IAbilityUsageCallback {
 		boolean randomChoice = true;
 		int oddsToUseCombo = 30;
 		
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
 		if (isReadyBool) {
 			Entity target = blackboard.getTarget();

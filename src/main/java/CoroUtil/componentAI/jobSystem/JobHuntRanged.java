@@ -175,13 +175,13 @@ public class JobHuntRanged extends JobBase {
 	            }
 	        }
 	        if (clEnt != null) {
-	        	if (ai.entityToAttack != clEnt) {
+	        	//if (ai.entityToAttack != clEnt) {
 	        		ai.setTarget(clEnt);
-	        	} else {
+	        	//} else {
 	        		//if (ent.getNavigator().noPath()) {
-	        			ai.setTarget(clEnt);
+	        			//ai.setTarget(clEnt);
 	        		//}
-	        	}
+	        	//}
 	        	
 	        }
 	        /*if (!found) {

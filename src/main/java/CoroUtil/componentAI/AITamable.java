@@ -13,6 +13,8 @@ import CoroUtil.componentAI.jobSystem.JobBase;
 import CoroUtil.diplomacy.DiplomacyHelper;
 import CoroUtil.util.CoroUtilEntity;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AITamable {
 
 	public JobBase job;
@@ -74,7 +76,7 @@ public class AITamable {
 				
 				if ((ent.onGround || ent.isInWater()) && teleportFromFarDist != -1 && job.ai.ent.getDistanceToEntity(ent) > teleportFromFarDist) {
 					double range = 2D;
-					Random rand = new Random();
+					Random rand = new XSTR();
 					job.ai.ent.setPosition(ent.posX + (rand.nextDouble() * range) - (rand.nextDouble() * range), ent.posY, ent.posZ + (rand.nextDouble() * range) - (rand.nextDouble() * range));
 					job.ai.ent.getNavigator().clearPathEntity();
 				}
@@ -92,7 +94,7 @@ public class AITamable {
 	}
 	
 	public void onIdleTick() {
-		Random rand = new Random();
+		Random rand = new XSTR();
 		if(((job.ent.getNavigator().noPath()) && rand.nextInt(40) == 0))
         {
 			if (occupyCoord == null || OldUtil.getDistanceXZ(job.ent, occupyCoord) < followDistMax) {

@@ -16,6 +16,8 @@ import CoroUtil.bt.IBTAgent;
 import CoroUtil.bt.PersonalityProfile;
 import CoroUtil.bt.selector.Selector;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class AttackRangedBest extends Selector implements IAbilityUsageCallback {
 
 	public IBTAgent entInt;
@@ -47,7 +49,7 @@ public class AttackRangedBest extends Selector implements IAbilityUsageCallback 
 		boolean randomChoice = true;
 		int oddsToUseCombo = 30;
 		
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
 		if (isReadyBool) {
 			Entity target = blackboard.getTarget();

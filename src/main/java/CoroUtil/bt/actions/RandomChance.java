@@ -6,6 +6,8 @@ import CoroUtil.bt.Behavior;
 import CoroUtil.bt.EnumBehaviorState;
 import CoroUtil.bt.leaf.LeafAction;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class RandomChance extends LeafAction {
 
 	public RandomChance(Behavior parParent) {
@@ -14,7 +16,7 @@ public class RandomChance extends LeafAction {
 	
 	@Override
 	public EnumBehaviorState tick() {
-		Random rand = new Random();
+		Random rand = new XSTR();
 		Boolean bool = rand.nextBoolean();
 		//bool = false;
 		dbg("Leaf Rand Tick - " + bool);

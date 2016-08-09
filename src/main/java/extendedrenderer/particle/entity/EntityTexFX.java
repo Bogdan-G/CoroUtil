@@ -7,6 +7,9 @@ import net.minecraft.world.World;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+
+import org.bogdang.modifications.random.XSTR;
+
 @SideOnly(Side.CLIENT)
 public class EntityTexFX extends EntityRotFX
 {
@@ -23,9 +26,9 @@ public class EntityTexFX extends EntityRotFX
     {
         super(var1, var2, var4, var6, var8, var10, var12);
         textureID = texID;
-        this.motionX = var8 + (double)((float)(Math.random() * 2.0D - 1.0D) * 0.05F);
-        this.motionY = var10 + (double)((float)(Math.random() * 2.0D - 1.0D) * 0.05F);
-        this.motionZ = var12 + (double)((float)(Math.random() * 2.0D - 1.0D) * 0.05F);
+        this.motionX = var8 + (double)(((new XSTR()).nextFloat() * 2.0F - 1.0F) * 0.05F);
+        this.motionY = var10 + (double)(((new XSTR()).nextFloat() * 2.0F - 1.0F) * 0.05F);
+        this.motionZ = var12 + (double)(((new XSTR()).nextFloat() * 2.0F - 1.0F) * 0.05F);
         //Color IDS
         //0 = black/regular/default
         //1 = dirt

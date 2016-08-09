@@ -6,6 +6,8 @@ import net.minecraft.util.Vec3;
 import extendedrenderer.particle.behavior.ParticleBehaviors;
 import extendedrenderer.particle.entity.EntityRotFX;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class ParticleBehaviorTrail extends ParticleBehaviors {
 
 	public ParticleBehaviorTrail(Vec3 source) {
@@ -83,7 +85,7 @@ public class ParticleBehaviorTrail extends ParticleBehaviors {
 			particle.motionY += vec.yCoord;
 			particle.motionZ += vec.zCoord;*/
 			
-			Random rand = new Random();
+			Random rand = new XSTR();
 			
 			double randRange = 0.01D;
 			

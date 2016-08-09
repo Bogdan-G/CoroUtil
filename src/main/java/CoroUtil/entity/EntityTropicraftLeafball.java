@@ -10,6 +10,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import CoroUtil.componentAI.ICoroAI;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class EntityTropicraftLeafball extends EntityThrowable
 {
 	public int ticksInAir;
@@ -128,7 +130,7 @@ public class EntityTropicraftLeafball extends EntityThrowable
         	double speed = 0.01D;
         	EntityTexFX var31 = new EntityTexFX(worldObj, posX, posY, posZ, rand.nextGaussian()*rand.nextGaussian()*speed, rand.nextGaussian()*speed, rand.nextGaussian()*rand.nextGaussian()*speed, (rand.nextInt(80)/10), 0, mod_EntMover.effLeafID);
             var31.setGravity(0.3F);
-            Random rand = new Random();
+            Random rand = new XSTR();
             var31.rotationYaw = rand.nextInt(360);
             mod_ExtendedRenderer.rotEffRenderer.addEffect(var31);
         }

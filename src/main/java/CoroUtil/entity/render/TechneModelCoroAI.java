@@ -203,7 +203,7 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
             	
             	int finished = 0;
             }
-            
+            zipInput.close();
             
             
             

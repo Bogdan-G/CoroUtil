@@ -75,7 +75,7 @@ public class CommandCoroUtil extends CommandBase {
 					int count = 1;
 					
 					if (var2.length > 2) {
-						count = Integer.valueOf(var2[2]);
+						count = Integer.parseInt(var2[2]);
 					}
 
 					for (int i = 0; i < count; i++) {
@@ -97,12 +97,12 @@ public class CommandCoroUtil extends CommandBase {
 								CoroUtil.sendPlayerMsg((EntityPlayerMP) player, "found nothing to spawn");
 							}
 						} else {
-							if (ent != null) {
+							//if (ent != null) {
 								
 								CoroUtil.sendPlayerMsg((EntityPlayerMP) player, "spawned: " + CoroUtilEntity.getName(ent));
 								spawnEntity(player, ent);
 								
-							}
+							//}
 						}
 					}
 				} else if (var2[0].equalsIgnoreCase("get")) {
@@ -135,21 +135,23 @@ public class CommandCoroUtil extends CommandBase {
 	        		boolean exact = false;
 	        		int dim = ((EntityPlayer)var1).dimension;
         			//if (var2.length > 2) exact = var2[2].equals("exact");
-	        		if (var2.length > 2) dim = Integer.valueOf(var2[1]);
+	        		if (var2.length > 2) dim = Integer.parseInt(var2[1]);
 	        		CoroUtil.sendPlayerMsg((EntityPlayerMP) var1, var2[1] + " count killed: " + getEntityCount(var2[1], true, exact, dim));
 	        	} else if (var2[0].equalsIgnoreCase("list")) {
 	        		String param = null;
 	        		int dim = ((EntityPlayer)var1).dimension;
 	        		
 	        		String fullCommand = "";
+	        		StringBuilder fullCommandSB = new StringBuilder(fullCommand);
 	        		for (String entry : var2) {
-	        			fullCommand += entry + " ";
+	        			fullCommandSB.append(entry).append(' ');
 	        		}
+	        		fullCommand = String.valueOf(fullCommandSB);
 	        		boolean simple = false;
 	        		if (fullCommand.contains(" simple")) {
 	        			simple = true;
 	        		} else {
-	        			if (var2.length > 1) dim = Integer.valueOf(var2[1]);
+	        			if (var2.length > 1) dim = Integer.parseInt(var2[1]);
 		        		if (var2.length > 2) param = var2[2];
 	        		}
 	        		HashMap<String, Integer> entNames = listEntities(param, dim, simple);
@@ -169,15 +171,17 @@ public class CommandCoroUtil extends CommandBase {
 	        		int indexStart = 0;
 	        		
 	        		String fullCommand = "";
+	        		StringBuilder fullCommandSB = new StringBuilder(fullCommand);
 	        		for (String entry : var2) {
-	        			fullCommand += entry + " ";
+	        			fullCommandSB.append(entry).append(' ');
 	        		}
+	        		fullCommand = String.valueOf(fullCommandSB);
 	        		boolean simple = true;
 	        		/*if (fullCommand.contains(" simple")) {
 	        			simple = true;
 	        		} else {*/
 	        			//using index start instead of dimension
-	        			if (var2.length > 1) indexStart = Integer.valueOf(var2[1]);
+	        			if (var2.length > 1) indexStart = Integer.parseInt(var2[1]);
 		        		if (var2.length > 2) param = var2[2];
 	        		//}
 	        		List<String> data = listEntitiesLocations(param, dim, simple, indexStart);

@@ -142,7 +142,7 @@ public class BlockDataGrid
 			
 			while (it.hasNext()) {
 				BlockDataPoint bdp = (BlockDataPoint)it.next();
-				data.setTag(""+bdp.hash, bdp.writeToNBT());
+				data.setTag(String.valueOf(bdp.hash), bdp.writeToNBT());
 			}
     		
     		String saveFolder = CoroUtilFile.getWorldSaveFolderPath() + CoroUtilFile.getWorldFolderName() + "epoch" + File.separator;

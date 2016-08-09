@@ -12,6 +12,8 @@ import CoroUtil.bt.EnumBehaviorState;
 import CoroUtil.bt.IBTAgent;
 import CoroUtil.bt.selector.Selector;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class Wander extends Selector {
 
 	//0 = nothing to attack, 1 = attacking, 2 = sanity check says no
@@ -39,7 +41,7 @@ public class Wander extends Selector {
 		
 		wanderRange = 4;
 		
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
 		//if (true) return EnumBehaviorState.SUCCESS;
 		

@@ -429,7 +429,7 @@ public class Build {
 							if (tryID == null) {
 								System.out.println("CRITICAL! BuildMod: converting block to internal ID failed, for block: " + build_blockIDArr[xx][yy][zz]);
 							} else {
-								int internalID = Integer.valueOf(tryID);
+								int internalID = /*Integer.parseInt(*/tryID/*)*/;
 								blockidsInt[index] = internalID;
 							}
 							metadataInt[index] = build_blockMetaArr[xx][yy][zz];
@@ -708,9 +708,10 @@ public class Build {
 	public boolean fillBuildData(Build parBuild) {
 		
 		FileInputStream fis = null;
+		InputStream is = null;
 		
     	try {
-	    	InputStream is = new FileInputStream(parBuild.file);
+	    	is = new FileInputStream(parBuild.file);
 			
 	    	fis = new FileInputStream(parBuild.file);
 	    	
@@ -724,11 +725,13 @@ public class Build {
 			if (fis != null) {
     			fis.close();
     		}
+    		if (is != null) is.close();
 			
     	} catch (Exception ex) {
     		ex.printStackTrace();
     	} finally {
-    		
+    		try {if (fis != null) fis.close();} catch (java.io.IOException ex) {}
+    		try {if (is != null) is.close();} catch (java.io.IOException ex) {}
     		
     	}
     	return true;

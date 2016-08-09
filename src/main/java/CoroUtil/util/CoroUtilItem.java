@@ -13,6 +13,8 @@ import net.minecraft.util.MathHelper;
 
 import com.google.common.collect.Multimap;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class CoroUtilItem {
 
 	public static Item setUnlocalizedNameAndTexture(Item item, String nameTex) {
@@ -56,7 +58,7 @@ public class CoroUtilItem {
 	public static EntityItem tossItemFromEntity(Entity parEnt, ItemStack p_146097_1_, boolean p_146097_2_, boolean p_146097_3_)
     {
 		
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
         if (p_146097_1_ == null)
         {

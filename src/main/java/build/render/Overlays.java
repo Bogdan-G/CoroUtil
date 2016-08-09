@@ -22,7 +22,7 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
-import scala.util.Random;
+//import scala.util.Random;//replace XSTR
 import CoroUtil.util.CoroUtilBlock;
 import build.world.Build;
 import build.world.BuildManager;
@@ -56,7 +56,7 @@ public class Overlays {
 		    		if (!CoroUtilBlock.isAir(block)) {
 		    			//Block block = Block.blocksList[id];
 		    			
-		    			if (block != null) {
+		    			//if (block != null) {
 		    				
 		    				GL11.glPushMatrix();
 		    				
@@ -65,7 +65,7 @@ public class Overlays {
 		    				renderBlock(block, meta, 0, 0, 0);
 		    				
 		    				GL11.glPopMatrix();
-		    			}
+		    			//}
 		    		}					
 				}
 			}
@@ -507,7 +507,7 @@ public class Overlays {
 		    
 		    //GL11.glColor3f(0.0f, 0.0f, 1.0f);
 		    
-		    Random rand = new Random();
+		    //Random rand = new XSTR();//dead code?
 		    
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {
@@ -541,8 +541,8 @@ public class Overlays {
 		    		double x = Math.cos(lng);
 		    		double y = Math.sin(lng);
 		    		
-		    		double adj1 = Math.sin(Math.toRadians((((i * 200)+System.currentTimeMillis()) % 3600)) * 0.1D);
-		    		double adj2 = Math.cos(Math.toRadians((((i * 200)+System.currentTimeMillis()) % 3600)) * 0.1D);
+		    		double adj1 = Math.sin(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
+		    		double adj2 = Math.cos(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
 		    		
 		    		//GL11.glColor3d(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
 		    		GL11.glColor3d(0D, i / (double)lats + (1D * Math.sin(Math.toRadians((System.currentTimeMillis() % 3600)) * 0.1D)) * 0.3D, i / (double)lats + (1D * Math.sin(Math.toRadians(((System.currentTimeMillis() + 1800) % 3600)) * 0.1D)) * 0.3D);
@@ -626,7 +626,7 @@ public class Overlays {
 		    
 		    //GL11.glColor3f(0.0f, 0.0f, 1.0f);
 		    
-		    Random rand = new Random();
+		    org.bogdang.modifications.random.XSTR rand = new org.bogdang.modifications.random.XSTR();
 		    
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {

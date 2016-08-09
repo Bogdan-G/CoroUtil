@@ -28,7 +28,8 @@ public class CoroUtilFile {
 			try {
 				data = CompressedStreamTools.readCompressed(new FileInputStream(saveFolder + fileName));
 			} catch (Exception ex) {
-				System.out.println("CoroUtilFile: getExtraWorldNBT: Error loading " + saveFolder + fileName);
+				//System.out.println("CoroUtilFile: getExtraWorldNBT: Error loading " + saveFolder + fileName);
+				cpw.mods.fml.common.FMLLog.warning("CoroUtilFile: getExtraWorldNBT: Error loading %s %s", saveFolder, fileName);
 			}
 			
 			//NBTTagList var14 = gameData.getTagList("playerData");

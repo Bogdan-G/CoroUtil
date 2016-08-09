@@ -30,11 +30,9 @@ public class CommandCoroPets extends CommandBase {
 			{
 				EntityPlayer player = getCommandSenderAsPlayer(var1);
 				
-				if (MinecraftServer.getServer().isSinglePlayer() || MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile())) {
-					if (var2[0].equals("aitest")) {
+				if ((MinecraftServer.getServer().isSinglePlayer() || MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile())) && var2[0].equals("aitest")) {
 						System.out.println("AI TEST MODIFY!");
 						BehaviorModifier.test(player.worldObj, Vec3.createVectorHelper(player.posX, player.posY, player.posZ), player);
-					}
 				}
 			}
 		} catch (Exception ex) {

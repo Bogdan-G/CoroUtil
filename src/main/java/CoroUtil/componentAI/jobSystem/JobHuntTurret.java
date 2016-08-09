@@ -97,11 +97,11 @@ public class JobHuntTurret extends JobBase {
 	            }
 	        }
 	        if (clEnt != null) {
-	        	if (ai.entityToAttack != clEnt) {
+	        	//if (ai.entityToAttack != clEnt) {
 	        		ai.setTarget(clEnt);
-	        	} else {
-	        		ai.setTarget(clEnt);
-	        	}
+	        	//} else {
+	        		//ai.setTarget(clEnt);
+	        	//}
 	        	
 	        }
 		} else {

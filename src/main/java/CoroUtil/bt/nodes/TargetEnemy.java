@@ -16,6 +16,8 @@ import CoroUtil.bt.EnumBehaviorState;
 import CoroUtil.bt.IBTAgent;
 import CoroUtil.bt.selector.Selector;
 
+import org.bogdang.modifications.random.XSTR;
+
 public class TargetEnemy extends Selector {
 
 	//0 = nothing to attack, 1 = attacking, 2 = sanity check says no
@@ -57,7 +59,7 @@ public class TargetEnemy extends Selector {
 		boolean xRay = false;
 		
 		EntityLivingBase protectEnt = ent;
-		Random rand = new Random();
+		Random rand = new XSTR();
 		
 		AIBTAgent ai = entInt.getAIBTAgent();
 		

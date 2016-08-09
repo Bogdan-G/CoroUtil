@@ -68,8 +68,8 @@ public class Behaviors {
 			
 			
 
-            if(ticks > 150) {
-                if(me.worldObj.rand.nextInt(10) == 0) {
+            if(ticks > 150 && me.worldObj.rand.nextInt(10) == 0) {
+                //if(me.worldObj.rand.nextInt(10) == 0) {
                     //System.out.println("idle trigger! - " + ticks);
                 	
                     if (me instanceof c_IEnhPF) {
@@ -79,15 +79,15 @@ public class Behaviors {
                         me.setPathToEntity(null);
                     }
                     ticks = 0;
-                }
+                //}
             }
         } else {
         	ticks = 0;
         }
 		
-		if (me instanceof EntityCreeper) {	
+		//if (me instanceof EntityCreeper) {	
 			//wheatFollow(me);
-		}
+		//}
 		
 		//updates
 		setData(me, DataTypes.noMoveTicks, ticks);
@@ -137,14 +137,14 @@ public class Behaviors {
 			List ents = me.worldObj.getEntitiesWithinAABB(EntityPlayer.class, me.boundingBox.addCoord((double)followTriggerDist, (double)followTriggerDist, (double)followTriggerDist));
 	        for(int var3 = 0; var3 < ents.size(); ++var3) {
 	           EntityPlayer var5 = (EntityPlayer)ents.get(var3);
-	           if (me.getDistanceToEntity(var5) > 3F) {
-		           if(var5.getCurrentEquippedItem() != null && var5.getCurrentEquippedItem().getItem() == Items.wheat) {
+	           if (me.getDistanceToEntity(var5) > 3F && var5.getCurrentEquippedItem() != null && var5.getCurrentEquippedItem().getItem() == Items.wheat) {
+		           //if(var5.getCurrentEquippedItem() != null && var5.getCurrentEquippedItem().getItem() == Items.wheat) {
 		        	  found = true;
 		              setTarget(me, var5);
 		              
 		              //creeper no despawn set
 		              setData(me, DataTypes.shouldDespawn, false);
-		           }
+		           //}
 	           }
 	        }
 		//}

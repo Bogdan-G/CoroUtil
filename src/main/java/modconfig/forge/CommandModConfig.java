@@ -109,7 +109,13 @@ public class CommandModConfig extends CommandBase {
 		int vall = 3;
 		
 		String val = "";
-		for (int i = vall; i < var2.length; i++) val += var2[i] + (i != var2.length-1 ? " " : "");
+		StringBuilder valSB = new StringBuilder(val);
+		for (int i = vall; i < var2.length; i++) {
+		valSB.append(var2[i]);
+		if (i != var2.length-1) valSB.append(' ');
+		else valSB.append("");
+		}
+		val = String.valueOf(valSB);
 		if (ConfigMod.updateField(var2[modid], var2[field], val)) {
 			CoroUtil.sendPlayerMsg(playerMP, "set " + var2[field] + " to " + val);
 			

@@ -76,6 +76,7 @@ public class SenseEnvironment extends LeafAction {
 		            Entity entity1 = (Entity)list.get(j);
 		            if(blackboard.agent.isEnemy(entity1))
 		            {
+		            	//this is "todo"?
 		            	if (false || ((EntityLivingBase) entity1).canEntityBeSeen(blackboard.agent.ent)) {
 		            		//if (sanityCheck()/* && entity1 instanceof EntityPlayer*/) {
 		            			float dist = blackboard.agent.ent.getDistanceToEntity(entity1);

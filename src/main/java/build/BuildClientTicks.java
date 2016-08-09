@@ -238,7 +238,8 @@ public class BuildClientTicks
     		copyState = EnumCopyState.NORMAL;
     	}
     	
-    	System.out.println(copyState);
+    	//System.out.println(copyState);
+    	cpw.mods.fml.common.FMLLog.fine("%s", copyState);
     }
     
     public void eventBuild() {

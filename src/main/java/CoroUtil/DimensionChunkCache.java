@@ -133,7 +133,7 @@ public class DimensionChunkCache implements IBlockAccess
 	    		
 	    		
 	    		
-	    		if (chunks != null) {
+	    		//if (chunks != null) {
 		    		for (int i = 0; i < chunks.size(); i++) {
 		    			Chunk chunk = (Chunk) chunks.get(i);
 		    			
@@ -162,7 +162,7 @@ public class DimensionChunkCache implements IBlockAccess
 		    			this.chunkArray[chunk.xPosition - this.chunkX][chunk.zPosition - this.chunkZ] = chunk;
 		    			chunkCount++;
 		    		}
-	    		}
+	    		//}
 	    		
 	    	} else if (ConfigCoroAI.usePlayerRadiusChunkLoadingForFallback) {
 		    	byte playerRadius = 8;

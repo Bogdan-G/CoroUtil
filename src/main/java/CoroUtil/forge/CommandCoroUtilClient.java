@@ -32,7 +32,7 @@ public class CommandCoroUtilClient extends CommandBase {
 				if (var2[0].equalsIgnoreCase("list")) {
 					String param = null;
 	        		int dim = ((EntityPlayer)var1).dimension;
-	        		if (var2.length > 1) dim = Integer.valueOf(var2[1]);
+	        		if (var2.length > 1) dim = Integer.parseInt(var2[1]);
 	        		if (var2.length > 2) param = var2[2];
 	        		HashMap<String, Integer> entNames = listEntities(param, dim);
 	                

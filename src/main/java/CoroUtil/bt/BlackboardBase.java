@@ -196,7 +196,8 @@ public class BlackboardBase implements IPFCallback {
 				}
 			}
 		} catch (Exception ex) {
-			System.out.println("Crash in Epoch AI Blackboard for PF Callback");
+			//System.out.println("Crash in Epoch AI Blackboard for PF Callback");
+			cpw.mods.fml.common.FMLLog.fine("Crash in Epoch AI Blackboard for PF Callback");
 			ex.printStackTrace();
 		}
 		

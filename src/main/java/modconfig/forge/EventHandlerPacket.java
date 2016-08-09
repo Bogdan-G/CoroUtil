@@ -70,9 +70,9 @@ public class EventHandlerPacket {
 			if (command.equals("setData")) {
 				String data = nbt.getString("data");
 				
-				if (entP instanceof EntityPlayerMP) {
+				//if (entP instanceof EntityPlayerMP) {
 					CommandModConfig.parseSetCommand((EntityPlayerMP)entP, data.split(" "));
-				}
+				//}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
