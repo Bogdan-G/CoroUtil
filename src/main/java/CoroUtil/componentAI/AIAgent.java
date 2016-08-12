@@ -642,7 +642,7 @@ public class AIAgent {
         //Remove retaliate target on tick 0 if it is not a natural enemy
         if (retaliateTicks > 0) {
         	retaliateTicks--;
-        	if (retaliateTicks == 0 && retaliateEntity != null && retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity)) {
+        	if ((retaliateTicks == 0 && retaliateEntity != null) && (retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity))) {
         		//if (retaliateEntity == entityToAttack && !entInt.isEnemy(retaliateEntity)) {
         			entityToAttack = null;
         			retaliateEntity = null;

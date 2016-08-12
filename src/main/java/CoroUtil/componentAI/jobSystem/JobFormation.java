@@ -71,15 +71,15 @@ public class JobFormation extends JobBase {
 		for(int j = 0; j < list.size(); j++)
         {
             Entity entity1 = (Entity)list.get(j);
-            //if(entity1 instanceof ICoroAI) {
+            if(entity1 instanceof ICoroAI) {
             	ICoroAI otherEnt = (ICoroAI)entity1;
-	            if(entity1 instanceof ICoroAI && otherEnt.getAIAgent() != null && otherEnt.getAIAgent().jobMan.getPrimaryJob().shouldTickFormation()) {
+	            if(/*entity1 instanceof ICoroAI && */otherEnt.getAIAgent() != null && otherEnt.getAIAgent().jobMan.getPrimaryJob().shouldTickFormation()) {
 	            	if (otherEnt.getAIAgent().activeFormation.listEntities.size() > formationSize) {
 	            		formationSize = otherEnt.getAIAgent().activeFormation.listEntities.size();
 	            		foundFormation = otherEnt.getAIAgent().activeFormation;
 	            	}
 	            }
-            //}
+            }
         }
 		
 		if (foundFormation != null) {
