@@ -151,27 +151,27 @@ public class Formation {
 				
 				int rows = listEntities.size() / sizeColumns;
 				
-				double spacing = 1.5D/* + Math.sin(ent.worldObj.getWorldTime() * 0.1D)*/;
+				double spacing = 1.5D/* + org.bogdang.modifications.math.MathHelperLite.sin(ent.worldObj.getWorldTime() * 0.1D)*/;
 				
 				double adjAngle = 0D;//listEntities.indexOf(ent) % 2 == 0 ? 0D : 180D;
 				double dist = spacing * row - ((spacing*rows)/2);//(listEntities.indexOf(ent));
 				adjAngle -= 90D;
 				
 				//depth wise, rows
-				double posX = Math.cos((-smoothYaw + adjAngle) * 0.01745329D) * dist;
-				double posZ = Math.sin((-smoothYaw + adjAngle) * 0.01745329D) * dist;
+				double posX = org.bogdang.modifications.math.MathHelperLite.cos((-smoothYaw + adjAngle) * 0.01745329D) * dist;
+				double posZ = org.bogdang.modifications.math.MathHelperLite.sin((-smoothYaw + adjAngle) * 0.01745329D) * dist;
 				
 				dist = (spacing*col) - ((spacing*(sizeColumns+1))/2);
 				adjAngle += 90D;
 				
 				//length wise, colums
-				posX += Math.cos((-smoothYaw + adjAngle) * 0.01745329D) * dist;
-				posZ += Math.sin((-smoothYaw + adjAngle) * 0.01745329D) * dist;
+				posX += org.bogdang.modifications.math.MathHelperLite.cos((-smoothYaw + adjAngle) * 0.01745329D) * dist;
+				posZ += org.bogdang.modifications.math.MathHelperLite.sin((-smoothYaw + adjAngle) * 0.01745329D) * dist;
 				
 				
 				
 				posX = pos.xCoord - posX;
-				double posY = (pos.yCoord/* - 0.3D - Math.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
+				double posY = (pos.yCoord/* - 0.3D - org.bogdang.modifications.math.MathHelperLite.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
 				posZ = pos.zCoord + posZ;
 				
 				Vec3 tryPos = Vec3.createVectorHelper(posX, posY, posZ);

@@ -80,14 +80,14 @@ public class AbilityShootArrow extends Ability {
 		
 		float swap = usageCount % 2 == 0 ? 1 : -1;
 		
-		/*model.bipedRightArm.rotateAngleX = (float) (offset - (Math.sin(range/ticksToPerform * curTick) * amp));
-		model.bipedRightArm.rotateAngleZ = (float) (offset*0.15F - (Math.sin(range/ticksToPerform * curTick) * amp*0.7F*swap));
+		/*model.bipedRightArm.rotateAngleX = (float) (offset - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp));
+		model.bipedRightArm.rotateAngleZ = (float) (offset*0.15F - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*0.7F*swap));
 		
 		float reduce = 0.25F;
 		
-		model.bipedLeftArm.rotateAngleY = (float) (-offset*reduce - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));
-		model.bipedLeftArm.rotateAngleX = (float) (offset*0.5F - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));
-		model.bipedLeftArm.rotateAngleZ = (float) (offset*reduce - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));*/
+		model.bipedLeftArm.rotateAngleY = (float) (-offset*reduce - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));
+		model.bipedLeftArm.rotateAngleX = (float) (offset*0.5F - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));
+		model.bipedLeftArm.rotateAngleZ = (float) (offset*reduce - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));*/
 		
 	}
 	

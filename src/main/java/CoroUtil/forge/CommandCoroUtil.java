@@ -202,8 +202,8 @@ public class CommandCoroUtil extends CommandBase {
 	public void spawnEntity(EntityPlayer player, Entity ent) {
 		double dist = 1D;
 		
-		double finalX = player.posX - (Math.sin(player.rotationYaw * 0.01745329F) * dist);
-		double finalZ = player.posZ + (Math.cos(player.rotationYaw * 0.01745329F) * dist);
+		double finalX = player.posX - (org.bogdang.modifications.math.MathHelperLite.sin(player.rotationYaw * 0.01745329F) * dist);
+		double finalZ = player.posZ + (org.bogdang.modifications.math.MathHelperLite.cos(player.rotationYaw * 0.01745329F) * dist);
 		
 		double finalY = player.posY;
 		

@@ -62,8 +62,8 @@ public class ParticleBehaviorCharge extends ParticleBehaviors {
 				double rotYaw = (float)(Math.atan2(vecZ, vecX) * 180.0D / Math.PI);
 				rotYaw -= 75D;// + (15D * curTickCharge / ticksToCharge);
 				double speed = 0.01D + (0.50D * curTick / ticksMax);
-				particle.motionX = Math.cos(rotYaw * 0.017453D) * speed;
-				particle.motionZ = Math.sin(rotYaw * 0.017453D) * speed;
+				particle.motionX = org.bogdang.modifications.math.MathHelperLite.cos(rotYaw * 0.017453D) * speed;
+				particle.motionZ = org.bogdang.modifications.math.MathHelperLite.sin(rotYaw * 0.017453D) * speed;
 				int cycle = 60;
 				
 				if (/*curTickCharge > 100 && */curTick + 20 < ticksMax) {

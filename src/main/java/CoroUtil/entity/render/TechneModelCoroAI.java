@@ -489,17 +489,17 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
     		float ampArm = 1.2F;
     		float ampLeg = 1.6F;
     		
-    		float lean = -10+(float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 0.4F) % 360)))) * 0.6F * 0.3F;
+    		float lean = -10+(float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 0.4F) % 360)))) * 0.6F * 0.3F;
     		
-    		float armRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
-    		float armRotBottom = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
+    		float armRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
+    		float armRotBottom = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
     		
-    		float legRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
-    		float legRotBottom = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
+    		float legRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
+    		float legRotBottom = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
     		
-    		float bob = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * ampLeg;
+    		float bob = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * ampLeg;
     		
-    		float headRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * 0.6F * 0.4F;
+    		float headRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * 0.6F * 0.4F;
     		
     		//this.parts.get("top").rotationPointYRel = (float)Math.toRadians(bob * 1F);
     		

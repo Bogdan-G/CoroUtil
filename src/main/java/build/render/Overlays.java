@@ -225,51 +225,51 @@ public class Overlays {
 		
 		for (int i = 0; i < 2; i++) {
 			float offset = 0.5F+i*height;
-			Vector3f vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			Vector3f vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			
 			Vector3f start = new Vector3f(parStart.x + vec.x, parStart.y + offset, parStart.z + vec.z);
 			Vector3f end = new Vector3f(parEnd.x + vec.x, parEnd.y + offset, parEnd.z + vec.z);
 			renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 			angle -= 180;
-			vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			start = new Vector3f(parStart.x + vec.x, parStart.y + offset, parStart.z + vec.z);
 			end = new Vector3f(parEnd.x + vec.x, parEnd.y + offset, parEnd.z + vec.z);
 			renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 			
 			angle -= 180;
-			vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			start = new Vector3f(parStart.x + vec.x, parStart.y + offset, parStart.z + vec.z);
 			angle -= 180;
-			vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			end = new Vector3f(parStart.x + vec.x, parStart.y + offset, parStart.z + vec.z);
 			renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 			
-			vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			start = new Vector3f(parEnd.x + vec.x, parEnd.y + offset, parEnd.z + vec.z);
 			angle -= 180;
-			vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+			vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 			end = new Vector3f(parEnd.x + vec.x, parEnd.y + offset, parEnd.z + vec.z);
 			renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 		}
 		
-		Vector3f vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+		Vector3f vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 		Vector3f start = new Vector3f(parStart.x + vec.x, parStart.y + 0.5F, parStart.z + vec.z);
 		Vector3f end = new Vector3f(parStart.x + vec.x, parStart.y + 0.5F + height, parStart.z + vec.z);
 		renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 		
 		angle -= 180;
-		vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+		vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 		start = new Vector3f(parStart.x + vec.x, parStart.y + 0.5F, parStart.z + vec.z);
 		end = new Vector3f(parStart.x + vec.x, parStart.y + 0.5F + height, parStart.z + vec.z);
 		renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 		
-		vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+		vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 		start = new Vector3f(parEnd.x + vec.x, parEnd.y + 0.5F, parEnd.z + vec.z);
 		end = new Vector3f(parEnd.x + vec.x, parEnd.y + 0.5F + height, parEnd.z + vec.z);
 		renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
 		
 		angle -= 180;
-		vec = new Vector3f((float)-Math.sin(Math.toRadians(angle)) * radius, 0, (float)Math.cos(Math.toRadians(angle)) * radius);
+		vec = new Vector3f((float)-org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * radius, 0, (float)org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * radius);
 		start = new Vector3f(parEnd.x + vec.x, parEnd.y + 0.5F, parEnd.z + vec.z);
 		end = new Vector3f(parEnd.x + vec.x, parEnd.y + 0.5F + height, parEnd.z + vec.z);
 		renderLineFromToBlock(start.x, start.y, start.z, end.x, end.y, end.z, 0xFFFFFF);
@@ -349,7 +349,7 @@ public class Overlays {
         float var13 = 0.8F;
         float var14 = 0.8F;
         
-        var13 = 1F;//(float) (var13 + Math.cos((var1.worldObj.getWorldTime() * 0.3F) - (var1.blockRow * 0.5F)) * 0.15F);
+        var13 = 1F;//(float) (var13 + org.bogdang.modifications.math.MathHelperLite.cos((var1.worldObj.getWorldTime() * 0.3F) - (var1.blockRow * 0.5F)) * 0.15F);
         var14 = var13;
         
         float var15 = 1.0F;
@@ -440,7 +440,7 @@ public class Overlays {
 		    double rate = 15D;
 		    for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3d(x1 + (org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * size), y1, z1 + (org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * size));
 		    }
 		    GL11.glEnd();
 		    
@@ -512,7 +512,7 @@ public class Overlays {
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3d(x1 + (org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * size), y1, z1 + (org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * size));
 		    }*/
 		    
 		    /*Sphere sphere = new Sphere();
@@ -528,24 +528,24 @@ public class Overlays {
 		    int i, j;
 		    for (i = 1; i <= lats; i++) {
 		    	double lat0 = (Math.PI) * (-0.5D + (double) (i - 1) / lats);
-		    	double z0 = Math.sin(lat0);
-		    	double zr0 = Math.cos(lat0);
+		    	double z0 = org.bogdang.modifications.math.MathHelperLite.sin(lat0);
+		    	double zr0 = org.bogdang.modifications.math.MathHelperLite.cos(lat0);
 		    	
 		    	double lat1 = (Math.PI) * (-0.5D + (double) (i) / lats);
-		    	double z1 = Math.sin(lat1);
-		    	double zr1 = Math.cos(lat1);
+		    	double z1 = org.bogdang.modifications.math.MathHelperLite.sin(lat1);
+		    	double zr1 = org.bogdang.modifications.math.MathHelperLite.cos(lat1);
 		    	
 		    	GL11.glBegin(GL11.GL_QUAD_STRIP);
 		    	for (j = 0; j <= longs; j++) {
 		    		double lng = 2D * (Math.PI) * (double) (j - 1) / longs;
-		    		double x = Math.cos(lng);
-		    		double y = Math.sin(lng);
+		    		double x = org.bogdang.modifications.math.MathHelperLite.cos(lng);
+		    		double y = org.bogdang.modifications.math.MathHelperLite.sin(lng);
 		    		
-		    		double adj1 = Math.sin(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
-		    		double adj2 = Math.cos(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
+		    		double adj1 = org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
+		    		double adj2 = org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
 		    		
 		    		//GL11.glColor3d(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
-		    		GL11.glColor3d(0D, i / (double)lats + (1D * Math.sin(Math.toRadians((System.currentTimeMillis() % 3600)) * 0.1D)) * 0.3D, i / (double)lats + (1D * Math.sin(Math.toRadians(((System.currentTimeMillis() + 1800) % 3600)) * 0.1D)) * 0.3D);
+		    		GL11.glColor3d(0D, i / (double)lats + (1D * org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians((System.currentTimeMillis() % 3600)) * 0.1D)) * 0.3D, i / (double)lats + (1D * org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() + 1800) % 3600)) * 0.1D)) * 0.3D);
 		    		//GL11.glNormal3d(x * zr0, y * zr0, z0);
 		    		GL11.glVertex3d(x * zr0 + adj1, y * zr0 + adj2, z0);
 		    		//GL11.glNormal3d(x * zr1, y * zr1, z1);
@@ -631,7 +631,7 @@ public class Overlays {
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3d(x1 + (org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(angle)) * size), y1, z1 + (org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(angle)) * size));
 		    }*/
 		    
 		    
@@ -666,17 +666,17 @@ public class Overlays {
 		    	double v2 = 45*2;
 		    	double v3 = 45*3;
 		    	
-		    	double x2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v1) % 360)));
-		    	double x3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10 + v2) % 360)));
-		    	double x4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v3) % 360)));
+		    	double x2 = org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v1) % 360)));
+		    	double x3 = org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((System.currentTimeMillis() / 10 + v2) % 360)));
+		    	double x4 = -org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v3) % 360)));
 		    	
-		    	double y2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double y3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double y4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double y2 = org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double y3 = org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double y4 = -org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
 		    	
-		    	double z2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double z3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double z4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double z2 = org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double z3 = org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	double z4 = -org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
 		    	
 		    	GL11.glColor3f(0.0f, 1.0f, 0F);
 		    	GL11.glVertex3d(x1 + x2, y1 + y2, z1 + z2);

@@ -82,8 +82,8 @@ public class ParticleBehaviors {
 		//rotYaw += 20D;
 		double speed = 0.1D;
 		if (particle.getAge() < 25 && distToCenter > 0.05D) {
-			particle.motionX = Math.cos(rotYaw * 0.017453D) * speed;
-			particle.motionZ = Math.sin(rotYaw * 0.017453D) * speed;
+			particle.motionX = org.bogdang.modifications.math.MathHelperLite.cos(rotYaw * 0.017453D) * speed;
+			particle.motionZ = org.bogdang.modifications.math.MathHelperLite.sin(rotYaw * 0.017453D) * speed;
 		} else {
 			double speed2 = 0.008D;
 			

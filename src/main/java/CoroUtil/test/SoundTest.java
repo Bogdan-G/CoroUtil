@@ -142,7 +142,7 @@ public class SoundTest {
 			//mc[5].programChange(instr[128].getPatch().getProgram());
 			mc[chan].programChange(0, instr[100].getPatch().getProgram());
 			//not full range, not sure why
-			//int pitch = 8192 + (int)(Math.sin((Math.PI*2D) / (double)tickRate * (double)curPosInBar) / (Math.PI*2D) * 8192);
+			//int pitch = 8192 + (int)(org.bogdang.modifications.math.MathHelperLite.sin((Math.PI*2D) / (double)tickRate * (double)curPosInBar) / (Math.PI*2D) * 8192);
 			//System.out.println(pitch);
 			//mc[5].setPitchBend(pitch);
 			

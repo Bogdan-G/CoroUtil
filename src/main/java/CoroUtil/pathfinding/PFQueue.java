@@ -368,9 +368,9 @@ public class PFQueue implements Runnable {
 						    			        float look = rand.nextInt(90)-45;
 						    			        //int height = 10;
 						    			        double dist = rand.nextInt(26)+(queue.get(0).retryState * 6);
-						    			        int gatherX = (int)Math.floor(center.posX + ((double)(-Math.sin((rotationYaw+look) / 180.0F * 3.1415927F)/* * Math.cos(center.rotationPitch / 180.0F * 3.1415927F)*/) * dist));
+						    			        int gatherX = (int)Math.floor(center.posX + ((double)(-org.bogdang.modifications.math.MathHelperLite.sin((rotationYaw+look) / 180.0F * 3.1415927F)/* * org.bogdang.modifications.math.MathHelperLite.cos(center.rotationPitch / 180.0F * 3.1415927F)*/) * dist));
 						    			        int gatherY = (int)center.posY;//Math.floor(center.posY-0.5 + (double)(-MathHelper.sin(center.rotationPitch / 180.0F * 3.1415927F) * dist) - 0D); //center.posY - 0D;
-						    			        int gatherZ = (int)Math.floor(center.posZ + ((double)(Math.cos((rotationYaw+look) / 180.0F * 3.1415927F)/* * Math.cos(center.rotationPitch / 180.0F * 3.1415927F)*/) * dist));
+						    			        int gatherZ = (int)Math.floor(center.posZ + ((double)(org.bogdang.modifications.math.MathHelperLite.cos((rotationYaw+look) / 180.0F * 3.1415927F)/* * org.bogdang.modifications.math.MathHelperLite.cos(center.rotationPitch / 180.0F * 3.1415927F)*/) * dist));
 						    			        
 						    			        Block block = getBlock(gatherX, gatherY, gatherZ);
 						    			        int tries = 0;
