@@ -57,7 +57,7 @@ public class BlockDataPoint
         hash = makeHash(i, j, k);
         updateCache();
         health = BlockStaticDataMap.getBlockMaxHealth(blockID);
-        //System.out.println("new block data, setting health to " + health);
+        //cpw.mods.fml.common.FMLLog.info("new block data, setting health to " + health);
         //Vec3 vec = Vec3.createVectorHelper(xCoord-centerX, yCoord-centerY, zCoord-centerZ); vec.rotateAroundY((float) Math.toRadians(90));
     }
 

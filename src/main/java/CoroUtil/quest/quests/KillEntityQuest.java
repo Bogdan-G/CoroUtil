@@ -39,7 +39,7 @@ public class KillEntityQuest extends ActiveQuest {
 					setState(EnumQuestState.CONCLUDING);
 				} else {
 					setState(EnumQuestState.COMPLETE);
-					System.out.println("quest kill complete");
+					cpw.mods.fml.common.FMLLog.info("quest kill complete");
 				}
 			}
 		} else if (curState == EnumQuestState.CONCLUDING) {
@@ -59,7 +59,7 @@ public class KillEntityQuest extends ActiveQuest {
 		if (source != null && source.equals(playerQuests.getPlayer()) && event.entityLiving.getClass().equals(neededMob)) {
 			curKillCount++;
 			saveAndSync();
-			System.out.println("quest kill inc");
+			cpw.mods.fml.common.FMLLog.info("quest kill inc");
 		}
 	}
 	

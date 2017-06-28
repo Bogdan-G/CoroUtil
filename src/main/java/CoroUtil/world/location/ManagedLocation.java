@@ -70,7 +70,7 @@ public class ManagedLocation implements ISimulationTickable {
 	}
 	
 	public void removeObject(Object obj) {
-		System.out.println("removing object: " + obj);
+		cpw.mods.fml.common.FMLLog.info("removing object: " + obj);
 		if (obj instanceof EntityLivingBase) {
 			listLoadedEntities.remove(obj);
 		}
@@ -82,7 +82,7 @@ public class ManagedLocation implements ISimulationTickable {
 	
 	/* For proper death hooks */
 	public void hookEntityDied(EntityLivingBase ent) {
-		System.out.println("hook entity died: " + ent);
+		cpw.mods.fml.common.FMLLog.info("hook entity died: " + ent);
 		removeObject(ent);
 		listPersistantEntities.remove(ent.getPersistentID());
 		
@@ -91,7 +91,7 @@ public class ManagedLocation implements ISimulationTickable {
 	
 	/* For unloading of an entity from chunks unloading */
 	public void hookEntityDestroyed(EntityLivingBase ent) {
-		System.out.println("hook entity obj destroyed: " + ent);
+		cpw.mods.fml.common.FMLLog.info("hook entity obj destroyed: " + ent);
 		removeObject(ent);
 	}
 	
@@ -139,10 +139,10 @@ public class ManagedLocation implements ISimulationTickable {
 			}
 			
 			if (data.entityUUID == null) {
-				System.out.println("detected missing entity, attempting to respawn a " + data.type + " at coords: " + data.coords);
+				cpw.mods.fml.common.FMLLog.info("detected missing entity, attempting to respawn a " + data.type + " at coords: " + data.coords);
 				spawnMemberAtSpawnLocation(data);
 				if (data.entityUUID == null) {
-					System.out.println("spawned location failed to spawn a new entity, perhaps spawnMemberAtSpawnLocation() method not overridden properly?");
+					cpw.mods.fml.common.FMLLog.info("spawned location failed to spawn a new entity, perhaps spawnMemberAtSpawnLocation() method not overridden properly?");
 				}
 			}
 		}

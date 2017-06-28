@@ -80,14 +80,14 @@ public class AbilityShootArrow extends Ability {
 		
 		float swap = usageCount % 2 == 0 ? 1 : -1;
 		
-		/*model.bipedRightArm.rotateAngleX = (float) (offset - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp));
-		model.bipedRightArm.rotateAngleZ = (float) (offset*0.15F - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*0.7F*swap));
+		/*model.bipedRightArm.rotateAngleX = (float) (offset - (Math.sin(range/ticksToPerform * curTick) * amp));
+		model.bipedRightArm.rotateAngleZ = (float) (offset*0.15F - (Math.sin(range/ticksToPerform * curTick) * amp*0.7F*swap));
 		
 		float reduce = 0.25F;
 		
-		model.bipedLeftArm.rotateAngleY = (float) (-offset*reduce - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));
-		model.bipedLeftArm.rotateAngleX = (float) (offset*0.5F - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));
-		model.bipedLeftArm.rotateAngleZ = (float) (offset*reduce - (org.bogdang.modifications.math.MathHelperLite.sin(range/ticksToPerform * curTick) * amp*reduce));*/
+		model.bipedLeftArm.rotateAngleY = (float) (-offset*reduce - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));
+		model.bipedLeftArm.rotateAngleX = (float) (offset*0.5F - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));
+		model.bipedLeftArm.rotateAngleZ = (float) (offset*reduce - (Math.sin(range/ticksToPerform * curTick) * amp*reduce));*/
 		
 	}
 	
@@ -99,7 +99,7 @@ public class AbilityShootArrow extends Ability {
 			
 			Random rand = new XSTR();
 			//double speed = 0.3D;
-			//owner.worldObj.spawnParticle("flame", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, (rand.nextDouble() - 0.5D) * speed, (rand.nextDouble() - 0.5D) * speed, (rand.nextDouble() - 0.5D) * speed);
+			//owner.worldObj.spawnParticle("flame", owner.posX + (rand.nextFloat() - 0.5D) * (double)owner.width, owner.posY + rand.nextFloat() * (double)owner.height, owner.posZ + (rand.nextFloat() - 0.5D) * (double)owner.width, (rand.nextFloat() - 0.5D) * speed, (rand.nextFloat() - 0.5D) * speed, (rand.nextFloat() - 0.5D) * speed);
 			//flame hugeexplosion
 			
 			//debug
@@ -115,8 +115,8 @@ public class AbilityShootArrow extends Ability {
 		        	double speed = 0.15D;
 		        	double speedInheritFactor = 0.5D;
 		        	
-		        	//EntityRotFX entityfx = new EntityIconFX(Minecraft.getMinecraft().theWorld, owner.posX + rand.nextDouble(), owner.boundingBox.minY+0.2, owner.posZ + rand.nextDouble(), (rand.nextDouble() - rand.nextDouble()) * speed, 0.03D/*(rand.nextDouble() - rand.nextDouble()) * speed*/, (rand.nextDouble() - rand.nextDouble()) * speed, ParticleRegistry.squareGrey);
-		        	EntityRotFX entityfx = particleBehavior.spawnNewParticleIconFX(Minecraft.getMinecraft().theWorld, ParticleRegistry.squareGrey, owner.posX + rand.nextDouble(), owner.boundingBox.minY+0.8, owner.posZ + rand.nextDouble(), (rand.nextDouble() - rand.nextDouble()) * speed, 0.03D/*(rand.nextDouble() - rand.nextDouble()) * speed*/, (rand.nextDouble() - rand.nextDouble()) * speed);
+		        	//EntityRotFX entityfx = new EntityIconFX(Minecraft.getMinecraft().theWorld, owner.posX + rand.nextFloat(), owner.boundingBox.minY+0.2, owner.posZ + rand.nextFloat(), (rand.nextFloat() - rand.nextFloat()) * speed, 0.03D/*(rand.nextFloat() - rand.nextFloat()) * speed*/, (rand.nextFloat() - rand.nextFloat()) * speed, ParticleRegistry.squareGrey);
+		        	EntityRotFX entityfx = particleBehavior.spawnNewParticleIconFX(Minecraft.getMinecraft().theWorld, ParticleRegistry.squareGrey, owner.posX + rand.nextFloat(), owner.boundingBox.minY+0.8, owner.posZ + rand.nextFloat(), (rand.nextFloat() - rand.nextFloat()) * speed, 0.03D/*(rand.nextFloat() - rand.nextFloat()) * speed*/, (rand.nextFloat() - rand.nextFloat()) * speed);
 		        	particleBehavior.initParticle(entityfx);
 		        	float f = 0.0F + (rand.nextFloat() * 0.4F);
 		        	entityfx.setRBGColorF(f, f, f);
@@ -130,7 +130,7 @@ public class AbilityShootArrow extends Ability {
 		} else {
 			
 			if (switchToRangedSlot) {
-				//System.out.println("ranged slot use!");
+				//cpw.mods.fml.common.FMLLog.info("ranged slot use!");
 				if (owner instanceof IBTAgent) {
 					((IBTAgent)owner).getAIBTAgent().entInv.setSlotActive(AIInventory.slot_Ranged);
 				}
@@ -157,11 +157,11 @@ public class AbilityShootArrow extends Ability {
 			return;
 		}
 		
-		//System.out.println("isRemote: " + owner.worldObj.isRemote);
+		//cpw.mods.fml.common.FMLLog.info("isRemote: " + owner.worldObj.isRemote);
 		if (owner.worldObj.isRemote) {
 			particleBehavior.particles.clear();
 			//Random rand = new XSTR();//dead code?
-			//owner.worldObj.spawnParticle("largeexplode", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
+			//owner.worldObj.spawnParticle("largeexplode", owner.posX + (rand.nextFloat() - 0.5D) * (double)owner.width, owner.posY + rand.nextFloat() * (double)owner.height, owner.posZ + (rand.nextFloat() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
 		} else {
 			
 			if (/*target != null && */(target.isDead || /*target.getHealth() <= 0 || */(target instanceof EntityLivingBase && ((EntityLivingBase)target).deathTime > 0))) {
@@ -169,7 +169,7 @@ public class AbilityShootArrow extends Ability {
 			} else {
 				if (!hasAppliedDamage) {
 					hasAppliedDamage = true;
-					//System.out.println("hit");
+					//cpw.mods.fml.common.FMLLog.info("hit");
 					
 					if (owner instanceof EntityLiving) {
 						((EntityLiving) owner).faceEntity(target, 180, 180);

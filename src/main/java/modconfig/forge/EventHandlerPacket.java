@@ -26,7 +26,7 @@ public class EventHandlerPacket {
 			NBTTagCompound nbt = PacketHelper.readNBTTagCompound(event.packet.payload());
 			String command = nbt.getString("command");
 			
-			System.out.println("command: " + command);
+			cpw.mods.fml.common.FMLLog.info("command: " + command);
 			
 			if (command.equals("setData")) {
 				String modID = nbt.getString("modID");
@@ -52,7 +52,7 @@ public class EventHandlerPacket {
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -65,7 +65,7 @@ public class EventHandlerPacket {
 			NBTTagCompound nbt = PacketHelper.readNBTTagCompound(event.packet.payload());
 			String command = nbt.getString("command");
 			
-			System.out.println("command: " + command);
+			cpw.mods.fml.common.FMLLog.info("command: " + command);
 			
 			if (command.equals("setData")) {
 				String data = nbt.getString("data");
@@ -75,7 +75,7 @@ public class EventHandlerPacket {
 				//}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

@@ -55,14 +55,14 @@ public class Behaviors {
 		
 		//default is set here now
 		int ticks = (Integer)getData(me, DataTypes.noMoveTicks);
-		//System.out.println("NMT: " + ticks);
+		//cpw.mods.fml.common.FMLLog.info("NMT: " + ticks);
 		if((me.isInWater() && notMoving(me, 0.05F)) || (!me.isInWater()) && notMoving(me, 0.10F)) {
 			ticks++;
 			if (me.isInWater()) {
 				double var2 = me.prevPosX - me.posX;
 		        double var4 = me.prevPosZ - me.posZ;
 		        float var6 = (float)Math.sqrt(var2 * var2 + var4 * var4);
-		        /*if (ticks > 0) *///System.out.println("NMT: " + var6 + " - " + ticks);
+		        /*if (ticks > 0) *///cpw.mods.fml.common.FMLLog.info("NMT: " + var6 + " - " + ticks);
 		        
 			}
 			
@@ -70,7 +70,7 @@ public class Behaviors {
 
             if(ticks > 150 && me.worldObj.rand.nextInt(10) == 0) {
                 //if(me.worldObj.rand.nextInt(10) == 0) {
-                    //System.out.println("idle trigger! - " + ticks);
+                    //cpw.mods.fml.common.FMLLog.info("idle trigger! - " + ticks);
                 	
                     if (me instanceof c_IEnhPF) {
                     	((c_IEnhPF)me).noMoveTriggerCallback();
@@ -108,25 +108,25 @@ public class Behaviors {
 			EntityAITasks targetTasks = (EntityAITasks)OldUtil.getPrivateValueSRGMCP(EntityLiving.class, ent, "field_70715_bh", "targetTasks");
 			if (targetTasks != null) {
 				targetTasks.addTask(2, newTargetTask);
-				//System.out.println("Adding targetting!");
+				//cpw.mods.fml.common.FMLLog.info("Adding targetting!");
 			} else {
-				System.out.println("update targetTasks reflection");
+				cpw.mods.fml.common.FMLLog.info("update targetTasks reflection");
 			}
 			aiEnhanced.put(ent, true);
 		}
 	}
 	
 	public static void setData(Entity ent, DataTypes dtEnum, Object obj) {
-		//System.out.println("set: " + ent.entityId);
+		//cpw.mods.fml.common.FMLLog.info("set: " + ent.entityId);
 		//DataLatcher dl = (DataLatcher)entFields.get(ent.entityId);
-		//System.out.println("set: " + ent.entityId + "|" + dl);
+		//cpw.mods.fml.common.FMLLog.info("set: " + ent.entityId + "|" + dl);
 		((DataLatcher)entFields.get(ent.getEntityId())).values.put(dtEnum, obj);
 	}
 	
 	public static Object getData(Entity ent, DataTypes dtEnum) {
 		
 		//DataLatcher dl = (DataLatcher)entFields.get(ent.entityId);
-		//System.out.println("get: " + ent.entityId + "|" + dl);
+		//cpw.mods.fml.common.FMLLog.info("get: " + ent.entityId + "|" + dl);
 		return ((DataLatcher)entFields.get(ent.getEntityId())).values.get(dtEnum);
 	}
 	
@@ -167,7 +167,7 @@ public class Behaviors {
 	public static void setTarget(EntityCreature me, Entity targ) {
 		if (instance == null) new Behaviors();
 		
-		//System.out.println("setting target: " + targ);
+		//cpw.mods.fml.common.FMLLog.info("setting target: " + targ);
 		
 		//if (entFields.containsKey(me)) {
     		//DataLatcher dl = (DataLatcher)entFields.get(me); 

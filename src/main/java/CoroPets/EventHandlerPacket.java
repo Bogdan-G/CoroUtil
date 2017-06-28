@@ -26,10 +26,10 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			System.out.println("CoroPets packet command from server: " + command);
+			cpw.mods.fml.common.FMLLog.info("CoroPets packet command from server: " + command);
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -43,11 +43,11 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			System.out.println("CoroPets packet command from client: " + command);
+			cpw.mods.fml.common.FMLLog.info("CoroPets packet command from client: " + command);
 			
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

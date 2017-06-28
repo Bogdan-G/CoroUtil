@@ -167,8 +167,8 @@ public class Build {
 			map_sizeZ++;
 		}
 		
-		//System.out.println("Size: " + map_sizeX + "," + map_sizeY + "," + map_sizeZ);
-		//System.out.println("map_coord_min: " + map_coord_minX + "," + map_coord_minY + "," + map_coord_minZ);
+		//cpw.mods.fml.common.FMLLog.info("Size: " + map_sizeX + "," + map_sizeY + "," + map_sizeZ);
+		//cpw.mods.fml.common.FMLLog.info("map_coord_min: " + map_coord_minX + "," + map_coord_minY + "," + map_coord_minZ);
 		
 	}
 	
@@ -205,15 +205,15 @@ public class Build {
 		    	} else if (getVersion().equals("1.1")) {
 		    		this.blockMappingInternalIDToBlock = genBlockIDSchemToBlockWithRegistry(nbtMapping);
 		    	} else {
-		    		System.out.println("CRITICAL! BuildMod does not support version: " + getVersion());
+		    		cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod does not support version: " + getVersion());
 		    	}
 	    	} else {
-	    		System.out.println("TODO: a fallback lookup table for old block IDs to unlocalized names");
+	    		cpw.mods.fml.common.FMLLog.info("TODO: a fallback lookup table for old block IDs to unlocalized names");
 	    		NBTTagCompound nbtFallbackLookup = CompressedStreamTools.readCompressed(new FileInputStream(CoroUtilFile.getSaveFolderPath() + "BlockTranslationMapFallback.schematic"));
 	    		this.blockMappingInternalIDToBlock = genBlockIDSchemToBlockWithUnlocalizedName(nbtFallbackLookup.getCompoundTag("blockTranslationMap"));
 	    	}
 	    	
-	    	//System.out.println("TODO for BuildMod: verify 9 is accurate type to use, NBTBase defines type 9 as NBTTagList");
+	    	//cpw.mods.fml.common.FMLLog.info("TODO for BuildMod: verify 9 is accurate type to use, NBTBase defines type 9 as NBTTagList");
 			tileEntities = nbttagcompound.getTagList("TileEntities", 10);
 			entities = nbttagcompound.getTagList("Entities", 10);
 			
@@ -262,7 +262,7 @@ public class Build {
 							if (block != null) {
 								
 							} else {
-								System.out.println("CRITICAL! BuildMod: null block when converting a version " + getVersion() + " schematic to block instance, this should be a bug, contact Corosus");
+								cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: null block when converting a version " + getVersion() + " schematic to block instance, this should be a bug, contact Corosus");
 								block = Blocks.air;
 							}
 							
@@ -272,7 +272,7 @@ public class Build {
 					}
 				}
 			} else {
-				System.out.println("Notice: BuildMod detected really old schematic version, noted incase of future import errors");
+				cpw.mods.fml.common.FMLLog.info("Notice: BuildMod detected really old schematic version, noted incase of future import errors");
 				byte metadata[] = nbttagcompound.getByteArray("Data");
 				byte blockids[] = nbttagcompound.getByteArray("Blocks");
 				
@@ -294,7 +294,7 @@ public class Build {
 							if (block != null) {
 								
 							} else {
-								System.out.println("CRITICAL! BuildMod: null block when converting a version " + getVersion() + " schematic to block instance, this should be a bug, contact Corosus");
+								cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: null block when converting a version " + getVersion() + " schematic to block instance, this should be a bug, contact Corosus");
 								block = Blocks.air;
 							}
 							
@@ -311,7 +311,7 @@ public class Build {
 			
 		} catch (Exception ex) {
 			//notification off until generic build copy paste interface is supported for server
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -327,22 +327,22 @@ public class Build {
 			if (blockMappingInternalIDToBlock.containsKey(internalID)) {
 				block = blockMappingInternalIDToBlock.get(internalID);
 				if (block == null) {
-					System.out.println("CRITICAL! BuildMod: null block when using blockMappingInternalIDToBlock.get(int) for ID " + internalID);
+					cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: null block when using blockMappingInternalIDToBlock.get(int) for ID " + internalID);
 				}
 			} else {
-				System.out.println("CRITICAL! BuildMod: error finding block internalID to real block for ID " + internalID);
+				cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: error finding block internalID to real block for ID " + internalID);
 			}
 			//protect against javas autocasting primitves, incase of missing entry
 			/*if (this.blockMappingInternalIDToRuntimeID.containsKey(a)) {
 				Integer bb = this.blockMappingInternalIDToRuntimeID.get(a);
 				int b = Integer.valueOf(this.blockMappingInternalIDToRuntimeID.get(a));
-				//System.out.println("tra: " + a + " -> " + b);
+				//cpw.mods.fml.common.FMLLog.info("tra: " + a + " -> " + b);
 				build_blockIDArr[xx][yy][zz] = b;
 			}*/
 		} else {
 			block = (Block) Block.blockRegistry.getObjectById(internalID);
 			if (block == null) {
-				System.out.println("CRITICAL! BuildMod: null block when using Block.blockRegistry.getObjectById(int) for ID " + internalID);
+				cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: null block when using Block.blockRegistry.getObjectById(int) for ID " + internalID);
 			}
 		}
 		return block;
@@ -386,7 +386,7 @@ public class Build {
 					build_blockMetaArr[xx][yy][zz] = worldRef.getBlockMetadata(map_coord_minX+xx, map_coord_minY+yy, map_coord_minZ+zz);
 					//build_blockPlaced[xx][yy][zz] = false;
 					
-					//System.out.println("build_blockIDArr[xx][yy][zz]: " + build_blockIDArr[xx][yy][zz]);
+					//cpw.mods.fml.common.FMLLog.info("build_blockIDArr[xx][yy][zz]: " + build_blockIDArr[xx][yy][zz]);
 					
 					//check for tile entity to write out!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					
@@ -407,7 +407,7 @@ public class Build {
 		
 		try {
 			if (levelData == null) {
-				System.out.println("New NBT Data Object");
+				cpw.mods.fml.common.FMLLog.info("New NBT Data Object");
 				levelData = new NBTTagCompound();
 			}
 			
@@ -427,14 +427,14 @@ public class Build {
 						if (newFormat) {
 							Integer tryID = mapBlockToInternalID.get(build_blockIDArr[xx][yy][zz]);
 							if (tryID == null) {
-								System.out.println("CRITICAL! BuildMod: converting block to internal ID failed, for block: " + build_blockIDArr[xx][yy][zz]);
+								cpw.mods.fml.common.FMLLog.info("CRITICAL! BuildMod: converting block to internal ID failed, for block: " + build_blockIDArr[xx][yy][zz]);
 							} else {
 								int internalID = /*Integer.parseInt(*/tryID/*)*/;
 								blockidsInt[index] = internalID;
 							}
 							metadataInt[index] = build_blockMetaArr[xx][yy][zz];
 						} else {
-							System.out.println("CRITICAL BUILDMOD: UNSUPPORTED OLD VERSION OF MAP FOR WRITE OUT, THIS SHOULDNT HAPPEN EVER!");
+							cpw.mods.fml.common.FMLLog.info("CRITICAL BUILDMOD: UNSUPPORTED OLD VERSION OF MAP FOR WRITE OUT, THIS SHOULDNT HAPPEN EVER!");
 							//blockidsByte[index] = (byte)build_blockIDArr[xx][yy][zz];
 							//metadataByte[index] = (byte)build_blockMetaArr[xx][yy][zz];
 						}
@@ -489,7 +489,7 @@ public class Build {
 			
 			saveLevelData(file);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -632,11 +632,11 @@ public class Build {
 				if (swapMap.get(tagName) != null) {
 					finalMap.put(tag, swapMap.get(tagName));
 				} else {
-					System.out.println("missing a mapping in this schematic for: " + tag + " - " + tagName);
+					cpw.mods.fml.common.FMLLog.info("missing a mapping in this schematic for: " + tag + " - " + tagName);
 				}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		
@@ -675,11 +675,11 @@ public class Build {
 				if (swapMap.get(tagName) != null) {
 					finalMap.put(tag, swapMap.get(tagName));
 				} else {
-					System.out.println("missing a mapping in this schematic for: " + tag);
+					cpw.mods.fml.common.FMLLog.info("missing a mapping in this schematic for: " + tag);
 				}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		
@@ -700,7 +700,7 @@ public class Build {
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -728,7 +728,7 @@ public class Build {
     		if (is != null) is.close();
 			
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	} finally {
     		try {if (fis != null) fis.close();} catch (java.io.IOException ex) {}
     		try {if (is != null) is.close();} catch (java.io.IOException ex) {}

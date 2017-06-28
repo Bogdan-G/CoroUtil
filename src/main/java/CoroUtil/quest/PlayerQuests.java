@@ -64,7 +64,7 @@ public class PlayerQuests {
 				return (ActiveQuest) createObject;
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		return null;
@@ -114,7 +114,7 @@ public class PlayerQuests {
             	//byte[] data = CompressedStreamTools.compress(nbt);
             	
             	
-            	//System.out.println("packet byte count: " + data.length);
+            	//cpw.mods.fml.common.FMLLog.info("packet byte count: " + data.length);
             	
             	/*ByteArrayOutputStream bos = new ByteArrayOutputStream((Byte.SIZE * data.length) + Short.SIZE);
                 DataOutputStream dos = new DataOutputStream(bos);*/
@@ -130,7 +130,7 @@ public class PlayerQuests {
                 
                 //dos.write(data);
 
-                //System.out.println("missing quest packet syncing code");
+                //cpw.mods.fml.common.FMLLog.info("missing quest packet syncing code");
 	            /*Packet250CustomPayload pkt = new Packet250CustomPayload();
 	            pkt.channel = "CoroUtilQuest";
 	            pkt.data = bos.toByteArray();
@@ -139,7 +139,7 @@ public class PlayerQuests {
             }
             catch (Exception ex)
             {
-                ex.printStackTrace();
+                cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
             }
         }
 	}
@@ -229,7 +229,7 @@ public class PlayerQuests {
 	
 	@SideOnly(Side.CLIENT)
 	public void renderQuestOverlay() {
-		//System.out.println("quests: " + activeQuests.size());
+		//cpw.mods.fml.common.FMLLog.info("quests: " + activeQuests.size());
 		
 		int startX = 10;
 		int startY = 10;
@@ -243,7 +243,7 @@ public class PlayerQuests {
 		
 		for (int i = 0; i < activeQuests.size(); i++) {
 			ActiveQuest quest = activeQuests.get(i);
-			//System.out.println("client side active quest id: " + activeQuests.get(i).questID);
+			//cpw.mods.fml.common.FMLLog.info("client side active quest id: " + activeQuests.get(i).questID);
 			
 			String qStr = "";
 			String qStr2 = "";
@@ -286,7 +286,7 @@ public class PlayerQuests {
     		}
 			
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	} finally {
     		
     		
@@ -312,7 +312,7 @@ public class PlayerQuests {
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -339,7 +339,7 @@ public class PlayerQuests {
 					quest.initCreateLoad();
 					questAdd(quest);
 				} else {
-					System.out.println("CoroUtil was unable to deserialize quest with classname path: " + classNamePath + ", this might be due to a code structure change or a bug, quest not readded");
+					cpw.mods.fml.common.FMLLog.info("CoroUtil was unable to deserialize quest with classname path: " + classNamePath + ", this might be due to a code structure change or a bug, quest not readded");
 				}
 			}
 		} else {

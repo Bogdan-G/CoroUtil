@@ -151,7 +151,7 @@ public class EntityTropicalFishHook extends Entity implements IEntityAdditionalS
     	  setFishEntity(this);
       }
       
-      //System.out.println("ticking bobber, isRemote: " + worldObj.isRemote);
+      //cpw.mods.fml.common.FMLLog.info("ticking bobber, isRemote: " + worldObj.isRemote);
       
       if(this.field_6149_an > 0) {
          double var21 = this.posX + (this.field_6148_ao - this.posX) / (double)this.field_6149_an;
@@ -390,7 +390,7 @@ public class EntityTropicalFishHook extends Entity implements IEntityAdditionalS
 
    public int catchFish() {
 	   
-	  //System.out.println("catchFish() called - " + angler);
+	  //cpw.mods.fml.common.FMLLog.info("catchFish() called - " + angler);
 	   
       byte var1 = 0;
       if(this.bobber != null) {
@@ -432,9 +432,9 @@ public class EntityTropicalFishHook extends Entity implements IEntityAdditionalS
    }
    
    public void setFishEntity(EntityTropicalFishHook ent) {
-	   //System.out.println("set fish entity: " + ent);
+	   //cpw.mods.fml.common.FMLLog.info("set fish entity: " + ent);
 	   /*if (ent == null) {
-		   System.out.println("SDfsdfsdf");
+		   cpw.mods.fml.common.FMLLog.info("SDfsdfsdf");
 	   }*/
 	   ((ICoroAI)angler).getAIAgent().entInv.fishEntity = ent;
    }

@@ -33,7 +33,7 @@ public class CoroUtilBlock {
 		try {
 			return (Block) Block.blockRegistry.getObject(name);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		return null;
 	}

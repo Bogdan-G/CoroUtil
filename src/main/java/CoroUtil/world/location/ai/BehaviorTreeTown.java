@@ -14,7 +14,7 @@ public class BehaviorTreeTown {
 	}
 	
 	public void tick() {
-		//System.out.println("-------------");
+		//cpw.mods.fml.common.FMLLog.info("-------------");
 		trunk.tick();
 	}
 	

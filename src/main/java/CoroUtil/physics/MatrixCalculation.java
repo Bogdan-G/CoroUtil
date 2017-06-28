@@ -16,7 +16,7 @@ public class MatrixCalculation {
 		
 		for (int i = 0; i < newMatrix.length; i++) {
 			for (int j = 0; j < newMatrix[i].length; j++) {
-				//System.out.println("data entry: " + newMatrix[i][j]);
+				//cpw.mods.fml.common.FMLLog.info("data entry: " + newMatrix[i][j]);
 			}
 		}
 		

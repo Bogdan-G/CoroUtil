@@ -23,13 +23,13 @@ public class BlockStaticDataMap {
 		
 		List<String> fails = new ArrayList<String>();
     	
-    	//System.out.println("TEST OUTPUT OF UNLOCALIZED NAMES! GO!");
+    	//cpw.mods.fml.common.FMLLog.info("TEST OUTPUT OF UNLOCALIZED NAMES! GO!");
         /*for (int i = 0; i < Block.blocksList.length; i++) {
         	Block block = Block.blocksList[i];
         	if (block != null) {
         		String hash;// = block.getClass().toString() + "|" + block.getUnlocalizedName() + "|" + Block.lightValue[i];
         		hash = block.getUnlocalizedName();
-        		//System.out.println("ID: " + i + " - " + hash);
+        		//cpw.mods.fml.common.FMLLog.info("ID: " + i + " - " + hash);
         		if (mapBlockHashNameToID.containsKey(hash) && !block.getUnlocalizedName().equals("tile.ForgeFiller")) {
         			fails.add("ID: " + i + " vs " + mapBlockHashNameToID.get(hash) + " - " + hash);
         		}
@@ -48,7 +48,7 @@ public class BlockStaticDataMap {
         	if (block != null) {
         		String hash;// = block.getClass().toString() + "|" + block.getUnlocalizedName() + "|" + Block.lightValue[i];
         		hash = CoroUtilBlock.getNameByBlock(block);
-        		//System.out.println("ID: " + i + " - " + hash);
+        		//cpw.mods.fml.common.FMLLog.info("ID: " + i + " - " + hash);
         		if (mapBlockHashNameToID.containsKey(hash)/* && !block.getUnlocalizedName().equals("tile.ForgeFiller")*/) {
         			fails.add("ID: " + i + " vs " + mapBlockHashNameToID.get(hash) + " - " + hash);
         		}
@@ -163,12 +163,12 @@ public class BlockStaticDataMap {
 	
 	public static void addToMap(Block block, float strength) {
 		/*if (mapBlockWeight.containsKey(block.getUnlocalizedName())) {
-			System.out.println("EPOCH DATA MAP WARNING, adding existing unlocalizedname to map: " + block.getUnlocalizedName());
+			cpw.mods.fml.common.FMLLog.info("EPOCH DATA MAP WARNING, adding existing unlocalizedname to map: " + block.getUnlocalizedName());
 		}
 		mapBlockWeight.put(block.getUnlocalizedName(), strength);*/
 		
 		if (mapBlockWeight.containsKey(CoroUtilBlock.getNameByBlock(block))) {
-			System.out.println("EPOCH DATA MAP WARNING, adding existing unlocalizedname to map: " + block.getUnlocalizedName());
+			cpw.mods.fml.common.FMLLog.info("EPOCH DATA MAP WARNING, adding existing unlocalizedname to map: " + block.getUnlocalizedName());
 		}
 		mapBlockWeight.put(CoroUtilBlock.getNameByBlock(block), strength);
 	}
@@ -178,7 +178,7 @@ public class BlockStaticDataMap {
 		if (mapBlockWeight.containsKey(name)) {
 			return mapBlockWeight.get(name);
 		} else {
-			//System.out.println("epoch block name to strength lookup fail for: " + name);
+			//cpw.mods.fml.common.FMLLog.info("epoch block name to strength lookup fail for: " + name);
 		}
 		return str;
 	}
@@ -189,7 +189,7 @@ public class BlockStaticDataMap {
 			if (mapBlockHashIDToName.containsKey(id)) {
 				return getBlockStength(mapBlockHashIDToName.get(id));
 			} else {
-				System.out.println("block data map block id to name lookup fail for: " + id);
+				cpw.mods.fml.common.FMLLog.info("block data map block id to name lookup fail for: " + id);
 			}
 		} else {
 			//its null because init method above not called

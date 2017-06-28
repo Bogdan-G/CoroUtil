@@ -84,7 +84,7 @@ public class GuiConfigEditor extends GuiScreen
 		    	}
 	    	}
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
         super.updateScreen();
         //++this.updateCounter;
@@ -209,7 +209,7 @@ public class GuiConfigEditor extends GuiScreen
     				ConfigMod.eventChannel.sendToServer(PacketHelper.getModConfigPacketForClientToServer("set " + getCategory() + " " + getData().configData.get(i).name + " " + getData().configData.get(i).editBox.text));
     			} else {
     				if (ConfigMod.updateField(getCategory(), getData().configData.get(i).name, getData().configData.get(i).editBox.text)) {
-    					System.out.println("Updated config settings in client mode");
+    					cpw.mods.fml.common.FMLLog.info("Updated config settings in client mode");
     				}
     			}
     			

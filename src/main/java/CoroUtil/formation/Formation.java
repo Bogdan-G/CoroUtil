@@ -44,7 +44,7 @@ public class Formation {
 		if (secondEnt != null) fm.join(secondEnt);
 		//unused
 		fm.pathNav = new PathNavigateFormation(fm.leaderEnt.width, fm.leaderEnt.height, fm.leaderEnt.worldObj, 256);
-		//System.out.println("new formation: " + fm);
+		//cpw.mods.fml.common.FMLLog.info("new formation: " + fm);
 		return fm;
 	}
 	
@@ -134,7 +134,7 @@ public class Formation {
     }
 	
 	public void setDestination(ChunkCoordinates coords) {
-		System.out.println("TODO");
+		cpw.mods.fml.common.FMLLog.info("TODO");
 	}
 	
 	//this should be called by entities already added, to get their position thats managed by this class
@@ -184,14 +184,14 @@ public class Formation {
 				} else {
 					Random rand = new XSTR();
 					double range = 3D;
-					return pos.addVector(rand.nextDouble()*range - rand.nextDouble()*range, 0D, rand.nextDouble()*range - rand.nextDouble()*range);
+					return pos.addVector(rand.nextFloat()*range - rand.nextFloat()*range, 0D, rand.nextFloat()*range - rand.nextFloat()*range);
 				}
 				
 				//to fix movehelper trying to make them jump, might need a better fix
 				tryPos = Vec3.createVectorHelper(posX, ent.posY, posZ);
 				return tryPos;
 			} else {
-				//System.out.println("DO I REPEAT FOR SAME ENT?!" + ent);
+				//cpw.mods.fml.common.FMLLog.info("DO I REPEAT FOR SAME ENT?!" + ent);
 				return null;
 			}
 		} else {
@@ -203,20 +203,20 @@ public class Formation {
 		join(ent);
 		leader = ent;
 		leaderEnt = (EntityLiving)ent;
-		//System.out.println("Formation: leader assigned to " + this);
+		//cpw.mods.fml.common.FMLLog.info("Formation: leader assigned to " + this);
 	}
 	
 	public void join(ICoroAI ent) {
 		listEntities.add(ent);
 		ent.getAIAgent().activeFormation = this;
-		//System.out.println("Formation: ent joined " + this);
+		//cpw.mods.fml.common.FMLLog.info("Formation: ent joined " + this);
 	}
 	
 	public void leave(ICoroAI ent) {
 		listEntities.remove(ent);
 		if (ent.getAIAgent() != null) ent.getAIAgent().activeFormation = null;
 		checkLeader(ent);
-		//System.out.println("listEntities.size(): " + listEntities.size());
+		//cpw.mods.fml.common.FMLLog.info("listEntities.size(): " + listEntities.size());
 	}
 	
 	public void checkLeader(ICoroAI ent) {
@@ -224,7 +224,7 @@ public class Formation {
 			
 			leader = listEntities.get(0);
 			leaderEnt = (EntityLiving)leader;
-			//System.out.println("Formation: new leader assigned! " + leader);
+			//cpw.mods.fml.common.FMLLog.info("Formation: new leader assigned! " + leader);
 		}
 	}
 }

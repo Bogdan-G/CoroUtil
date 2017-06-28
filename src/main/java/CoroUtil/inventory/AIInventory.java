@@ -74,7 +74,7 @@ public class AIInventory {
 			if (entOwner instanceof ICoroAI) {
 				OldUtil.playerToCompAILookup.put(CoroUtilEntity.getName(fakePlayer), ((ICoroAI)entOwner).getAIAgent().entInt);
 			} else if (entOwner instanceof IBTAgent) {
-				System.out.println("TODO: add lookup for fakeplayer to AIBTAgent");//((IBTAgent)entOwner).getAIBTAgent().entInv;
+				cpw.mods.fml.common.FMLLog.info("TODO: add lookup for fakeplayer to AIBTAgent");//((IBTAgent)entOwner).getAIBTAgent().entInv;
 			}
 			
 			//need username to be "fakePlayer" + this.getEntityId();
@@ -158,7 +158,7 @@ public class AIInventory {
 	}
 	
 	public void performLeftClick(Entity ent, float dist) {
-		//System.out.println("CHECK: performLeftClick in AIInventory");
+		//cpw.mods.fml.common.FMLLog.info("CHECK: performLeftClick in AIInventory");
 		ItemStack is = getActiveItem();//inventory.getStackInSlot(slot_Active);
 		if (is != null) {
 			Item item = is.getItem();
@@ -178,7 +178,7 @@ public class AIInventory {
 	}
 
 	public void performRightClick() {
-		//System.out.println("CHECK: performRightClick in AIInventory");
+		//cpw.mods.fml.common.FMLLog.info("CHECK: performRightClick in AIInventory");
 		ItemStack is = getActiveItem();//inventory.getStackInSlot(slot_Active);
 		if (is != null) {
 			Item item = is.getItem();

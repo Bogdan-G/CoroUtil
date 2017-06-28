@@ -49,7 +49,7 @@ public class CommandCoroUtil extends CommandBase {
 					PlayerQuests plQuests = PlayerQuestManager.i().getPlayerQuests(player);
 					ActiveQuest aq = PlayerQuests.createQuestFromString(createQuestStr);
 					
-					System.out.println("trying to create quest from str: " + createQuestStr);
+					cpw.mods.fml.common.FMLLog.info("trying to create quest from str: " + createQuestStr);
 					
 					if (aq != null) {
 						aq.initCreateObject(plQuests);
@@ -58,14 +58,14 @@ public class CommandCoroUtil extends CommandBase {
 						((ItemQuest)aq).initCustomData(CoroUtilItem.getNameByItem(Items.diamond), 5, false);
 						
 						PlayerQuestManager.i().getPlayerQuests(CoroUtilEntity.getName(player)).questAdd(aq);
-						System.out.println("create success type: " + aq.questType);
+						cpw.mods.fml.common.FMLLog.info("create success type: " + aq.questType);
 					} else {
-						System.out.println("failed to create quest " + createQuestStr);
+						cpw.mods.fml.common.FMLLog.info("failed to create quest " + createQuestStr);
 					}
 					
 					plQuests.saveAndSyncPlayer();
 				} else if (var2[0].equals("aitest")) {
-					/*System.out.println("AI TEST MODIFY!");
+					/*cpw.mods.fml.common.FMLLog.info("AI TEST MODIFY!");
 					BehaviorModifier.test(player.worldObj, Vec3.createVectorHelper(player.posX, player.posY, player.posZ), CoroUtilEntity.getName(player));*/
 				} else if (var2[0].equalsIgnoreCase("spawn")) {
 					
@@ -193,8 +193,8 @@ public class CommandCoroUtil extends CommandBase {
 	        	}
 			}
 		} catch (Exception ex) {
-			System.out.println("Exception handling CoroUtil command");
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.info("Exception handling CoroUtil command");
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}

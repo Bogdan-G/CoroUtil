@@ -64,7 +64,7 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			//System.out.println("CoroUtil packet command from server: " + command);
+			//cpw.mods.fml.common.FMLLog.info("CoroUtil packet command from server: " + command);
 			
 			if (command.equals("CoroAI_Inv")) {
 				int entID = nbt.getInteger("entID");
@@ -123,7 +123,7 @@ public class EventHandlerPacket {
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -137,7 +137,7 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			//System.out.println("CoroUtil packet command from client: " + command);
+			//cpw.mods.fml.common.FMLLog.info("CoroUtil packet command from client: " + command);
 			
 			if (command.equals("CoroAI_TEntCmd")) {
 				int dimID = nbt.getInteger("dimID");
@@ -150,7 +150,7 @@ public class EventHandlerPacket {
 				if (world != null) {
 					TileEntity tEnt = world.getTileEntity(x, y, z);
 					if (tEnt instanceof ITilePacket) {
-						System.out.println("CONFIRM THIS SHOULD BE nbtData and not just nbt var");
+						cpw.mods.fml.common.FMLLog.info("CONFIRM THIS SHOULD BE nbtData and not just nbt var");
 						((ITilePacket) tEnt).handleClientSentNBT(CoroUtilEntity.getName(entP), nbtData);
 					}
 				}
@@ -162,7 +162,7 @@ public class EventHandlerPacket {
 				NBTDataManager.nbtDataFromClient(CoroUtilEntity.getName(entP), nbt);
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

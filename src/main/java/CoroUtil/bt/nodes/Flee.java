@@ -54,7 +54,7 @@ public class Flee extends Selector {
 		
 		
 			if (ent.getDistanceToEntity(blackboard.lastFleeTarget) < fleeRangeOverride || fleeFromTarget) {//ent.getDistanceToEntity(blackboard.lastFleeTarget) < fleeRangeOverride) {
-				//System.out.println("flee target");
+				//cpw.mods.fml.common.FMLLog.info("flee target");
 				Vec3 vec = getTargetVector(blackboard.lastFleeTarget);
 				double dist = 3D;
 				//if (!ent.onGround) dist = 3D;
@@ -69,7 +69,7 @@ public class Flee extends Selector {
 					ent.motionZ += -vec.zCoord * 0.05F;
 				}
 			} else {//if (ent.getDistanceToEntity(blackboard.lastFleeTarget) > fleeRange) {
-				//System.out.println("flee home");
+				//cpw.mods.fml.common.FMLLog.info("flee home");
 				//if (ent.worldObj.getTotalWorldTime() % 20 == 0) {
 					if (blackboard.fleeToCoords != null) {
 						blackboard.setMoveTo(Vec3.createVectorHelper(blackboard.fleeToCoords.posX, blackboard.fleeToCoords.posY, blackboard.fleeToCoords.posZ));

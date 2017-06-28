@@ -119,7 +119,7 @@ public class PersonalityProfile {
 	
 	//DOES THIS METHOD WORK FOR RELOADING? i bet it doesnt
 	public void addAbilityRemap(Ability parAbility, String addAsName, int type) {
-		System.out.println("warning: addAbilityRemap fails to remap for entity nbt reloads, needs fix or removal");
+		cpw.mods.fml.common.FMLLog.info("warning: addAbilityRemap fails to remap for entity nbt reloads, needs fix or removal");
 		abilities.put(addAsName, parAbility);
 		parAbility.type = type;
 		
@@ -149,7 +149,7 @@ public class PersonalityProfile {
 	
 	public void addAbilityMelee(String name, Ability parAbility) {
 		if (abilities.contains(name)) {
-			System.out.println("AI warning, adding ability " + name + " overtop preexisting one");
+			cpw.mods.fml.common.FMLLog.info("AI warning, adding ability " + name + " overtop preexisting one");
 		}
 		abilities.put(name, parAbility);
 		parAbility.type = Ability.TYPE_MELEE;
@@ -244,15 +244,15 @@ public class PersonalityProfile {
 				}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public void tickAbilitiesRender(Render parRender) {
-		//System.out.println("abilities count: " + abilities.size());
+		//cpw.mods.fml.common.FMLLog.info("abilities count: " + abilities.size());
 		for (Map.Entry<String, Ability> entry : abilities.entrySet()) {
-			//System.out.println("render active? " + entry.getValue().isActive());
+			//cpw.mods.fml.common.FMLLog.info("render active? " + entry.getValue().isActive());
 			if (entry.getValue().isActiveOrCoolingDown()) {
 				entry.getValue().tickRender(parRender);
 			}
@@ -262,7 +262,7 @@ public class PersonalityProfile {
 	@SideOnly(Side.CLIENT)
 	public void tickAbilitiesRenderModel(ModelBase parModel) {
 		for (Map.Entry<String, Ability> entry : abilities.entrySet()) {
-			//System.out.println("render active? " + entry.getValue().isActive());
+			//cpw.mods.fml.common.FMLLog.info("render active? " + entry.getValue().isActive());
 			if (entry.getValue().isActiveOrCoolingDown()) {
 				entry.getValue().tickRenderModel(parModel);
 			}
@@ -280,7 +280,7 @@ public class PersonalityProfile {
 		if (profileType == -1) {
 			initDefaultProfile();
 		} else {
-			System.out.println("unsupported profileType for PersonalityProfile");
+			cpw.mods.fml.common.FMLLog.info("unsupported profileType for PersonalityProfile");
 		}
 	}
 	
@@ -301,7 +301,7 @@ public class PersonalityProfile {
 	}
 	
 	public void syncAbilitiesFull(boolean rangeOverride) {
-		System.out.println("full sync abilities - " + agent.ent);
+		cpw.mods.fml.common.FMLLog.info("full sync abilities - " + agent.ent);
 		NBTTagCompound nbt = new NBTTagCompound();
 		nbt.setString("command", "CoroAI_Ent");
 		nbt.setInteger("entityID", agent.ent.getEntityId());
@@ -407,7 +407,7 @@ public class PersonalityProfile {
 	}
 	
 	public void abilityStart(Ability ability, Entity parTarget) {
-		//System.out.println("server: start ability: " + ability.name + " - " + agent.ent.getEntityName());
+		//cpw.mods.fml.common.FMLLog.info("server: start ability: " + ability.name + " - " + agent.ent.getEntityName());
 		ability.reset(); //incase skill wasnt reset properly, interrupted maybe?
 		ability.setTarget(parTarget);
 		ability.setActive();

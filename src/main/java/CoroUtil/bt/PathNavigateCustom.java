@@ -255,10 +255,10 @@ public class PathNavigateCustom
         	
         	PathPoint pp = this.currentPath.getPathPointFromIndex(this.currentPath.getCurrentPathIndex());
         	Block block = this.theEntity.worldObj.getBlock(pp.xCoord, pp.yCoord, pp.zCoord);
-        	//System.out.println("block type for next node: " + block);
+        	//cpw.mods.fml.common.FMLLog.info("block type for next node: " + block);
         	
         	if (block.getMaterial() == Material.water || block.getMaterial() == Material.lava) {
-        		//System.out.println("adjusting water based node pos");
+        		//cpw.mods.fml.common.FMLLog.info("adjusting water based node pos");
         		adjY = 1;
         	}
         //}
@@ -287,13 +287,13 @@ public class PathNavigateCustom
 
 	            /*double dist = Vec3.createVectorHelper(vec3.xCoord, vec3.yCoord, vec3.zCoord).squareDistanceTo(this.currentPath.getVectorFromIndex(this.theEntity, k));
 	            if (dist < 4D) {
-	            	System.out.println("dist: " + dist + " - " + vec3.xCoord + " - " + vec3.zCoord);
+	            	cpw.mods.fml.common.FMLLog.info("dist: " + dist + " - " + vec3.xCoord + " - " + vec3.zCoord);
 	            }
 	            
 	            //water nav help
 	            if (dist < (double)f)
 	            {
-	            	System.out.println("trigger water nav help");
+	            	cpw.mods.fml.common.FMLLog.info("trigger water nav help");
 	                this.currentPath.setCurrentPathIndex(k + 1);
 	            }*/
             }
@@ -385,7 +385,7 @@ public class PathNavigateCustom
      */
     private boolean canNavigate()
     {
-    	//System.out.println("is in fluid: " + this.isInFluid() + " - " + this.getEntityPosition());
+    	//cpw.mods.fml.common.FMLLog.info("is in fluid: " + this.isInFluid() + " - " + this.getEntityPosition());
         return this.canFly || this.canSwimInWater || this.theEntity.onGround || (this.canSwimOnSurface && this.isInFluid());
     }
 

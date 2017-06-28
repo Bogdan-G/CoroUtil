@@ -89,9 +89,9 @@ public class ParticleBehaviorTrail extends ParticleBehaviors {
 			
 			double randRange = 0.01D;
 			
-			particle.motionX += rand.nextDouble() * randRange - randRange/2;
-			particle.motionY += rand.nextDouble() * randRange - randRange/2;
-			particle.motionZ += rand.nextDouble() * randRange - randRange/2;
+			particle.motionX += rand.nextFloat() * randRange - randRange/2;
+			particle.motionY += rand.nextFloat() * randRange - randRange/2;
+			particle.motionZ += rand.nextFloat() * randRange - randRange/2;
 			
 			double rotYaw = (float)(Math.atan2(vecZ, vecX) * 180.0D / Math.PI);
 			double rotPitch = (float)(Math.atan2(vecY, vecX) * 180.0D / Math.PI);

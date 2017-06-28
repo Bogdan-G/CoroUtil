@@ -74,13 +74,13 @@ public class BuildMod
     	HashMap<String, Integer> blockHash = new HashMap<String, Integer>();
     	List<String> fails = new ArrayList<String>();
     	
-    	//System.out.println("TEST OUTPUT OF UNLOCALIZED NAMES! GO!");
+    	//cpw.mods.fml.common.FMLLog.info("TEST OUTPUT OF UNLOCALIZED NAMES! GO!");
         /*for (int i = Build.blockIDHighestVanilla+1; i < Block.blocksList.length; i++) {
         	Block block = Block.blocksList[i];
         	if (block != null) {
         		String hash;// = block.getClass().toString() + "|" + block.getUnlocalizedName() + "|" + Block.lightValue[i];
         		hash = block.getUnlocalizedName();
-        		//System.out.println("ID: " + i + " - " + hash);
+        		//cpw.mods.fml.common.FMLLog.info("ID: " + i + " - " + hash);
         		if (blockHash.containsKey(hash) && !block.getUnlocalizedName().equals("tile.ForgeFiller")) {
         			fails.add("ID: " + i + " vs " + blockHash.get(hash) + " - " + hash);
         		}
@@ -89,7 +89,7 @@ public class BuildMod
         }
         
         
-        System.out.println("BuildMod Name Hash Conflicts: " + fails.size());*/
+        cpw.mods.fml.common.FMLLog.info("BuildMod Name Hash Conflicts: " + fails.size());*/
         /*for (int i = 0; i < fails.size(); i++) {
         	System.out.println(fails.get(i));
         }*/

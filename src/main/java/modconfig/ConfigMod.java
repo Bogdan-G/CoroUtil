@@ -79,7 +79,7 @@ public class ConfigMod {
         	processHashMap(modid, data.valsBoolean);
         	processHashMap(modid, data.valsString);
         } else {
-        	//System.out.println("error: cant find config data for gui");
+        	//cpw.mods.fml.common.FMLLog.info("error: cant find config data for gui");
         	cpw.mods.fml.common.FMLLog.fine("error: cant find config data for gui");
         }
         
@@ -153,7 +153,7 @@ public class ConfigMod {
     /* Get Inner Field value */
     public static Object getField(String configID, String name) {
     	try { return OldUtil.getPrivateValue(configLookup.get(configID).configClass, instance, name);
-    	} catch (Exception ex) { ex.printStackTrace(); }
+    	} catch (Exception ex) { cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex); }
     	return null;
     }
 
@@ -169,9 +169,9 @@ public class ConfigMod {
             ConfigComment anno_comment = field.getAnnotation(ConfigComment.class);
             return anno_comment == null ? null : anno_comment.value()[0];
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
         } catch (SecurityException e) {
-            e.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
         }
 
         return null;

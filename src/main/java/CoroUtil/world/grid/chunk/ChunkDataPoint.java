@@ -93,20 +93,20 @@ public class ChunkDataPoint
 		    		}
 		    	}
 	
-				//System.out.println("ChunkDataPoint, countWater: " + countWater + ", countLand: " + countLand);
+				//cpw.mods.fml.common.FMLLog.info("ChunkDataPoint, countWater: " + countWater + ", countLand: " + countLand);
 		    	
 				if (countLand > countWater) {
 					spawnableType = 0;
-					//System.out.println("set to land");
+					//cpw.mods.fml.common.FMLLog.info("set to land");
 				} else {
 					spawnableType = 1;
-					//System.out.println("set to water");
+					//cpw.mods.fml.common.FMLLog.info("set to water");
 				}
 	    	} else {
-	    		//System.out.println("chunk doesnt exist");
+	    		//cpw.mods.fml.common.FMLLog.info("chunk doesnt exist");
 	    	}
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     }
 
@@ -116,9 +116,9 @@ public class ChunkDataPoint
     		Chunk chunk = grid.world.getChunkFromChunkCoords(xCoord, zCoord);
     		List<Entity> listEntities = getEntitiesFromLoadedChunk(enemyClass, chunk);
     		countEntitiesEnemy = listEntities.size();
-    		//System.out.println("Enemies count: " + countEntitiesEnemy);
+    		//cpw.mods.fml.common.FMLLog.info("Enemies count: " + countEntitiesEnemy);
     	} else {
-    		//System.out.println("chunk doesnt exist");
+    		//cpw.mods.fml.common.FMLLog.info("chunk doesnt exist");
     	}
     	
     }
@@ -228,7 +228,7 @@ public class ChunkDataPoint
     	nbt.setInteger("yCoord", yCoord);
     	nbt.setInteger("zCoord", zCoord);
     	
-    	//System.out.println("countEntitiesEnemy: " + countEntitiesEnemy + " - " + xCoord + ", " + zCoord);
+    	//cpw.mods.fml.common.FMLLog.info("countEntitiesEnemy: " + countEntitiesEnemy + " - " + xCoord + ", " + zCoord);
     	
     	nbt.setLong("lastDPSRecalc", lastDPSRecalc);
     	nbt.setFloat("averageDPS", averageDPS);
@@ -287,7 +287,7 @@ public class ChunkDataPoint
     	if (uuid != null) {
     		getPlayerData(uuid).playerActivityTimeSpent += parVal;
     		getPlayerData(uuid).playerActivityLastUpdated = grid.world.getTotalWorldTime();
-    		//System.out.println("setting player activity time value for chunk " + xCoord + " - " + zCoord + " to " + lookupPlayersToActivity.get(uuid).playerActivityTimeSpent);
+    		//cpw.mods.fml.common.FMLLog.info("setting player activity time value for chunk " + xCoord + " - " + zCoord + " to " + lookupPlayersToActivity.get(uuid).playerActivityTimeSpent);
     	}
     }
     
@@ -297,7 +297,7 @@ public class ChunkDataPoint
     	if (uuid != null) {
     		getPlayerData(uuid).playerActivityInteraction += parVal;
     		getPlayerData(uuid).playerActivityLastUpdated = grid.world.getTotalWorldTime();
-    		//System.out.println("setting player activity interaction value for chunk " + xCoord + " - " + zCoord + " to " + lookupPlayersToActivity.get(uuid).playerActivityInteraction);
+    		//cpw.mods.fml.common.FMLLog.info("setting player activity interaction value for chunk " + xCoord + " - " + zCoord + " to " + lookupPlayersToActivity.get(uuid).playerActivityInteraction);
     	}
     	
     }

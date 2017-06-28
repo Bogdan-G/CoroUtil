@@ -64,7 +64,7 @@ public class TileHandler {
 	
 	public void tickUpdate() {
 		if (tileDataWatcher.hasChanges()) {
-			//System.out.println("server side detects changes! packets go go go!");
+			//cpw.mods.fml.common.FMLLog.info("server side detects changes! packets go go go!");
 			MinecraftServer.getServer().getConfigurationManager().sendPacketToAllPlayersInDimension(PacketHelper.createPacketForTEntDWServer(tEnt), tEnt.getWorldObj().provider.dimensionId);
 		}
 	}
@@ -76,10 +76,10 @@ public class TileHandler {
 				mapNameToID.put(name, indexIDStart);
 				indexIDStart++;
 			} else {
-				System.out.println("TileDataWatcher SERIOUS ERROR: Object with name " + name + " already exists");
+				cpw.mods.fml.common.FMLLog.info("TileDataWatcher SERIOUS ERROR: Object with name " + name + " already exists");
 			}
 		} else {
-			System.out.println("TileDataWatcher SERIOUS ERROR: Hit max number of entries (32)");
+			cpw.mods.fml.common.FMLLog.info("TileDataWatcher SERIOUS ERROR: Hit max number of entries (32)");
 		}
 	}
 	

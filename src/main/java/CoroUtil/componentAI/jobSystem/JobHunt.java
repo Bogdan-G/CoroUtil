@@ -62,7 +62,7 @@ public class JobHunt extends JobBase {
         }
 		
 		if (ent.getHealth() < ent.getMaxHealth() / 2/* && ds.getEntity() == c_CoroAIUtil.getFirstPlayer()*/) {
-			//System.out.println("TEMP OFF FOR REFACTOR");
+			//cpw.mods.fml.common.FMLLog.info("TEMP OFF FOR REFACTOR");
 			/*ai.dipl_hostilePlayer = true;
 			ai.getGroupInfo(EnumInfo.DIPL_WARN);*/
 		}

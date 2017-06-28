@@ -230,7 +230,7 @@ public abstract class GuiBetterSlot
         this.drawBackground();
         int k = this.getSize();
         
-        //System.out.println("SIZE: " + k);
+        //cpw.mods.fml.common.FMLLog.info("SIZE: " + k);
         
         int l = this.getScrollBarX();
         int i1 = l + 6;

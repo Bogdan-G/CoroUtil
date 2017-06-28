@@ -170,7 +170,7 @@ public class EntityFireBall extends EntityProjectileBase
 			}
 		} catch (Exception ex) {
 			//owner entity agent was cleaned up
-			//ex.printStackTrace();
+			//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		super.onImpact(movingobjectposition);
@@ -191,9 +191,9 @@ public class EntityFireBall extends EntityProjectileBase
     	
     	//while (particleBehavior.particles.size() < 200) {
     	for (int i = 0; i < amount; i++) {
-	    	//EntityRotFX entityfx = new EntityIconFX(Minecraft.getMinecraft().theWorld, owner.posX + rand.nextDouble(), owner.boundingBox.minY+0.2, owner.posZ + rand.nextDouble(), (rand.nextDouble() - rand.nextDouble()) * speed, 0.03D/*(rand.nextDouble() - rand.nextDouble()) * speed*/, (rand.nextDouble() - rand.nextDouble()) * speed, ParticleRegistry.squareGrey);
+	    	//EntityRotFX entityfx = new EntityIconFX(Minecraft.getMinecraft().theWorld, owner.posX + rand.nextFloat(), owner.boundingBox.minY+0.2, owner.posZ + rand.nextFloat(), (rand.nextFloat() - rand.nextFloat()) * speed, 0.03D/*(rand.nextFloat() - rand.nextFloat()) * speed*/, (rand.nextFloat() - rand.nextFloat()) * speed, ParticleRegistry.squareGrey);
     		double randRange = 0.5D;
-	    	EntityRotFX entityfx = particleBehavior.spawnNewParticleIconFX(Minecraft.getMinecraft().theWorld, ParticleRegistry.squareGrey, posX - 0.5D*randRange + rand.nextDouble()*randRange, posY - 0.5D*randRange + rand.nextDouble()*randRange, posZ - 0.5D*randRange + rand.nextDouble()*randRange, 0, 0, 0/*(rand.nextDouble() - rand.nextDouble()) * speed, 0.03D(rand.nextDouble() - rand.nextDouble()) * speed, (rand.nextDouble() - rand.nextDouble()) * speed*/);
+	    	EntityRotFX entityfx = particleBehavior.spawnNewParticleIconFX(Minecraft.getMinecraft().theWorld, ParticleRegistry.squareGrey, posX - 0.5D*randRange + rand.nextFloat()*randRange, posY - 0.5D*randRange + rand.nextFloat()*randRange, posZ - 0.5D*randRange + rand.nextFloat()*randRange, 0, 0, 0/*(rand.nextFloat() - rand.nextFloat()) * speed, 0.03D(rand.nextFloat() - rand.nextFloat()) * speed, (rand.nextFloat() - rand.nextFloat()) * speed*/);
 	    	particleBehavior.initParticle(entityfx);
 	    	entityfx.callUpdatePB = false;
 			ExtendedRenderer.rotEffRenderer.addEffect(entityfx);

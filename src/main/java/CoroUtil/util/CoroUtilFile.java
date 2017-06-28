@@ -28,7 +28,7 @@ public class CoroUtilFile {
 			try {
 				data = CompressedStreamTools.readCompressed(new FileInputStream(saveFolder + fileName));
 			} catch (Exception ex) {
-				//System.out.println("CoroUtilFile: getExtraWorldNBT: Error loading " + saveFolder + fileName);
+				//cpw.mods.fml.common.FMLLog.info("CoroUtilFile: getExtraWorldNBT: Error loading " + saveFolder + fileName);
 				cpw.mods.fml.common.FMLLog.warning("CoroUtilFile: getExtraWorldNBT: Error loading %s %s", saveFolder, fileName);
 			}
 			
@@ -49,7 +49,7 @@ public class CoroUtilFile {
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

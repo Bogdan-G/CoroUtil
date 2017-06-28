@@ -46,7 +46,7 @@ public class Sequencer implements Runnable {
 				int delayNano = (int)((delayMilli - ((int)delayMilli)) * 1000000);
 				Thread.sleep((int)delayMilli, delayNano);
 			} catch (Throwable throwable) {
-                throwable.printStackTrace();
+                cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, throwable, "CoroUtil stacktrace: %s", throwable);
             }
 		}
 	}
@@ -54,7 +54,7 @@ public class Sequencer implements Runnable {
 	//should be time synced to its bpm give or take process time for each tick
 	public void tickIterate() {
 		
-		//System.out.println("seq ticksPlaying: " + ticksPlaying);
+		//cpw.mods.fml.common.FMLLog.info("seq ticksPlaying: " + ticksPlaying);
 		
 		//for now, tick all melodies added
 		for (int i = 0; i < listMelodies.size(); i++) {
@@ -67,7 +67,7 @@ public class Sequencer implements Runnable {
 		//output every second, or every beat? yeah every beat
 		if (ticksPlaying % (NoteHelper.CONV_BEAT_TO_FASTEST_NOTE) == 0) {
 			beatsPlaying++;
-			//System.out.println("er: " + ticksPlaying);
+			//cpw.mods.fml.common.FMLLog.info("er: " + ticksPlaying);
 		}
 	}
 	

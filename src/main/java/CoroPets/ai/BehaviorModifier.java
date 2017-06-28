@@ -62,14 +62,14 @@ public class BehaviorModifier {
 		    				if (obj instanceof ITaskInitializer) {
 		    					ITaskInitializer task = (ITaskInitializer) obj;
 		    					task.setEntity(ent);
-		    					//System.out.println("adding task into zombie: " + taskToInject);
+		    					//cpw.mods.fml.common.FMLLog.info("adding task into zombie: " + taskToInject);
 		    					cpw.mods.fml.common.FMLLog.fine("adding task into zombie: %s", taskToInject);
 		    					ent.tasks.addTask(priorityOfTask, (EntityAIBase) task);
 		    					aiEnhanced.put(ent.getEntityId(), true);
 		    					ent.getEntityData().setBoolean("CoroAI_HW_GravelDeath", true);
 		    				}
 						} catch (Exception e) {
-							e.printStackTrace();
+							cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 						}
         			}
         		
@@ -163,7 +163,7 @@ public class BehaviorModifier {
 				if (entry.action instanceof EntityAINearestAttackableTarget) {
 					Class clazz = (Class)OldUtil.getPrivateValueSRGMCP(EntityAINearestAttackableTarget.class, entry.action, "field_75307_b", "targetClass");
 					if (EntityPlayer.class.isAssignableFrom(clazz) || EntityVillager.class.isAssignableFrom(clazz)) {
-						//System.out.println("removing target task for: " + clazz);
+						//cpw.mods.fml.common.FMLLog.info("removing target task for: " + clazz);
 						cpw.mods.fml.common.FMLLog.fine("removing target task for: %s", clazz);
 						parEnt.targetTasks.removeTask(entry.action);
 						parEnt.setAttackTarget(null);
@@ -172,7 +172,7 @@ public class BehaviorModifier {
 				}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

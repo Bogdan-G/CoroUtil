@@ -42,7 +42,7 @@ public class DimensionChunkCache implements IBlockAccess
     //Static lookup and cache updating
     public static HashMap<Integer, DimensionChunkCache> dimCacheLookup = new HashMap<Integer, DimensionChunkCache>();
     public static void updateAllWorldCache() {
-    	//System.out.println("Updating PFCache");
+    	//cpw.mods.fml.common.FMLLog.info("Updating PFCache");
     	WorldServer[] worlds = DimensionManager.getWorlds();
     	
     	for (int i = 0; i < worlds.length; i++) {
@@ -107,7 +107,7 @@ public class DimensionChunkCache implements IBlockAccess
 	    		try {
     				chunks = (ArrayList)OldUtil.getPrivateValueSRGMCP(ChunkProviderServer.class, world.getChunkProvider(), OldUtil.refl_loadedChunks_obf, OldUtil.refl_loadedChunks_mcp);
     			} catch (Exception ex2) {
-    				System.out.println("SERIOUS REFLECTION FAIL IN DimensionChunkCache");
+    				cpw.mods.fml.common.FMLLog.info("SERIOUS REFLECTION FAIL IN DimensionChunkCache");
     			}
 	    		/*try {
 	    			chunks = (ArrayList)OldUtil.getPrivateValue(ChunkProviderServer.class, world.getChunkProvider(), "loadedChunks");
@@ -118,9 +118,9 @@ public class DimensionChunkCache implements IBlockAccess
     		
     		if (chunks == null) {
     			if (ConfigCoroAI.usePlayerRadiusChunkLoadingForFallback) {
-    				System.out.println("unable to get loaded chunks, reverting to potentially cpu/memory heavy player radius method, to deactivate set usePlayerRadiusChunkLoadingForFallback in CoroUtil.cfg to false");
+    				cpw.mods.fml.common.FMLLog.info("unable to get loaded chunks, reverting to potentially cpu/memory heavy player radius method, to deactivate set usePlayerRadiusChunkLoadingForFallback in CoroUtil.cfg to false");
     			} else {
-    				System.out.println("loadedChunks is null, DimensionChunkCache unable to cache chunk data for dimension: " + world.provider.dimensionId + " - " + world.provider.getDimensionName());
+    				cpw.mods.fml.common.FMLLog.info("loadedChunks is null, DimensionChunkCache unable to cache chunk data for dimension: " + world.provider.dimensionId + " - " + world.provider.getDimensionName());
     			}
     		}
 	    	
@@ -209,7 +209,7 @@ public class DimensionChunkCache implements IBlockAccess
 		
 		                        if (var12 != null)
 		                        {
-		                        	//System.out.println("adding to array!");
+		                        	//cpw.mods.fml.common.FMLLog.info("adding to array!");
 		                        	chunkCount++;
 		                            this.chunkArray[pChunkX + xx - this.chunkX][pChunkZ + zz - this.chunkZ] = var12;
 		                        }
@@ -222,11 +222,11 @@ public class DimensionChunkCache implements IBlockAccess
 	        PFQueue.lastChunkCacheCount = chunkCount;
 	        
     	} catch (Exception ex) {
-    		ex.printStackTrace();
-    		System.out.println("DimensionChunkCache crash, tell Corosus");
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
+    		cpw.mods.fml.common.FMLLog.info("DimensionChunkCache crash, tell Corosus");
     		PFQueue.lastChunkCacheCount = 0;
     	}
-        //System.out.println("Total Cached Chunks for Dim " + world.provider.dimensionId + ": " + chunkCount);
+        //cpw.mods.fml.common.FMLLog.info("Total Cached Chunks for Dim " + world.provider.dimensionId + ": " + chunkCount);
     }
 
     /**
@@ -720,7 +720,7 @@ public class DimensionChunkCache implements IBlockAccess
     	if (par1 > 0 && par2 > 0 && par1 < chunkArray.length && par2 < chunkArray[par1].length) {
     		return this.chunkArray[par1][par2];
     	} else {
-    		//System.out.println("requested chunk data outside chunk array bounds");
+    		//cpw.mods.fml.common.FMLLog.info("requested chunk data outside chunk array bounds");
     		return null;
     	}
     }

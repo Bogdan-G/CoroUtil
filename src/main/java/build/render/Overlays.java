@@ -43,8 +43,8 @@ public class Overlays {
 		Minecraft mc = Minecraft.getMinecraft();
 		
 		Vec3 posPlayer = Vec3.createVectorHelper(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ);
-		GL11.glTranslated(-posPlayer.xCoord, -posPlayer.yCoord, -posPlayer.zCoord);
-		GL11.glTranslated(pos.xCoord-0.5D, pos.yCoord+0.5D, pos.zCoord-0.5D);
+		GL11.glTranslatef(-(float)posPlayer.xCoord, -(float)posPlayer.yCoord, -(float)posPlayer.zCoord);
+		GL11.glTranslatef((float)pos.xCoord-0.5f, (float)pos.yCoord+0.5f, (float)pos.zCoord-0.5f);
 		
 		for (int x = 0; x < b.map_sizeX; x++) {
 			for (int y = 0; y < b.map_sizeY; y++) {
@@ -60,7 +60,7 @@ public class Overlays {
 		    				
 		    				GL11.glPushMatrix();
 		    				
-		    				GL11.glTranslated(x * scale, y * scale, z * scale);
+		    				GL11.glTranslatef(x * scale, y * scale, z * scale);
 		    				
 		    				renderBlock(block, meta, 0, 0, 0);
 		    				
@@ -432,7 +432,7 @@ public class Overlays {
 		    GL11.glDisable(GL11.GL_CULL_FACE);
 		    GL11.glDisable(GL11.GL_TEXTURE_2D);
 		    GL11.glPushMatrix();
-		    GL11.glTranslated(-rm.viewerPosX, -rm.viewerPosY, -rm.viewerPosZ);
+		    GL11.glTranslatef(-(float)rm.viewerPosX, -(float)rm.viewerPosY, -(float)rm.viewerPosZ);
 		    GL11.glBegin(GL11.GL_POLYGON);
 		    
 		    GL11.glColor3f(0.0f, 0.0f, 1.0f);
@@ -440,7 +440,7 @@ public class Overlays {
 		    double rate = 15D;
 		    for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3f((float)(x1 + (Math.sin(Math.toRadians(angle)) * size)), (float)y1, (float)(z1 + (Math.cos(Math.toRadians(angle)) * size)));
 		    }
 		    GL11.glEnd();
 		    
@@ -448,7 +448,7 @@ public class Overlays {
 		    
 		    GL11.glEnable(GL11.GL_TEXTURE_2D);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -481,11 +481,11 @@ public class Overlays {
 		    
 		    GL11.glPushMatrix();
 		    
-		    GL11.glTranslated(-rm.viewerPosX, -rm.viewerPosY + 5F, -rm.viewerPosZ);
+		    GL11.glTranslatef(-(float)rm.viewerPosX, -(float)rm.viewerPosY + 5F, -(float)rm.viewerPosZ);
 		    
-		    GL11.glTranslated(xx1, yy1, zz1);
+		    GL11.glTranslatef((float)xx1, (float)yy1, (float)zz1);
 		    
-		    GL11.glRotated(-90, 1, 0, 0);
+		    GL11.glRotatef(-90, 1, 0, 0);
 		    
 		    //GL11.glBegin(GL11.GL_POLYGON);
 		    
@@ -502,7 +502,7 @@ public class Overlays {
 		    GL11.glEnable(GL11.GL_COLOR_MATERIAL);
 		    GL11.glColorMaterial(GL11.GL_FRONT, GL11.GL_AMBIENT_AND_DIFFUSE);
 		    
-		    GL11.glColor3d(1.0, 1.0, 1.0);
+		    GL11.glColor3f(1.0f, 1.0f, 1.0f);
 		    //GL11.glShadeModel(GL11.GL_SMOOTH);
 		    
 		    //GL11.glColor3f(0.0f, 0.0f, 1.0f);
@@ -512,7 +512,7 @@ public class Overlays {
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3d((float)(x1 + (Math.sin(Math.toRadians(angle)) * size)), (float)y1, (float)(z1 + (Math.cos(Math.toRadians(angle)) * size)));
 		    }*/
 		    
 		    /*Sphere sphere = new Sphere();
@@ -527,29 +527,29 @@ public class Overlays {
 		    //quad based Icosahedron
 		    int i, j;
 		    for (i = 1; i <= lats; i++) {
-		    	double lat0 = (Math.PI) * (-0.5D + (double) (i - 1) / lats);
-		    	double z0 = Math.sin(lat0);
-		    	double zr0 = Math.cos(lat0);
+		    	float lat0 = ((float)Math.PI) * (-0.5f + (float) (i - 1) / lats);
+		    	float z0 = (float)Math.sin(lat0);
+		    	float zr0 = (float)Math.cos(lat0);
 		    	
-		    	double lat1 = (Math.PI) * (-0.5D + (double) (i) / lats);
-		    	double z1 = Math.sin(lat1);
-		    	double zr1 = Math.cos(lat1);
+		    	float lat1 = ((float)Math.PI) * (-0.5f + (float) (i) / lats);
+		    	float z1 = (float)Math.sin(lat1);
+		    	float zr1 = (float)Math.cos(lat1);
 		    	
 		    	GL11.glBegin(GL11.GL_QUAD_STRIP);
 		    	for (j = 0; j <= longs; j++) {
-		    		double lng = 2D * (Math.PI) * (double) (j - 1) / longs;
-		    		double x = Math.cos(lng);
-		    		double y = Math.sin(lng);
+		    		float lng = 2F * ((float)Math.PI) * (float) (j - 1) / longs;
+		    		float x = (float)Math.cos(lng);
+		    		float y = (float)Math.sin(lng);
 		    		
-		    		double adj1 = Math.sin(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
-		    		double adj2 = Math.cos(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1D);
+		    		float adj1 = (float)Math.sin(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1f);
+		    		float adj2 = (float)Math.cos(Math.toRadians((((i * 200L)+System.currentTimeMillis()) % 3600)) * 0.1f);
 		    		
-		    		//GL11.glColor3d(rand.nextDouble(), rand.nextDouble(), rand.nextDouble());
-		    		GL11.glColor3d(0D, i / (double)lats + (1D * Math.sin(Math.toRadians((System.currentTimeMillis() % 3600)) * 0.1D)) * 0.3D, i / (double)lats + (1D * Math.sin(Math.toRadians(((System.currentTimeMillis() + 1800) % 3600)) * 0.1D)) * 0.3D);
+		    		//GL11.glColor3d(rand.nextFloat(), rand.nextFloat(), rand.nextFloat());
+		    		GL11.glColor3f(0f, i / (float)lats + (1f * (float)Math.sin(Math.toRadians((System.currentTimeMillis() % 3600)) * 0.1d)) * 0.3f, i / (float)lats + (1f * (float)Math.sin(Math.toRadians(((System.currentTimeMillis() + 1800) % 3600)) * 0.1d)) * 0.3f);
 		    		//GL11.glNormal3d(x * zr0, y * zr0, z0);
-		    		GL11.glVertex3d(x * zr0 + adj1, y * zr0 + adj2, z0);
+		    		GL11.glVertex3f(x * zr0 + adj1, y * zr0 + adj2, z0);
 		    		//GL11.glNormal3d(x * zr1, y * zr1, z1);
-		    		GL11.glVertex3d(x * zr1 + adj1, y * zr1 + adj2, z1);
+		    		GL11.glVertex3f(x * zr1 + adj1, y * zr1 + adj2, z1);
 		    	}
 		    	GL11.glEnd();
 		    }
@@ -567,7 +567,7 @@ public class Overlays {
 		    
 		    GL11.glEnable(GL11.GL_TEXTURE_2D);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -600,9 +600,9 @@ public class Overlays {
 		    
 		    GL11.glPushMatrix();
 		    
-		    GL11.glTranslated(-rm.viewerPosX, -rm.viewerPosY + 5F, -rm.viewerPosZ);
+		    GL11.glTranslatef(-(float)rm.viewerPosX, -(float)rm.viewerPosY + 5F, -(float)rm.viewerPosZ);
 		    
-		    GL11.glTranslated(xx1, yy1, zz1);
+		    GL11.glTranslatef((float)xx1, (float)yy1, (float)zz1);
 		    
 		    //GL11.glRotated(-90, 1, 0, 0);
 		    
@@ -631,7 +631,7 @@ public class Overlays {
 		    double rate = 15D;
 		    /*for (double angle = 0; angle <= 360; angle += rate) {
 		    	GL11.glColor3f(1.0f, 0.0f, 0F);
-		    	GL11.glVertex3d(x1 + (Math.sin(Math.toRadians(angle)) * size), y1, z1 + (Math.cos(Math.toRadians(angle)) * size));
+		    	GL11.glVertex3d((float)(x1 + (Math.sin(Math.toRadians(angle)) * size)), (float)y1, (float)(z1 + (Math.cos(Math.toRadians(angle)) * size)));
 		    }*/
 		    
 		    
@@ -641,7 +641,7 @@ public class Overlays {
 		    if (listPolys.size() == 0) {
 			    listPolys.clear();
 			    for (int i = 0; i < 10; i++) {
-			    	listPolys.add(new Vector3d(rand.nextDouble() * spawnRad - rand.nextDouble() * spawnRad, rand.nextDouble() * spawnRad - rand.nextDouble() * spawnRad, rand.nextDouble() * spawnRad - rand.nextDouble() * spawnRad));
+			    	listPolys.add(new Vector3d(rand.nextFloat() * spawnRad - rand.nextFloat() * spawnRad, rand.nextFloat() * spawnRad - rand.nextFloat() * spawnRad, rand.nextFloat() * spawnRad - rand.nextFloat() * spawnRad));
 			    }
 		    }
 		    
@@ -658,30 +658,30 @@ public class Overlays {
 		    	
 		    	GL11.glBegin(GL11.GL_POLYGON);
 		    	
-		    	double x1 = listPolys.get(i).x;
-		    	double y1 = listPolys.get(i).y;
-		    	double z1 = listPolys.get(i).z;
+		    	float x1 = (float)listPolys.get(i).x;
+		    	float y1 = (float)listPolys.get(i).y;
+		    	float z1 = (float)listPolys.get(i).z;
 		    	
-		    	double v1 = 45;
-		    	double v2 = 45*2;
-		    	double v3 = 45*3;
+		    	float v1 = 45;
+		    	float v2 = 45*2;
+		    	float v3 = 45*3;
 		    	
-		    	double x2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v1) % 360)));
-		    	double x3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10 + v2) % 360)));
-		    	double x4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v3) % 360)));
+		    	float x2 = (float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v1) % 360)));
+		    	float x3 = (float)Math.cos(Math.toRadians(((System.currentTimeMillis() / 10 + v2) % 360)));
+		    	float x4 = -(float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10 + v3) % 360)));
 		    	
-		    	double y2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double y3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double y4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float y2 = (float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float y3 = (float)Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float y4 = -(float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
 		    	
-		    	double z2 = Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double z3 = Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
-		    	double z4 = -Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float z2 = (float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float z3 = (float)Math.cos(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
+		    	float z4 = -(float)Math.sin(Math.toRadians(((System.currentTimeMillis() / 10) % 360)));
 		    	
 		    	GL11.glColor3f(0.0f, 1.0f, 0F);
-		    	GL11.glVertex3d(x1 + x2, y1 + y2, z1 + z2);
-		    	GL11.glVertex3d(x1 + x3, y1 + y3, z1 + z3);
-		    	GL11.glVertex3d(x1 + x4, y1 + y4, z1 + z4);
+		    	GL11.glVertex3f(x1 + x2, y1 + y2, z1 + z2);
+		    	GL11.glVertex3f(x1 + x3, y1 + y3, z1 + z3);
+		    	GL11.glVertex3f(x1 + x4, y1 + y4, z1 + z4);
 		    	
 		    	GL11.glEnd();
 		    }
@@ -703,7 +703,7 @@ public class Overlays {
 		    
 		    GL11.glEnable(GL11.GL_TEXTURE_2D);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

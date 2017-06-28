@@ -98,7 +98,7 @@ public class BuildJob {
 		build_startZ = parBuild.map_coord_minZ;
 		
 		/*if (parBuild.map_coord_minY == ZCGame.ZCWorldHeight) {
-			//System.out.println("offset adjust");
+			//cpw.mods.fml.common.FMLLog.info("offset adjust");
 			if (false) build_startY = parBuild.map_coord_minY + parBuild.map_surfaceOffset;
 		}*/
 		
@@ -173,7 +173,7 @@ public class BuildJob {
     	//build_startZ = this.build.map_coord_minZ;
     	
     	//shouldEntitiesReset = true;
-    	//System.out.println("Level build starting");
+    	//cpw.mods.fml.common.FMLLog.info("Level build starting");
     }
     
     public void buildComplete() {
@@ -183,7 +183,7 @@ public class BuildJob {
 		//mod_ZombieCraft.worldRef.editingBlocks = false;
 		//spawnLevelEntities();
 		
-		//System.out.println("Level build complete");
+		//cpw.mods.fml.common.FMLLog.info("Level build complete");
     }
     
     

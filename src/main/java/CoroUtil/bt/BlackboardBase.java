@@ -119,7 +119,7 @@ public class BlackboardBase implements IPFCallback {
 	
 	public void trackTarget(boolean resetPathData) {
 		if (target != null) {
-			//System.out.println("tracking target");
+			//cpw.mods.fml.common.FMLLog.info("tracking target");
 			setMoveTo(Vec3.createVectorHelper(target.posX, target.posY, target.posZ), resetPathData);
 		}
 	}
@@ -137,7 +137,7 @@ public class BlackboardBase implements IPFCallback {
 		if (!agent.tamable.shouldStayStill()) {
 			posMoveTo = parMoveTo;
 			if (resetPathData) {
-				//System.out.println("reset path data");
+				//cpw.mods.fml.common.FMLLog.info("reset path data");
 				pathMoveToPath = null;
 				pathMoveToPathFar = null;
 				isWaitingForPath.setValue(false);
@@ -148,7 +148,7 @@ public class BlackboardBase implements IPFCallback {
 	}
 	
 	public void setPathFar(PathEntity parPath) {
-		//System.out.println("callback pf set: " + parPath);
+		//cpw.mods.fml.common.FMLLog.info("callback pf set: " + parPath);
 		pathMoveToPathFar = parPath;
 		isWaitingForPath.setValue(false);
 		isPathReceived.setValue(true);
@@ -156,7 +156,7 @@ public class BlackboardBase implements IPFCallback {
 	
 	public void requestPathFar(Vec3 parPos, int pathRange) {
 		if (canFlyPath.getValue() || canSwimPath.getValue()) {
-			//System.out.println("request TEST FLYING/SWIMMING PATH pf set: " + parPos);
+			//cpw.mods.fml.common.FMLLog.info("request TEST FLYING/SWIMMING PATH pf set: " + parPos);
 			PFJobData job = new PFJobData(agent.ent, MathHelper.floor_double(parPos.xCoord), MathHelper.floor_double(parPos.yCoord), MathHelper.floor_double(parPos.zCoord), pathRange);
 			job.callback = this;
 			job.canUseLadder = true;
@@ -164,7 +164,7 @@ public class BlackboardBase implements IPFCallback {
 			job.useSwimPathfinding = canSwimPath.getValue();
 			PFQueue.tryPath(job);
 		} else {
-			//System.out.println("request pf set: " + parPos);
+			//cpw.mods.fml.common.FMLLog.info("request pf set: " + parPos);
 			PFQueue.tryPath(agent.ent, MathHelper.floor_double(parPos.xCoord), MathHelper.floor_double(parPos.yCoord), MathHelper.floor_double(parPos.zCoord), pathRange, 0, this);
 		}
 		isWaitingForPath.setValue(true);
@@ -196,9 +196,9 @@ public class BlackboardBase implements IPFCallback {
 				}
 			}
 		} catch (Exception ex) {
-			//System.out.println("Crash in Epoch AI Blackboard for PF Callback");
+			//cpw.mods.fml.common.FMLLog.info("Crash in Epoch AI Blackboard for PF Callback");
 			cpw.mods.fml.common.FMLLog.fine("Crash in Epoch AI Blackboard for PF Callback");
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		listCallbackPaths.clear();

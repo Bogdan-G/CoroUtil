@@ -30,10 +30,10 @@ public class OrdersUser extends LeafAction {
 		
 		if (orders != null) {
 			/*if (ordersAcceptable.equals("build")) {
-				System.out.println("!!!!!!!");
+				cpw.mods.fml.common.FMLLog.info("!!!!!!!");
 			}*/
 			//mark that its accepting this type of orders
-			//System.out.println("dbg: setting orders to " + ordersAcceptable);
+			//cpw.mods.fml.common.FMLLog.info("dbg: setting orders to " + ordersAcceptable);
 			orders.ordersAcceptable = ordersAcceptable;
 			
 			if (orders.activeOrders != null) {

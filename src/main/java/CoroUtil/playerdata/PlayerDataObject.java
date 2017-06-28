@@ -50,7 +50,7 @@ public class PlayerDataObject {
 			if (nbt != null) {
 				pdo.nbtLoad(nbt);
 			} else {
-				System.out.println("fresh!");
+				cpw.mods.fml.common.FMLLog.info("fresh!");
 			}
 		}
 	}

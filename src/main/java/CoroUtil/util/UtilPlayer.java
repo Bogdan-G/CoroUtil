@@ -103,7 +103,7 @@ public class UtilPlayer {
 			if (itemstack != null) entP.getAttributeMap().applyAttributeModifiers(itemstack.getAttributeModifiers());
 		}
 		
-		//System.out.println("calculated bestWeaponValue: " + bestWeaponValue);
+		//cpw.mods.fml.common.FMLLog.info("calculated bestWeaponValue: " + bestWeaponValue);
 		//WorldDirectorMultiDim.getPlayerNBT(CoroUtilEntity.getName(entP)).setInteger("HWPlayerRating", (int)(armorValue + bestWeaponValue + (hasGlove ? 20 : 0)));
 		
 		return (int)(armorValue + bestWeaponValue + (hasGlove ? 20 : 0));

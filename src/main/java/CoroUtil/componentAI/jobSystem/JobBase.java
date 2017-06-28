@@ -86,7 +86,7 @@ public class JobBase {
 	
 	public void setJobState(EnumJobState ekos) {
 		state = ekos;
-		//System.out.println("jobState: " + ekos);
+		//cpw.mods.fml.common.FMLLog.info("jobState: " + ekos);
 	}
 
 	public void tick() {
@@ -106,10 +106,10 @@ public class JobBase {
 	public void onTickChestScan() {
 		if (ai.scanForHomeChest && ent.worldObj.getWorldTime() % 100 == 0) {
 			if (!CoroUtilInventory.isChest(ent.worldObj.getBlock(ai.homeX, ai.homeY, ai.homeZ))) {
-				//System.out.println("scanning for chests or allies - " + ent);
+				//cpw.mods.fml.common.FMLLog.info("scanning for chests or allies - " + ent);
 				ChunkCoordinates tryCoords = getChestNearby();
 				if (tryCoords != null) {
-					//System.out.println("discovered a chest to call home! - " + ent);
+					//cpw.mods.fml.common.FMLLog.info("discovered a chest to call home! - " + ent);
 					ai.homeX = tryCoords.posX;
 					ai.homeY = tryCoords.posY;
 					ai.homeZ = tryCoords.posZ;
@@ -125,7 +125,7 @@ public class JobBase {
 			            		ai.homeX = ((ICoroAI) entity1).getAIAgent().homeX;
 			            		ai.homeY = ((ICoroAI) entity1).getAIAgent().homeY;
 			            		ai.homeZ = ((ICoroAI) entity1).getAIAgent().homeZ;
-			            		//System.out.println("discovered a friend with a chest to call home! - " + ent);
+			            		//cpw.mods.fml.common.FMLLog.info("discovered a friend with a chest to call home! - " + ent);
 			            		return;
 			            	}
 			            }
@@ -163,7 +163,7 @@ public class JobBase {
 				if (pe.getPosition(ent).distanceTo(Vec3.createVectorHelper(ent.posX, ent.posY + (double)ent.getEyeHeight(), ent.posZ)) < 3F) {
 					pe.incrementPathIndex();
 				}
-				//System.out.println("next path!");
+				//cpw.mods.fml.common.FMLLog.info("next path!");
 			}
 			
 			/*int pIndex = pe.pathIndex+1;
@@ -198,7 +198,7 @@ public class JobBase {
         	if (!dontStrayFromHome) {
         		ai.updateWanderPath();
         	} else {
-        	//System.out.println("home dist: " + ent.getDistance(ent.homeX, ent.homeY, ent.homeZ));
+        	//cpw.mods.fml.common.FMLLog.info("home dist: " + ent.getDistance(ent.homeX, ent.homeY, ent.homeZ));
 	        	if (ent.getDistance(ai.homeX, ai.homeY, ai.homeZ) < ai.maxDistanceFromHome) {
 	        		if (ai.rand.nextInt(5) == 0) {
 	        			int randsize = 32;
@@ -288,13 +288,13 @@ public class JobBase {
 	// Job shared functions \\
 	
 	public boolean checkHunger() {
-		//System.out.println("TEMP OFF FOR REFACTOR");
+		//cpw.mods.fml.common.FMLLog.info("TEMP OFF FOR REFACTOR");
 		
 		/*if (!ai.useInv || ai.entInv.fakePlayer == null) */return false;
 		
 		/*if (ai.entInv.fakePlayer.getFoodStats().getFoodLevel() <= 16) {
 			if (ai.entInv.eat()) {
-				//System.out.println("NH: " + fakePlayer.foodStats.getFoodLevel());
+				//cpw.mods.fml.common.FMLLog.info("NH: " + fakePlayer.foodStats.getFoodLevel());
 			} else {
 				//fallback();
 				//if (jm.getJob() != EnumJob.FINDFOOD) {
@@ -350,7 +350,7 @@ public class JobBase {
             }
         }
         PathEntity path = ent.getNavigator().getPath();
-        //System.out.println("koa " + ent.name + " health: " + ent.getHealth());
+        //cpw.mods.fml.common.FMLLog.info("koa " + ent.name + " health: " + ent.getHealth());
         if (clEnt != null) {
         	if (clEnt != ai.lastFleeEnt || (ent.getNavigator().noPath())) {
         		ai.lastFleeEnt = clEnt;
@@ -422,7 +422,7 @@ public class JobBase {
         
         //double homeDist = ent.getDistance(ai.homeX, ai.homeY, ai.homeZ);//dead code?
         
-        //System.out.println("TEMP OFF FOR REFACTOR");
+        //cpw.mods.fml.common.FMLLog.info("TEMP OFF FOR REFACTOR");
         
         ai.walkTo(ent, gatherX, gatherY, gatherZ, ai.maxPFRange, 600, -1);
         
@@ -432,7 +432,7 @@ public class JobBase {
         	if (offset < 100) {
         		ai.walkTo(ent, gatherX, gatherY, gatherZ, ai.maxPFRange, 600, -1);
         	} else {
-        		//System.out.println("flee failed");
+        		//cpw.mods.fml.common.FMLLog.info("flee failed");
             	ai.walkTo(ent, ai.homeX, ai.homeY, ai.homeZ, (float) homeDist, 600);
         	}
         }*/
@@ -455,7 +455,7 @@ public class JobBase {
 			i = tryY + ai.rand.nextInt(scanSizeY)-scanSizeY/2;
 			tryZ = ((int)ent.posZ) + ai.rand.nextInt(scanSize)-scanSize/2;
 			if (ent.worldObj.getBlock(tryX, i, tryZ).getMaterial() == Material.water) {
-				//System.out.println("found water");
+				//cpw.mods.fml.common.FMLLog.info("found water");
 				
 				int newY = i;
 				
@@ -470,7 +470,7 @@ public class JobBase {
 				//scan through pathnodes, look for where it goes from sand to water
 				
 				
-				//if (!this.hasPath()) { System.out.println("no path"); }
+				//if (!this.hasPath()) { cpw.mods.fml.common.FMLLog.info("no path"); }
 				
 				ai.setState(EnumActState.WALKING);
 				walkingTimeout = 300;
@@ -481,7 +481,7 @@ public class JobBase {
 				return true;
 				
 			} else {
-				//System.out.println("no water");
+				//cpw.mods.fml.common.FMLLog.info("no water");
 			}
 		}
 		
@@ -500,14 +500,14 @@ public class JobBase {
 		for (int i = tryY; i > tryY - 10; i--) {
 			Block block = ent.worldObj.getBlock(tryX, i, tryZ);
 			if (!CoroUtilBlock.isAir(block) && block.getMaterial() != Material.water) {
-				//System.out.println("found water");
+				//cpw.mods.fml.common.FMLLog.info("found water");
 				
 				PFQueue.getPath(ent, tryX, tryY, tryZ, scanSize/2+6);
 				
 				
 				
 				
-				//if (!this.hasPath()) { System.out.println("no path"); }
+				//if (!this.hasPath()) { cpw.mods.fml.common.FMLLog.info("no path"); }
 				
 				ai.setState(EnumActState.WALKING);
 				walkingTimeout = 300;
@@ -518,7 +518,7 @@ public class JobBase {
 				return true;
 				
 			} else {
-				//System.out.println("no water");
+				//cpw.mods.fml.common.FMLLog.info("no water");
 			}
 		}
 		
@@ -584,7 +584,7 @@ public class JobBase {
             			int addCount = ourStack.stackSize;
             			
             			if (ourStack.stackSize < 0) {
-            				//System.out.println("!! ourStack.stackSize < 0");
+            				//cpw.mods.fml.common.FMLLog.info("!! ourStack.stackSize < 0");
             				cpw.mods.fml.common.FMLLog.fine("!! ourStack.stackSize < 0");
             			}
             			
@@ -601,11 +601,11 @@ public class JobBase {
             				invFrom.setInventorySlotContents(j, null);
 	            			break;
             			} else if (ourStack.stackSize < 0) {
-            				//System.out.println("ourStack.stackSize < 0");
+            				//cpw.mods.fml.common.FMLLog.info("ourStack.stackSize < 0");
             			}
             			
             			if (transferCount == 0) {
-            				//System.out.println("final transferCount: " + transferCount);
+            				//cpw.mods.fml.common.FMLLog.info("final transferCount: " + transferCount);
             				return;
             			}
             			
@@ -629,7 +629,7 @@ public class JobBase {
             			}
             			
             			if (transferCount == 0) {
-            				//System.out.println("final transferCount: " + transferCount);
+            				//cpw.mods.fml.common.FMLLog.info("final transferCount: " + transferCount);
             				return;
             			}
             		}
@@ -714,7 +714,7 @@ public class JobBase {
 					//ent.rotationYaw = limitAngle((float)ent.rotationYaw, (float)ai.activeFormation.smoothYaw, 1F);//(float) ai.activeFormation.smoothYaw;
 				}
 			} else {
-				//System.out.println("CRITICAL ERROR IN FORMATION!");
+				//cpw.mods.fml.common.FMLLog.info("CRITICAL ERROR IN FORMATION!");
 			}
 		} else {
 			ticksBeforeFormationRetry = 60;
@@ -725,7 +725,7 @@ public class JobBase {
 				}
 				
 			} else {
-				//System.out.println("CRITICAL ERROR IN FORMATION PATH AROUND!");
+				//cpw.mods.fml.common.FMLLog.info("CRITICAL ERROR IN FORMATION PATH AROUND!");
 			}
 		}
 	}
@@ -771,7 +771,7 @@ public class JobBase {
 			closeFactor = 0.1F;
 		}
 		
-    	//System.out.println("closest ent target");
+    	//cpw.mods.fml.common.FMLLog.info("closest ent target");
 		
 		float speed = OldUtil.getMoveSpeed(ent) * ai.lungeFactor * closeFactor;
 		double leadTicks = ai.moveLeadTicks;
@@ -794,7 +794,7 @@ public class JobBase {
 				//nadda?
 			}
 		} else {
-			//System.out.println("not safe!");
+			//cpw.mods.fml.common.FMLLog.info("not safe!");
 			//ent.motionY = 0.5D;
 			ticksBeforeCloseCombatRetry = 60;
 			ai.checkPathfindLock();
@@ -802,11 +802,11 @@ public class JobBase {
     		ai.tickMovementHelp();
 			//ent.getMoveHelper().
 		}
-		//System.out.println("lunging!: " + ent.getMoveSpeed() + " - " + ent.lungeFactor + " - " + speed);
+		//cpw.mods.fml.common.FMLLog.info("lunging!: " + ent.getMoveSpeed() + " - " + ent.lungeFactor + " - " + speed);
 		
 		//ent.getDataWatcher().updateObject(20, 1);
 		
-		//System.out.println("TEMP OFF FOR REFACTOR");
+		//cpw.mods.fml.common.FMLLog.info("TEMP OFF FOR REFACTOR");
 		
 		//jump over drops
 		/*MovingObjectPosition aim = ai.getAimBlock(-2, true);
@@ -870,11 +870,11 @@ public class JobBase {
 					if (ent.onGround && (lookAheadIDDrop.getMaterial() == Material.lava || lookAheadIDDrop.getMaterial() == Material.cactus) || 
 							(lookAheadIDCollide.getMaterial() == Material.lava || lookAheadIDCollide.getMaterial() == Material.cactus)) {
 						safe = false;
-						//System.out.println("drop alert!");
+						//cpw.mods.fml.common.FMLLog.info("drop alert!");
 						break;
 					} else if (ent.onGround && (lookAheadIDCollide instanceof BlockFence)) {
 						safe = false;
-						//System.out.println("front alert!");
+						//cpw.mods.fml.common.FMLLog.info("front alert!");
 						break;
 					}
 				}
@@ -890,15 +890,15 @@ public class JobBase {
 				
 				if (checkWalls/* && adjAngle == 0 && lookAheadDist == 0.5D*/) {
 					Block lookAheadIDCollideTooHigh = ent.worldObj.getBlock(xx, headAheadY, zz);
-					//System.out.println("id " + lookAheadIDCollideTooHigh + " - " + xx + ", " + headAheadY + ", " + zz);
+					//cpw.mods.fml.common.FMLLog.info("id " + lookAheadIDCollideTooHigh + " - " + xx + ", " + headAheadY + ", " + zz);
 					//System.out.println(center.rotationYaw);
-					//System.out.println("X-: " + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
-					//System.out.println("Z+: " + Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+					//cpw.mods.fml.common.FMLLog.info("X-: " + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+					//cpw.mods.fml.common.FMLLog.info("Z+: " + Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
 					
 					//System.out.println(lookAheadIDCollideTooHigh);
 					if (ent.onGround && (lookAheadIDCollideTooHigh.getMaterial().isSolid())) {
 						safe = false;
-						//System.out.println("front wall alert!");
+						//cpw.mods.fml.common.FMLLog.info("front wall alert!");
 						break;
 					}
 				}
@@ -911,12 +911,12 @@ public class JobBase {
 		
 		//this might not work yet....
 		//if (ent.getDistanceToEntity(ai.entityToAttack) > ai.entityToAttack.getDistance(posX, posY, posZ)) {
-			//System.out.println("cancel lead");
+			//cpw.mods.fml.common.FMLLog.info("cancel lead");
 			//vecX = 0D;
 			//vecZ = 0D;
 		//}
 		
-		//if (!safe) System.out.println("not safe!");
+		//if (!safe) cpw.mods.fml.common.FMLLog.info("not safe!");
 		
 		return safe;
 	}

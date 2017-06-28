@@ -138,7 +138,7 @@ public class PFQueue implements Runnable {
     
     public PFQueue(IBlockAccess var1, boolean singleton) {
     	if (instance == null && singleton) {
-    		System.out.println("Initializing PFQueue");
+    		cpw.mods.fml.common.FMLLog.info("Initializing PFQueue");
 	    	instance = this;
 	    	queue = new LinkedList();
 	    	pfDelays = new HashMap();
@@ -147,7 +147,7 @@ public class PFQueue implements Runnable {
 	        
     	} else {
     		//not duplicate, just using different instance to prevent thread crashes on internal temp lists 
-    		//System.out.println("duplicate creation PFQueue!");
+    		//cpw.mods.fml.common.FMLLog.info("duplicate creation PFQueue!");
     	}
     	
     	//Something is passing the proper dim cache before directly using its own instance of PFQueue
@@ -163,14 +163,14 @@ public class PFQueue implements Runnable {
     			manageQueue();
     			//Thread.sleep(50);
     		} catch (Exception ex) {
-    			if (ConfigCoroAI.PFQueueDebug) System.out.println("Serious PFQueue crash, reinitializing");
-    			//ex.printStackTrace();
+    			if (ConfigCoroAI.PFQueueDebug) cpw.mods.fml.common.FMLLog.info("Serious PFQueue crash, reinitializing");
+    			//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     			instance = null;
     		}
     		
     	}
     	
-    	System.out.println("Old PFQueue thread end");
+    	cpw.mods.fml.common.FMLLog.info("Old PFQueue thread end");
     	
     }
     
@@ -206,14 +206,14 @@ public class PFQueue implements Runnable {
 	            //System.out.println(pairs.getKey() + " = " + pairs.getValue());
 	            long time = (Long)pairs.getValue();
 	            if (time < System.currentTimeMillis() - 30000) {
-	            	//System.out.println("ent " + pairs.getKey() + " removing, val: " + pairs.getValue());
+	            	//cpw.mods.fml.common.FMLLog.info("ent " + pairs.getKey() + " removing, val: " + pairs.getValue());
 	    			pfDelays.remove(pairs.getKey());
 	    			
 	    		}
 	            //it.remove(); // avoids a ConcurrentModificationException
 	        }
     	} catch (Exception ex) {
-    		//ex.printStackTrace();
+    		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	
     	
@@ -227,7 +227,7 @@ public class PFQueue implements Runnable {
 					lastQueueSize = queue.size();
 					//queue.clear();
 					if (queue.size() > 50 && System.currentTimeMillis() % 2000 == 0) {
-						System.out.println("PF Size: " + queue.size());
+						cpw.mods.fml.common.FMLLog.info("PF Size: " + queue.size());
 					}
 					
 					try {
@@ -244,7 +244,7 @@ public class PFQueue implements Runnable {
 			    	        
 			    	        statsPerSecondPathSoFar++;
 			    	        
-			    	        //System.out.println("PROCESS PF!");
+			    	        //cpw.mods.fml.common.FMLLog.info("PROCESS PF!");
 			    	        
 			    	        //catching any game exit errors
 				    	        try {
@@ -313,13 +313,13 @@ public class PFQueue implements Runnable {
 						    	        	}
 					    				} catch (Exception ex) {
 					    					if (ConfigCoroAI.PFQueueDebug) {
-						    					System.out.println("this error happens a lot, new bug?");
-						    					ex.printStackTrace();
+						    					cpw.mods.fml.common.FMLLog.info("this error happens a lot, new bug?");
+						    					cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 					    					}
 					    				}
-					    				//System.out.println("set path");
+					    				//cpw.mods.fml.common.FMLLog.info("set path");
 					    			} else {
-					    				//System.out.println("not path");
+					    				//cpw.mods.fml.common.FMLLog.info("not path");
 					    			}
 					    			
 					    			//Direct path setting code
@@ -328,7 +328,7 @@ public class PFQueue implements Runnable {
 					    					setPath(pathEnt);
 					    				} else {
 					    					if (queue.get(0).sourceEntity != null && queue.get(0).retryState < 4) {
-						    					//System.out.println("retryState: " + queue.get(0).retryState);
+						    					//cpw.mods.fml.common.FMLLog.info("retryState: " + queue.get(0).retryState);
 					    						
 						    					/*PathPointEx points[] = new PathPointEx[1];
 						    			        points[0] = new PathPointEx(queue.get(0).x, queue.get(0).y, queue.get(0).z);
@@ -414,7 +414,7 @@ public class PFQueue implements Runnable {
 						    				    	//PFQueueItem job2 = queue.get(0).
 						    				    	
 						    			        } else {
-						    			        	//System.out.println("topmost block pf");
+						    			        	//cpw.mods.fml.common.FMLLog.info("topmost block pf");
 						    			        	//retry path to topmost block
 						    			        	/*PFQueueItem job = new PFQueueItem(queue.get(0).entSourceRef, gatherX, worldMap.getHeightValue(gatherX, gatherZ)+1, gatherZ, queue.get(0).dist, 0, queue.get(0).callback);
 						    			        	job.maxNodeIterations = 1500;
@@ -437,14 +437,14 @@ public class PFQueue implements Runnable {
 					    				
 				    	        } catch (Exception ex) {
 				    	        	if (ConfigCoroAI.PFQueueDebug) {
-				    	        		ex.printStackTrace();
+				    	        		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 				    	        	}
 				    	        	//do nothing
 				    	        }
 				    	       
 						} else {
 							statsPerSecondPathSkippedSoFar++;
-							//System.out.println("PF Job aborted, too old: " + (System.currentTimeMillis() - queue.get(0).timeCreated));
+							//cpw.mods.fml.common.FMLLog.info("PF Job aborted, too old: " + (System.currentTimeMillis() - queue.get(0).timeCreated));
 							if (give1NodePathIfFail) {
 								PathPointEx points[] = new PathPointEx[1];
 						        points[0] = new PathPointEx(queue.get(0).dest.posX, queue.get(0).dest.posY, queue.get(0).dest.posZ);
@@ -470,7 +470,7 @@ public class PFQueue implements Runnable {
 					queue.remove(0);
 					
 					} catch (Exception ex) {
-			    		//ex.printStackTrace();
+			    		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 			    		try {
 			    			queue.clear();
 			    		} catch (Exception ex2) {
@@ -488,7 +488,7 @@ public class PFQueue implements Runnable {
 				int sleep = 50-queue.size();
 				if (processed) sleep = 3;
 				if (sleep < 1) { sleep = 1; }
-				//System.out.println("sleep size: " + sleep);
+				//cpw.mods.fml.common.FMLLog.info("sleep size: " + sleep);
 				
 				Thread.sleep(sleep);/*if (queue.size() < 20) { Thread.sleep(100); } else { Thread.sleep(10); }*/ } catch (Exception ex) {}
 		}
@@ -498,7 +498,7 @@ public class PFQueue implements Runnable {
     
     public void setPath(PathEntityEx pathEnt) {
     	
-    	//System.out.println("que: " + queue.size());
+    	//cpw.mods.fml.common.FMLLog.info("que: " + queue.size());
     	
     	lastSuccessPFTime = System.currentTimeMillis();
     	
@@ -519,8 +519,8 @@ public class PFQueue implements Runnable {
 			}
 			
 		} else if (queue.get(0).sourceEntity instanceof EntityLiving) {
-			//System.out.println("setting path on living ent: " + pathEnt.pathLength + " - " + (Float) c_CoroAIUtil.getPrivateValueBoth(EntityLiving.class, (EntityLiving)queue.get(0).sourceEntity, c_CoroAIUtil.refl_obf_Item_moveSpeed, c_CoroAIUtil.refl_mcp_Item_moveSpeed));
-			//System.out.println("?!?!?!?");
+			//cpw.mods.fml.common.FMLLog.info("setting path on living ent: " + pathEnt.pathLength + " - " + (Float) c_CoroAIUtil.getPrivateValueBoth(EntityLiving.class, (EntityLiving)queue.get(0).sourceEntity, c_CoroAIUtil.refl_obf_Item_moveSpeed, c_CoroAIUtil.refl_mcp_Item_moveSpeed));
+			//cpw.mods.fml.common.FMLLog.info("?!?!?!?");
 			
 			//TODO: issue here with recent changes breaking behavior tree callback, needs fix! check for callback before source entity!!!
 			//mostly resolved in tryPath method, there are scenarios where it never gets the callback though... need external wait timeout maybe
@@ -621,7 +621,7 @@ public class PFQueue implements Runnable {
 	    		}
 	    		//int time = (int)Integer.pfDelays.get(var1).;
 	    	} else {
-	    		//System.out.println("new unique pfdelay entry, count: " + pfDelays.size());
+	    		//cpw.mods.fml.common.FMLLog.info("new unique pfdelay entry, count: " + pfDelays.size());
 	    		pfDelays.put(var1, System.currentTimeMillis() + delay);
 	    	}
 	    	
@@ -634,13 +634,13 @@ public class PFQueue implements Runnable {
 	    			PFJobData job = queue.get(i);
 	    			if (var1 == job.sourceEntity) {
 	    				queue.remove(job);
-	    				//System.out.println("preventing redundant pathing attempt, queue size was " + queue.size());
+	    				//cpw.mods.fml.common.FMLLog.info("preventing redundant pathing attempt, queue size was " + queue.size());
 	    				//tryPath = false;
 	    				break;
 	    			}
 	    		}*/
 	    	} catch (Exception ex) {
-	    		//ex.printStackTrace();
+	    		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 	    	}
     	}
     	
@@ -665,11 +665,11 @@ public class PFQueue implements Runnable {
 		    		int pos = 0;
 		    		while (queue.size() > 0 && parJob.priority < queue.get(pos++).priority) { } queue.add(pos, parJob);
 		    	}
-	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) System.out.println("pfqueue job aborted: " + ex);*/ }
+	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) cpw.mods.fml.common.FMLLog.info("pfqueue job aborted: " + ex);*/ }
 	    	
 	    	//instance.manageQueue();
 	    	//if (var1 != null) {
-	    		//System.out.println("ent " + var1.entityId + " pathing, maxdist: " + var2);
+	    		//cpw.mods.fml.common.FMLLog.info("ent " + var1.entityId + " pathing, maxdist: " + var2);
 	    	//}
 	    	
 	    	// IMPORTANT!!!!! //
@@ -698,7 +698,7 @@ public class PFQueue implements Runnable {
     	//SOURCE - might not work right - fix fence horror, find the near air block
     	/*int id = var1.worldObj.getBlockId(MathHelper.floor_double(var1.posX), MathHelper.floor_double(var1.boundingBox.minY), MathHelper.floor_double(var1.posZ)x, y-1, z);
     	if (id != 0 && Block.blocksList[id] instanceof BlockFence) {
-    		System.out.println("fence fix test");
+    		cpw.mods.fml.common.FMLLog.info("fence fix test");
     		Random rand = new XSTR();
     		
     		//derp attempt
@@ -737,7 +737,7 @@ public class PFQueue implements Runnable {
     		}
     		//int time = (int)Integer.pfDelays.get(var1).;
     	} else {
-    		//System.out.println("new unique pfdelay entry, count: " + pfDelays.size());
+    		//cpw.mods.fml.common.FMLLog.info("new unique pfdelay entry, count: " + pfDelays.size());
     		pfDelays.put(var1, System.currentTimeMillis() + delay);
     	}
     	
@@ -756,7 +756,7 @@ public class PFQueue implements Runnable {
     			}
     		}*/
     	} catch (Exception ex) {
-    		//ex.printStackTrace();
+    		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	
     	//temp
@@ -779,7 +779,7 @@ public class PFQueue implements Runnable {
     			job.callback = parCallback;
     			job.canUseLadder = true;
     		} else {
-    			System.out.println("invalid use of PFQueue");
+    			cpw.mods.fml.common.FMLLog.info("invalid use of PFQueue");
     		}
     		
 	    	/*PFQueueItem job = new PFQueueItem(var1, x, y, z, var2, priority, parCallback);
@@ -802,11 +802,11 @@ public class PFQueue implements Runnable {
 		    		
 		    		queue.add(pos, job);
 		    	}
-	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) System.out.println("pfqueue job aborted: " + ex);*/ }
+	    	} catch (Exception ex) { /*if (false*//*mod_EntMover.masterDebug*//*) cpw.mods.fml.common.FMLLog.info("pfqueue job aborted: " + ex);*/ }
 	    	
 	    	//instance.manageQueue();
 	    	if (var1 != null) {
-	    		//System.out.println("ent " + var1.entityId + " pathing, maxdist: " + var2);
+	    		//cpw.mods.fml.common.FMLLog.info("ent " + var1.entityId + " pathing, maxdist: " + var2);
 	    	}
 	    	
 	    	// IMPORTANT!!!!! //
@@ -959,7 +959,7 @@ public class PFQueue implements Runnable {
         PathEntityEx var12 = this.addToPath(parJob, startPoint, endPoint, size, parJob.distMax);
         
         if (parJob != null && parJob.sourceEntity != null) {
-        	//System.out.println("post pf entityID: " + parJob.sourceEntity.entityId + " - path length: " + var12.pathLength);
+        	//cpw.mods.fml.common.FMLLog.info("post pf entityID: " + parJob.sourceEntity.entityId + " - path length: " + var12.pathLength);
         }
         
         return var12;
@@ -1035,7 +1035,7 @@ public class PFQueue implements Runnable {
         
         //simplify path is trimming out the node infront of the ladder, this is a temp fix, a proper fix might be an extra marker on a node that its a ladder node, and that it cant be 'simplified'
         //if (queue.get(0) == null || (!queue.get(0).ladderInPath && !queue.get(0).canClimb)) var12 = simplifyPath(var12, var11);
-        //System.out.println("PF asasasSize: " + queue.size());
+        //cpw.mods.fml.common.FMLLog.info("PF asasasSize: " + queue.size());
         return var12;
     }
 
@@ -1060,11 +1060,11 @@ public class PFQueue implements Runnable {
         	try {
         		if (sleepCount++ > 100) {
         			Thread.sleep(1);
-        			//System.out.println("sssssss: " + queue.size());
+        			//cpw.mods.fml.common.FMLLog.info("sssssss: " + queue.size());
         			sleepCount = 0;
         		}
         	} catch (Exception ex) {
-        		//ex.printStackTrace();
+        		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         	}
         	
         	//Grab next point from the front of the line
@@ -1355,23 +1355,23 @@ public class PFQueue implements Runnable {
         }
         
         /*if (var7 != null && getBlockId(var7.xCoord, var7.yCoord, var7.zCoord) != 0 && Block.blocksList[getBlockId(var7.xCoord, var7.yCoord, var7.zCoord)].isLadder(null, var7.xCoord, var7.yCoord, var7.zCoord)) {
-        	System.out.println("hue");
+        	cpw.mods.fml.common.FMLLog.info("hue");
         	return var7;
         }*/
         
         /*if (var7 != null && getBlockId(var7.xCoord, var7.yCoord+var6, var7.zCoord) != 0 && Block.blocksList[getBlockId(var7.xCoord, var7.yCoord+var6, var7.zCoord)].isLadder(null, var7.xCoord, var7.yCoord+var6, var7.zCoord)) {
-        	System.out.println("hue2");
+        	cpw.mods.fml.common.FMLLog.info("hue2");
         	return var7;
         }*/
 
         /*Block block = Block.blocksList[worldMap.getBlockId(var2, var3 + var6 - 1, var4)];
         if (var1 != null && block != null && block.isLadder(var1.worldObj, var2, var3 + var6 - 1, var4)) {
-        	//System.out.println("what!");
+        	//cpw.mods.fml.common.FMLLog.info("what!");
         	//return this.openPoint(var2, var3 + var6 - 1, var4);
         }*/
         
         //if (this.getVerticalOffset(var1, var2, var3 + var6, var4, var5) == -10) {
-        	//System.out.println("what!");
+        	//cpw.mods.fml.common.FMLLog.info("what!");
         	//return this.openPoint(var2, var3 + var6 - 1, var4);
         //}
         
@@ -1398,7 +1398,7 @@ public class PFQueue implements Runnable {
 	
 	                //if ladder
 	                /*if (var9 == -10) {
-	                	System.out.println("ladder marked!");
+	                	cpw.mods.fml.common.FMLLog.info("ladder marked!");
 	                	return this.openPoint(var2, var3 - 1, var4);
 	                }*/
 	                
@@ -1456,7 +1456,7 @@ public class PFQueue implements Runnable {
                             }*/
                             
                             /*if (var9 == Block.ladder.blockID) {
-                                System.out.println("ladder!");
+                                cpw.mods.fml.common.FMLLog.info("ladder!");
                             }*/
                             
                             Material var11 = var9.getMaterial();//Block.blocksList[var9].blockMaterial;
@@ -1582,7 +1582,7 @@ public class PFQueue implements Runnable {
         			sleepCount = 0;
         		}
         	} catch (Exception ex) {
-        		//ex.printStackTrace();
+        		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         	}
             PathPointEx pathpoint4 = apathpoint[k];
             if(pathpoint1 == null)

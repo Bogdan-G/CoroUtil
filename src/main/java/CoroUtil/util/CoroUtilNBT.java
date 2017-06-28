@@ -24,7 +24,7 @@ public class CoroUtilNBT {
 				newNBT.setTag(tagName, data);
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		return newNBT;
@@ -68,7 +68,7 @@ public class CoroUtilNBT {
 	            nbttagcompound.setTag(s, ((NBTBase)tagMap.get(s)).copy());
 	        }
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 
         return nbttagcompound;

@@ -20,7 +20,7 @@ public class MobEnhancer {
 			xp += difficultyScale * 10F;
 			ObfuscationReflectionHelper.setPrivateValue(EntityLiving.class, ent, xp, "field_70728_aV", "experienceValue");
 		} catch (Exception e) {
-			e.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		}
 	}
 	

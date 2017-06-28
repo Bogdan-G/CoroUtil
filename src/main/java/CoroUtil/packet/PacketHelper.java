@@ -58,7 +58,7 @@ public class PacketHelper {
 	    	buff.writeInt(tEnt.yCoord);
 	    	buff.writeInt(tEnt.zCoord);*/
 		} catch (Exception e) {
-			e.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		}
 	}
 	
@@ -73,7 +73,7 @@ public class PacketHelper {
 			//writeNBTTagCompound(parNBT, dos);
 			ByteBufUtils.writeTag(byteBuf, parNBT);
 		} catch (Exception e) {
-			e.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		}
 		
 		/*Packet250CustomPayload pkt = new Packet250CustomPayload();
@@ -103,7 +103,7 @@ public class PacketHelper {
 			//this is the watchable object terminator indicator required for proper packet reading
 			dos.writeByte(127);
 		} catch (IOException e) {
-			e.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		}*/
 		
 		/*Packet250CustomPayload pkt = new Packet250CustomPayload();
@@ -128,7 +128,7 @@ public class PacketHelper {
 			writeTEntToPacket(tEnt, dos);
 			TileDataWatcher.writeObjectsInListToStream(tileDataWatcher.unwatchAndReturnAllWatched(), dos);
 		} catch (IOException e) {
-			e.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		}*/
 		
 		/*Packet250CustomPayload pkt = new Packet250CustomPayload();
@@ -165,7 +165,7 @@ public class PacketHelper {
         }
         catch (Exception ex)
         {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
 
         /*Packet250CustomPayload pkt = new Packet250CustomPayload();
@@ -200,7 +200,7 @@ public class PacketHelper {
         	//byteBuf.writeBytes(CompressedStreamTools.compress(parNBT));
         	ByteBufUtils.writeTag(byteBuf, parNBT);
         } catch (Exception ex) {
-        	ex.printStackTrace();
+        	cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
 
         return new FMLProxyPacket(byteBuf, parChannel);

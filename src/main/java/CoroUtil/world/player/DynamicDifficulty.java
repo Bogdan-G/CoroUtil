@@ -63,7 +63,7 @@ public class DynamicDifficulty {
 					long timeOfDay = world.getWorldTime() % 24000;
 					int killTimeRange = 10;
 					if (timeOfDay >= (long)ConfigCoroAI.cleanupStrayMobsTimeOfDay && timeOfDay < (long)(2000+killTimeRange)) {
-						System.out.println("KILLING ALL ZOMBIES!");
+						cpw.mods.fml.common.FMLLog.info("KILLING ALL ZOMBIES!");
 						for (Object obj : world.getLoadedEntityList()) {
 							if (obj instanceof EntityZombie) {
 								((EntityZombie) obj).setDead();
@@ -92,14 +92,14 @@ public class DynamicDifficulty {
 		
 		boolean dbg = false;
 		
-		if (dbg) System.out.println("player tick");
+		if (dbg) cpw.mods.fml.common.FMLLog.info("player tick");
 		
 		if ((!player.capabilities.isCreativeMode || autoAttackTest)) {
-			if (dbg) System.out.println("1");
+			if (dbg) cpw.mods.fml.common.FMLLog.info("1");
     		if ((player.capabilities.isFlying || (!player.onGround && !player.isInWater() && !player.isInsideOfMaterial(Material.lava)))) {
-    			if (dbg) System.out.println("2");
+    			if (dbg) cpw.mods.fml.common.FMLLog.info("2");
     			if (player.ridingEntity == null) {
-    				if (dbg) System.out.println("3");
+    				if (dbg) cpw.mods.fml.common.FMLLog.info("3");
     				Block block = null;
     				int pX = MathHelper.floor_double(player.posX);
     				int pY = MathHelper.floor_double(player.boundingBox.minY);
@@ -113,7 +113,7 @@ public class DynamicDifficulty {
     								List<Object> list = new ArrayList<Object>();
     								block.addCollisionBoxesToList(world, pX+x, pY+y, pZ+z, player.boundingBox, list, player);
     								if (list.size() > 0) {
-    									if (dbg) System.out.println("wall found - " + block + " - " + (pX+x) + ", " + (pY+y) + ", " + (pZ+z));
+    									if (dbg) cpw.mods.fml.common.FMLLog.info("wall found - " + block + " - " + (pX+x) + ", " + (pY+y) + ", " + (pZ+z));
         								foundWall = true;
         								break;
     								}
@@ -125,7 +125,7 @@ public class DynamicDifficulty {
     				}
     				
     				if (!foundWall) {
-    					if (dbg) System.out.println("no wall found");
+    					if (dbg) cpw.mods.fml.common.FMLLog.info("no wall found");
     					isInAir = true;
     				}
     			}
@@ -133,11 +133,11 @@ public class DynamicDifficulty {
 		}
 		
 		if (isInAir) {
-			if (dbg) System.out.println("in air");
+			if (dbg) cpw.mods.fml.common.FMLLog.info("in air");
 			long airTime = player.getEntityData().getLong(dataPlayerDetectInAirTime);
 			player.getEntityData().setLong(dataPlayerDetectInAirTime, airTime+1);
 		} else {
-			if (dbg) System.out.println("not in air");
+			if (dbg) cpw.mods.fml.common.FMLLog.info("not in air");
 			player.getEntityData().setLong(dataPlayerDetectInAirTime, 0);
 		}
 		
@@ -385,7 +385,7 @@ public class DynamicDifficulty {
 					int curVal = nbt.getInteger(dataPlayerHarvestOre);
 					curVal++;
 					nbt.setInteger(dataPlayerHarvestOre, curVal);
-					//System.out.println("increment!");
+					//cpw.mods.fml.common.FMLLog.info("increment!");
 				} else if (event.block instanceof BlockLog) {
 					int curVal = nbt.getInteger(dataPlayerHarvestLog);
 					curVal++;
@@ -397,7 +397,7 @@ public class DynamicDifficulty {
 				nbt.setFloat(dataPlayerHarvestRating, curVal);*/
 				increaseInvadeRating(event.harvester, getBlockImportanceValue(event.block));
 				
-				//System.out.println("harvested block for " + event.harvester.username + " - " + event.block);
+				//cpw.mods.fml.common.FMLLog.info("harvested block for " + event.harvester.username + " - " + event.block);
 			}
 		}
 	}
@@ -408,7 +408,7 @@ public class DynamicDifficulty {
 		curVal += parVal;
 		nbt.setFloat(dataPlayerHarvestRating, curVal);
 		
-		//System.out.println("curVal: " + curVal);
+		//cpw.mods.fml.common.FMLLog.info("curVal: " + curVal);
 	}
 	
 	public static void decreaseInvadeRating(EntityPlayer parPlayer, float parVal) {
@@ -430,7 +430,7 @@ public class DynamicDifficulty {
 		
 		boolean test = false;
 		if (test) {
-			System.out.println("TEST INVADE IS ON!");
+			cpw.mods.fml.common.FMLLog.info("TEST INVADE IS ON!");
 			return 30;
 		}
 		
@@ -523,7 +523,7 @@ public class DynamicDifficulty {
 						
 						log.getListDPSs().add(damage);
 						
-						//System.out.println("dps log: " + damage + " new Damage: " + event.ammount + " tickDiff: " + timeDiff + " source: " + event.source.damageType + " ID: " + ent.getEntityId());
+						//cpw.mods.fml.common.FMLLog.info("dps log: " + damage + " new Damage: " + event.ammount + " tickDiff: " + timeDiff + " source: " + event.source.damageType + " ID: " + ent.getEntityId());
 						
 						
 					} else {
@@ -623,7 +623,7 @@ public class DynamicDifficulty {
 				
 				cdp.averageDPS = avgDPS3;
 				
-				//System.out.println("average of the average of the average: " + avgDPS3);
+				//cpw.mods.fml.common.FMLLog.info("average of the average of the average: " + avgDPS3);
 			}
 			
 			cdp.lastDPSRecalc = world.getTotalWorldTime();

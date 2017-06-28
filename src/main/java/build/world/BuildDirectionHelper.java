@@ -15,7 +15,7 @@ public class BuildDirectionHelper {
 		if (parDirection == 2) return new ChunkCoordinates(-1, 0, 0);
 		if (parDirection == 3) return new ChunkCoordinates(0, 0, 1);
 		
-		System.out.println("warning, misuse of getDirectionToCoords()");
+		cpw.mods.fml.common.FMLLog.info("warning, misuse of getDirectionToCoords()");
 		return null;
 	}
 	
@@ -25,7 +25,7 @@ public class BuildDirectionHelper {
 		if (parCoords.posX < 0) return 2;
 		if (parCoords.posZ > 0) return 3;
 		
-		System.out.println("warning, misuse of getCoordsToDirection()");
+		cpw.mods.fml.common.FMLLog.info("warning, misuse of getCoordsToDirection()");
 		return -1;
 	}
 	

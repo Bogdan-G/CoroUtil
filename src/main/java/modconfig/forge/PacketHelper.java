@@ -78,7 +78,7 @@ public class PacketHelper {
         }
         catch (Exception ex)
         {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
 
         Packet250CustomPayload pkt = new Packet250CustomPayload();

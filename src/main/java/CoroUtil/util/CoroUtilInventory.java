@@ -24,7 +24,7 @@ public class CoroUtilInventory {
             			count += is.stackSize;
             		}
             	} else {
-            		System.out.println("CoroUtilInventory.getItemCount found nameless item " + is.getItem() + " in inventory, its not registered properly!");
+            		cpw.mods.fml.common.FMLLog.info("CoroUtilInventory.getItemCount found nameless item " + is.getItem() + " in inventory, its not registered properly!");
             	}
             }
         }
@@ -41,7 +41,7 @@ public class CoroUtilInventory {
 	}
 	
 	public static void chestOpen(World world, int x, int y, int z) {
-		//System.out.println("new ai chest open called, needs tracking for closing chest");
+		//cpw.mods.fml.common.FMLLog.info("new ai chest open called, needs tracking for closing chest");
 		chestStateSend(world, x, y, z, false);
 	}
 	

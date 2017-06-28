@@ -156,7 +156,7 @@ public class ModelRendererBones
     	
     	//fallback with no data
     	if (animData == null) {
-    		System.out.println("no animData found, creating a blank one");
+    		cpw.mods.fml.common.FMLLog.info("no animData found, creating a blank one");
     		animData = new AnimationStateObject(boxName);
     	}
     	

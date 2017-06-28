@@ -88,7 +88,7 @@ public class Wander extends Selector {
 		} else {
 			if (!entInt.getAIBTAgent().tamable.shouldStayStill()) {
 				if (rand.nextInt(5) == 0) {
-					//System.out.println("waiting for path still? " + entInt.getAIBTAgent().blackboard.isWaitingForPath.booleanValue());
+					//cpw.mods.fml.common.FMLLog.info("waiting for path still? " + entInt.getAIBTAgent().blackboard.isWaitingForPath.booleanValue());
 					if (!entInt.getAIBTAgent().blackboard.isWaitingForPath.booleanValue()/* && (entInt.getAIBTAgent().pathNav.noPath() || entInt.getAIBTAgent().pathNav.getPath().isFinished())*/) {
 						flag = true;
 						i = (float) entInt.getAIBTAgent().tamable.getPlayerCached().posX;
@@ -108,7 +108,7 @@ public class Wander extends Selector {
         {
         	lastWanderPos = Vec3.createVectorHelper(i, j, k);
         	entInt.getAIBTAgent().blackboard.setMoveTo(lastWanderPos);
-        	//System.out.println("wander - " + i + " - " + j + " - " + k);
+        	//cpw.mods.fml.common.FMLLog.info("wander - " + i + " - " + j + " - " + k);
         	
         } else {
         	lastWanderPos = null;

@@ -79,7 +79,7 @@ public class RotatingEffectRenderer
 
                 if (var3 == null)
                 {
-                    //System.out.println("Null particle!");
+                    //cpw.mods.fml.common.FMLLog.info("Null particle!");
                     continue;
                 }
 
@@ -164,7 +164,7 @@ public class RotatingEffectRenderer
 
                         if (var12 == null)
                         {
-                            //System.out.println("Null particle2!");
+                            //cpw.mods.fml.common.FMLLog.info("Null particle2!");
                             continue;
                         }
                         

@@ -123,7 +123,7 @@ public class EntityTexFX extends EntityRotFX
         //var13 += i;//rand.nextInt(6)-3;
         //var14 += j;
         //var15 += k;
-        //System.out.println("!!!");
+        //cpw.mods.fml.common.FMLLog.info("!!!");
         float var16 = /*this.getEntityBrightness(var2) * */brightness;
         /*this.getBrightness(var2) * */
         var16 = (1F + FMLClientHandler.instance().getClient().gameSettings.gammaSetting) - (this.worldObj.calculateSkylightSubtracted(var2) * 0.13F);

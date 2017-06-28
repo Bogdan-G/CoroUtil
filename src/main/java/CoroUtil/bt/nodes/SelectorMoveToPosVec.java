@@ -30,7 +30,7 @@ public class SelectorMoveToPosVec extends Selector {
 		//closeDist = 1;
 		
 		if (blackboard.posMoveTo != null) {
-			//System.out.println("close combat!");
+			//cpw.mods.fml.common.FMLLog.info("close combat!");
 			
 			double distToPos = blackboard.agent.ent.getDistance(blackboard.posMoveTo.xCoord, blackboard.posMoveTo.yCoord, blackboard.posMoveTo.zCoord);
 			

@@ -41,12 +41,12 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			System.out.println("BuildMod packet command from server: " + command);
+			cpw.mods.fml.common.FMLLog.info("BuildMod packet command from server: " + command);
 			
 			
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}
@@ -60,7 +60,7 @@ public class EventHandlerPacket {
 			
 			String command = nbt.getString("command");
 			
-			System.out.println("BuildMod packet command from client: " + command);
+			cpw.mods.fml.common.FMLLog.info("BuildMod packet command from client: " + command);
 			
 			if (command.equals("Build_Command")) {
 				
@@ -85,14 +85,14 @@ public class EventHandlerPacket {
             			cb.clipboardData.map_sizeY = sY;
             			cb.clipboardData.map_sizeZ = sZ;
             			cb.clipboardData.scanLevelToData();
-            			System.out.println("copy: " + x + ", " + y + ", " + z + ", " + sX + ", " + sY + ", " + sZ);
+            			cpw.mods.fml.common.FMLLog.info("copy: " + x + ", " + y + ", " + z + ", " + sX + ", " + sY + ", " + sZ);
             		} else {
             			int dir = nbt.getInteger("direction");
             			cb.clipboardData.setCornerPosition(x, y, z);
             			cb.clipboardData.dim = entP.worldObj.provider.dimensionId;
             			BuildJob bj = new BuildJob(BuildServerTicks.buildMan.activeBuilds.size(), cb.clipboardData);
                 		bj.setDirection(dir);
-            			System.out.println("build: " + x + ", " + y + ", " + z + ", dir:" + bj.direction);
+            			cpw.mods.fml.common.FMLLog.info("build: " + x + ", " + y + ", " + z + ", dir:" + bj.direction);
             			bj.useRotationBuild = true;
             			bj.useFirstPass = false;
             			bj.build_rate = 100;
@@ -103,7 +103,7 @@ public class EventHandlerPacket {
 				
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

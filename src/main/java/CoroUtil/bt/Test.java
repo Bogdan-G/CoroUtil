@@ -25,7 +25,7 @@ public class Test {
 	}
 	
 	public void tick() {
-		System.out.println("-------------");
+		cpw.mods.fml.common.FMLLog.info("-------------");
 		priSelector.tick();
 	}
 	

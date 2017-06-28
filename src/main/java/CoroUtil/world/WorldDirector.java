@@ -93,7 +93,7 @@ public class WorldDirector implements Runnable {
 			threadedDirector = new Thread(this, "World Simulation Thread");
 			threadedDirector.start();
 		} else {
-			//System.out.println("tried to start thread when already running for CoroUtil world director");
+			//cpw.mods.fml.common.FMLLog.info("tried to start thread when already running for CoroUtil world director");
 			cpw.mods.fml.common.FMLLog.fine("tried to start thread when already running for CoroUtil world director");
 		}
 	}
@@ -154,7 +154,7 @@ public class WorldDirector implements Runnable {
 				//relocated to a ticking first time init so it can be after readnbt
 				//if (init) location.init();
 			} else {
-				//System.out.println("warning: location already exists at these coords: " + location.getOrigin());
+				//cpw.mods.fml.common.FMLLog.info("warning: location already exists at these coords: " + location.getOrigin());
 				cpw.mods.fml.common.FMLLog.warning("warning: location already exists at these coords: %s", location.getOrigin());
 			}
 		}
@@ -168,7 +168,7 @@ public class WorldDirector implements Runnable {
 				lookupTickingManagedLocations.remove(hash);
 				location.cleanup();
 			} else {
-				//System.out.println("Error, couldnt find location for removal");
+				//cpw.mods.fml.common.FMLLog.info("Error, couldnt find location for removal");
 				cpw.mods.fml.common.FMLLog.warning("Error, couldnt find location for removal");
 			}
 		}
@@ -299,7 +299,7 @@ public class WorldDirector implements Runnable {
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -317,7 +317,7 @@ public class WorldDirector implements Runnable {
     		
     		boolean bool = false;
     		if (extraData != null) bool = extraData.getBoolean("generatedTown");
-    		//System.out.println("writing nbt, generatedTown: " + bool);
+    		//cpw.mods.fml.common.FMLLog.info("writing nbt, generatedTown: " + bool);
     		
     		//update runtime data to nbt
     		writeToNBT(nbt);
@@ -325,7 +325,7 @@ public class WorldDirector implements Runnable {
     		
     		String saveFolder = CoroUtilFile.getWorldSaveFolderPath() + CoroUtilFile.getWorldFolderName() + "CoroUtil" + File.separator + "World" + File.separator;
     		
-    		//System.out.println("saveFolder: " + saveFolder);
+    		//cpw.mods.fml.common.FMLLog.info("saveFolder: " + saveFolder);
     		
     		//Write out to file
     		if (!(new File(saveFolder).exists())) (new File(saveFolder)).mkdirs();
@@ -334,7 +334,7 @@ public class WorldDirector implements Runnable {
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -363,9 +363,9 @@ public class WorldDirector implements Runnable {
 			
 		    try {
 		        aClass = classLoader.loadClass(classname);
-		        //System.out.println("aClass.getName() = " + aClass.getName());
+		        //cpw.mods.fml.common.FMLLog.info("aClass.getName() = " + aClass.getName());
 		    } catch (ClassNotFoundException e) {
-		        e.printStackTrace();
+		        cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 		    }
 
 			ISimulationTickable locationObj = null;
@@ -373,7 +373,7 @@ public class WorldDirector implements Runnable {
 		    	try {
 		    		locationObj = (ISimulationTickable)aClass.getConstructor(new Class[] {}).newInstance();
 				} catch (Exception ex) {
-					ex.printStackTrace();
+					cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 				}
 		    }
 		    if (locationObj != null) {
@@ -382,7 +382,7 @@ public class WorldDirector implements Runnable {
 				locationObj.initPost();
 				addTickingLocation(locationObj);
 				
-				//System.out.println("reading in ticking location: " + nbt.toString() + " - " + entrance.getOrigin().posX + " - " + entrance.spawn.posZ);
+				//cpw.mods.fml.common.FMLLog.info("reading in ticking location: " + nbt.toString() + " - " + entrance.getOrigin().posX + " - " + entrance.spawn.posZ);
 		    }
 		}
 	}
@@ -432,7 +432,7 @@ public class WorldDirector implements Runnable {
 				}
 				Thread.sleep(threadSleepRate);
 			} catch (Exception e) {
-				e.printStackTrace();
+				cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 				stopThread();
 			}
 			

@@ -98,8 +98,8 @@ public class ParticleBehaviors {
 				particle.motionY -= 0.15D;
 			}
 			
-			particle.motionX += (rand.nextDouble() - rand.nextDouble()) * speed2;
-			particle.motionZ += (rand.nextDouble() - rand.nextDouble()) * speed2;
+			particle.motionX += (rand.nextFloat() - rand.nextFloat()) * speed2;
+			particle.motionZ += (rand.nextFloat() - rand.nextFloat()) * speed2;
 			
 		}
 		
@@ -148,7 +148,7 @@ public class ParticleBehaviors {
 		int ticksFadeInMax = 100;
 		
 		if (particle.getAge() < ticksFadeInMax) {
-			//System.out.println("particle.getAge(): " + particle.getAge());
+			//cpw.mods.fml.common.FMLLog.info("particle.getAge(): " + particle.getAge());
 			particle.setAlphaF(particle.getAge() * 0.01F);
 		} else {
 			if (particle.getAlphaF() > 0) {

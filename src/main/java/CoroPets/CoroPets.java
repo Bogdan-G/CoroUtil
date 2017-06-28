@@ -77,7 +77,7 @@ public class CoroPets {
     
     public static void initTry() {
     	if (initProperNeededForInstance) {
-    		//System.out.println("CoroUtil being reinitialized");
+    		//cpw.mods.fml.common.FMLLog.info("CoroUtil being reinitialized");
     		initProperNeededForInstance = false;
 	    	CoroUtilFile.getWorldFolderName();
     	}

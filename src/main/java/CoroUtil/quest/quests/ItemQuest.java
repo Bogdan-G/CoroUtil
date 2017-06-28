@@ -63,7 +63,7 @@ public class ItemQuest extends ActiveQuest {
 		if (event.entityPlayer.equals(playerQuests.getPlayer()) && CoroUtilItem.getNameByItem(event.item.getEntityItem().getItem()).equals(neededItemID)) {
 			curItemCount++;
 			saveAndSync();
-			System.out.println("quest item inc");
+			cpw.mods.fml.common.FMLLog.info("quest item inc");
 		}
 	}
 	

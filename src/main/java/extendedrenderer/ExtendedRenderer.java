@@ -90,6 +90,7 @@ public class ExtendedRenderer {
 	}
 	
 	public static void dbg(Object obj) {
-		if (true) System.out.println(obj);
+		//if (true) System.out.println(obj);
+		cpw.mods.fml.common.FMLLog.fine("%s", obj);
 	}
 }

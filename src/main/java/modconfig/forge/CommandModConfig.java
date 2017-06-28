@@ -96,8 +96,8 @@ public class CommandModConfig extends CommandBase {
 				}
 			}
 		} catch (Exception ex) {
-			System.out.println("Exception handling Config Mod command");
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.info("Exception handling Config Mod command");
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}

@@ -32,7 +32,7 @@ public class CoroUtilItem {
 				return null;
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		return null;
 	}
@@ -50,7 +50,7 @@ public class CoroUtilItem {
 		try {
 			return (float)attributes.getAttributeInstance(SharedMonsterAttributes.attackDamage).getAttributeValue();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 			return 1;
 		}
 	}

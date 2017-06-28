@@ -19,7 +19,7 @@ public class CoroUtilAbility {
 		if (ability != null) {
 			nbt = nbtSyncWriteAbility(ability, fullSync);
 		} else {
-			System.out.println("Error: failed to find ability to sync: " + abilityName);
+			cpw.mods.fml.common.FMLLog.info("Error: failed to find ability to sync: " + abilityName);
 		}
 		return nbt;
 	}
@@ -89,7 +89,7 @@ public class CoroUtilAbility {
 					if (data.getBoolean("fullSave")) {
 						ability.nbtLoad(data);
 					} else {
-						System.out.println("Abilities error: code tried to do a full nbt load but one is not available, implementation error - " + owner);
+						cpw.mods.fml.common.FMLLog.info("Abilities error: code tried to do a full nbt load but one is not available, implementation error - " + owner);
 						//note to self, 2 causes is:
 						//- world mass entity reload causing different load ordering
 						//- entities spawned outside of entity tracker range, entity is added to client later, doesnt get packets
@@ -109,11 +109,11 @@ public class CoroUtilAbility {
 					if (!abilities.contains(abilityName)) {
 						abilities.put(abilityName, ability);
 					} else {
-						//System.out.println("error: skill exists already");
+						//cpw.mods.fml.common.FMLLog.info("error: skill exists already");
 					}
 				//}
 			} else {
-				System.out.println("critical error reading skill from nbt/list");
+				cpw.mods.fml.common.FMLLog.info("critical error reading skill from nbt/list");
 			}
 		}
 	}
@@ -128,7 +128,7 @@ public class CoroUtilAbility {
 				return (Ability) createObject;
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 		return null;

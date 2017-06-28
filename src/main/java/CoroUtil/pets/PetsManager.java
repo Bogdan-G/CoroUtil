@@ -53,13 +53,13 @@ public class PetsManager {
 	}
 	
 	public void hookPetInstanceReloaded(EntityCreature ent) {
-		System.out.println("pet reloaded: " + ent);
+		cpw.mods.fml.common.FMLLog.info("pet reloaded: " + ent);
 		UUID uuid = ent.getUniqueID();
 		initPetsNewInstance(ent);
 	}
 	
 	public void hookPetInstanceUnloaded(EntityCreature ent) {
-		System.out.println("pet unloaded: " + ent);
+		cpw.mods.fml.common.FMLLog.info("pet unloaded: " + ent);
 	}
 	
 	public void initPetsNewInstance(EntityCreature ent) {
@@ -68,7 +68,7 @@ public class PetsManager {
 		if (entry != null) {
 			BehaviorModifier.tameMob(ent, entry.ownerUUID, false);
 		} else {
-			System.out.println("WARNING!!! failed to find entry for this reloaded mob that is marked tame ");
+			cpw.mods.fml.common.FMLLog.info("WARNING!!! failed to find entry for this reloaded mob that is marked tame ");
 		}
 	}
 	
@@ -92,7 +92,7 @@ public class PetsManager {
     		}
 			
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	} finally {
     		
     		
@@ -116,7 +116,7 @@ public class PetsManager {
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

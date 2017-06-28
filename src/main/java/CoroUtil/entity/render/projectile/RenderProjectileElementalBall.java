@@ -59,7 +59,7 @@ public class RenderProjectileElementalBall extends RenderProjectileBase {
 	        	this.renderFallingCube(var1, block, var1.worldObj, MathHelper.floor_double(var1.posX), MathHelper.floor_double(var1.posY), MathHelper.floor_double(var1.posZ), 0);
 	        }
         } else {
-        	System.out.println("moving block has no blockID set for render");
+        	cpw.mods.fml.common.FMLLog.info("moving block has no blockID set for render");
         }
         
         GL11.glEnable(GL11.GL_FOG);

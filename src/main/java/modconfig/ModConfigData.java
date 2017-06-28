@@ -84,7 +84,7 @@ public class ModConfigData {
     		return true;
     	}
     	catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	return false;
     }
@@ -112,7 +112,7 @@ public class ModConfigData {
 	    	} else {
 	    		//dbg("unhandled datatype, update initField");
 	    	}
-    	} catch (Exception ex) { ex.printStackTrace(); }
+    	} catch (Exception ex) { cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex); }
     }
     
     private void inputField(String fieldName, Object obj) {
@@ -161,7 +161,7 @@ public class ModConfigData {
             comment = anno_comment.value()[0];
         }
 
-        //System.out.println("registering config field: " + name);
+        //cpw.mods.fml.common.FMLLog.info("registering config field: " + name);
 
         Object obj = ConfigMod.getField(configID, name);
         if (obj instanceof String) {

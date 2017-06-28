@@ -65,12 +65,12 @@ public class ItemEditTool extends Item {
     	} else if (mode == 1) {
     		if (subMode == 0) {
     			x1 = i; y1 = j; z1 = k;
-    			System.out.println("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
+    			cpw.mods.fml.common.FMLLog.info("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			subMode++;
     		} else {
     			x2 = i; y2 = j; z2 = k;
-    			System.out.println("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
+    			cpw.mods.fml.common.FMLLog.info("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			buildData.resetData();
     			buildData.recalculateLevelSize(x1, y1, z1, x2, y2, z2);
@@ -100,12 +100,12 @@ public class ItemEditTool extends Item {
     	} else if (mode == 1) {
     		if (subMode == 0) {
     			x1 = i; y1 = j; z1 = k;
-    			System.out.println("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
+    			cpw.mods.fml.common.FMLLog.info("minCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("minCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			subMode++;
     		} else {
     			x2 = i; y2 = j; z2 = k;
-    			System.out.println("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
+    			cpw.mods.fml.common.FMLLog.info("maxCoords Set -> X: "+i+" Y: "+j+" Z: "+k);
     			//ZCGame.instance.setModeMessage("maxCoords Set -> X: "+String.valueOf(i)+" Y: "+String.valueOf(j)+" Z: "+String.valueOf(k));
     			buildData.recalculateLevelSize(x1, y1, z1, x2, y2, z2);
     			buildData.writeNBT();

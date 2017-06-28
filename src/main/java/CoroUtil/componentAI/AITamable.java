@@ -77,7 +77,7 @@ public class AITamable {
 				if ((ent.onGround || ent.isInWater()) && teleportFromFarDist != -1 && job.ai.ent.getDistanceToEntity(ent) > teleportFromFarDist) {
 					double range = 2D;
 					Random rand = new XSTR();
-					job.ai.ent.setPosition(ent.posX + (rand.nextDouble() * range) - (rand.nextDouble() * range), ent.posY, ent.posZ + (rand.nextDouble() * range) - (rand.nextDouble() * range));
+					job.ai.ent.setPosition(ent.posX + (rand.nextFloat() * range) - (rand.nextFloat() * range), ent.posY, ent.posZ + (rand.nextFloat() * range) - (rand.nextFloat() * range));
 					job.ai.ent.getNavigator().clearPathEntity();
 				}
 				

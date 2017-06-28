@@ -110,7 +110,7 @@ public class EntityAnimalBase extends EntityAnimal implements IBTAgent, IAbility
     
     public void updateAITasks() {
     	//AIBTAgent.DEBUGTREES = true;
-    	//System.out.println("PUG AI TICK START");
+    	//cpw.mods.fml.common.FMLLog.info("PUG AI TICK START");
         agent.tickAI();
         AIBTAgent.DEBUGTREES = false;
     }

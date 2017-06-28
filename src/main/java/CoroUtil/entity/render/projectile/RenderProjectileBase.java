@@ -84,7 +84,7 @@ public class RenderProjectileBase extends Render
         float var13 = 0.8F;
         float var14 = 0.8F;
         
-        //var13 = (float) (var13 + org.bogdang.modifications.math.MathHelperLite.cos((var1.worldObj.getWorldTime() * 0.3F) - (/*var1.blockRow * */0.5F)) * 0.15F);
+        //var13 = (float) (var13 + Math.cos((var1.worldObj.getWorldTime() * 0.3F) - (/*var1.blockRow * */0.5F)) * 0.15F);
         var14 = var13;
         
         float var15 = 1.0F;

@@ -79,7 +79,7 @@ public class Ability {
 			}
 		}
 		
-		//System.out.println("Ability.tick(), isRemote: " + owner.worldObj.isRemote + " - name: " + name + " - charge: " + curTickCharge + " - perform: " + curTickPerform + " - cooldown: " + curTickCooldown);
+		//cpw.mods.fml.common.FMLLog.info("Ability.tick(), isRemote: " + owner.worldObj.isRemote + " - name: " + name + " - charge: " + curTickCharge + " - perform: " + curTickPerform + " - cooldown: " + curTickCooldown);
 		
 		if (curTickCharge < ticksToCharge) {
 			curTickCharge++;
@@ -133,7 +133,7 @@ public class Ability {
 	}
 	
 	public void setFinishedPerform() {
-		//System.out.println("perform finish - " + owner.worldObj.isRemote);
+		//cpw.mods.fml.common.FMLLog.info("perform finish - " + owner.worldObj.isRemote);
 		curTickPerform = ticksToPerform;
 		isActive = false;
 		isCoolingDown = true;
@@ -178,7 +178,7 @@ public class Ability {
 	
 	public void setFinishedEntirely() {
 		
-		//System.out.println("finished ability!");
+		//cpw.mods.fml.common.FMLLog.info("finished ability!");
 		
 		//incase something bypasses setFinishedPerform()
 		if (isActiveOrCoolingDown() && callback != null) {

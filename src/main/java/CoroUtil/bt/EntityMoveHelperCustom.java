@@ -53,12 +53,12 @@ public class EntityMoveHelperCustom
     public void onUpdateMoveHelper()
     {
     	
-    	//System.out.println("custom mover updating");
+    	//cpw.mods.fml.common.FMLLog.info("custom mover updating");
     	
     	if (entity instanceof EntityLiving) {
     		((EntityLiving)this.entity).setMoveForward(0.0F);
     	} else {
-    		System.out.println("EntityMoveHelperCustom being used on non EntityLiving entity, needs code patch");
+    		cpw.mods.fml.common.FMLLog.info("EntityMoveHelperCustom being used on non EntityLiving entity, needs code patch");
     	}
         
 
@@ -98,7 +98,7 @@ public class EntityMoveHelperCustom
                 {
                 	if (entity instanceof EntityLiving) {
                 		if (canFly || canSwimInWater) {
-                			//System.out.println("fly up test");
+                			//cpw.mods.fml.common.FMLLog.info("fly up test");
                 			
                 			
                 			
@@ -111,12 +111,12 @@ public class EntityMoveHelperCustom
                 			((EntityLiving)this.entity).getJumpHelper().setJumping();
                 		}
                 	} else {
-                		System.out.println("EntityMoveHelperCustom being used on non EntityLiving entity, needs code patch");
+                		cpw.mods.fml.common.FMLLog.info("EntityMoveHelperCustom being used on non EntityLiving entity, needs code patch");
                 	}
                 } else {
                 	if (canFly || canSwimInWater) {
                 		if (d2 < 0.0D/* && d0 * d0 + d1 * d1 < 1.0D*/) {
-                			//System.out.println("fly down test");
+                			//cpw.mods.fml.common.FMLLog.info("fly down test");
                 			//entity.motionY = -0.5F * this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue();
                 		}
                 	}

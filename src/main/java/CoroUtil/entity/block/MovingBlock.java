@@ -200,7 +200,7 @@ public class MovingBlock extends Entity implements IEntityAdditionalSpawnData
     		
     		if (firstTick) {
     			firstTick = false;
-    			System.out.println("commenting out PacketDispatcher.sendPacketToAllInDimension call in MovingBlock");
+    			cpw.mods.fml.common.FMLLog.info("commenting out PacketDispatcher.sendPacketToAllInDimension call in MovingBlock");
     			//PacketDispatcher.sendPacketToAllInDimension(new Packet34EntityTeleport(getEntityId(), this.myEntitySize.multiplyBy32AndRound(posX), this.myEntitySize.multiplyBy32AndRound(posY), this.myEntitySize.multiplyBy32AndRound(posZ), (byte)0, (byte)0), worldObj.provider.dimensionId);
     		}
     	}
@@ -256,7 +256,7 @@ public class MovingBlock extends Entity implements IEntityAdditionalSpawnData
 			    		
 			    		if (isSolid(idCheck)) {
 			    			if (curDist < 1D) {
-			    				//System.out.println("new solidify close!");
+			    				//cpw.mods.fml.common.FMLLog.info("new solidify close!");
 			    				//blockify(aheadX, aheadY, aheadZ);
 			    				//break;
 			    			} else {
@@ -270,11 +270,11 @@ public class MovingBlock extends Entity implements IEntityAdditionalSpawnData
 					    	int tryZ = MathHelper.floor_double(posZ + (motion.zCoord*curDist));
 				    		Block idTry = worldObj.getBlock(tryX, tryY, tryZ);
 				    		if (!isSolid(idTry)) {
-				    			//System.out.println("new solidify pull back!");
+				    			//cpw.mods.fml.common.FMLLog.info("new solidify pull back!");
 				    			blockify(tryX, tryY, tryZ);
 				    		} else {
 				    			//fail
-				    			//System.out.println("solidify fail");
+				    			//cpw.mods.fml.common.FMLLog.info("solidify fail");
 				    			this.setDead();
 				    		}
 				    		break;
@@ -282,7 +282,7 @@ public class MovingBlock extends Entity implements IEntityAdditionalSpawnData
 			    	}
 		    		
 			    	//blockify(coordsLastAir.posX, coordsLastAir.posY, coordsLastAir.posZ);
-		    		//System.out.println("blockify - " + curX + " - " + curY + " - " + curZ);
+		    		//cpw.mods.fml.common.FMLLog.info("blockify - " + curX + " - " + curY + " - " + curZ);
 		    	}
 		    	
 		    	
@@ -298,7 +298,7 @@ public class MovingBlock extends Entity implements IEntityAdditionalSpawnData
 		    		//final check to help verify its falling into solid ground
 		    		if (worldObj.getBlockId(curX, curY+1, curZ) != 0) {
 		    			blockify(curX, curY, curZ);
-			    		//System.out.println("blockify safety - " + curX + " - " + curY + " - " + curZ);
+			    		//cpw.mods.fml.common.FMLLog.info("blockify safety - " + curX + " - " + curY + " - " + curZ);
 		    		}
 		    		
 		    	}

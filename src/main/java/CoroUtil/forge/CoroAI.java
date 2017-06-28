@@ -91,7 +91,7 @@ public class CoroAI {
     
     public static void initTry() {
     	if (initProperNeededForInstance) {
-    		//System.out.println("CoroUtil being reinitialized");
+    		//cpw.mods.fml.common.FMLLog.info("CoroUtil being reinitialized");
     		cpw.mods.fml.common.FMLLog.info("CoroUtil being reinitialized");
     		initProperNeededForInstance = false;
 	    	CoroUtilFile.getWorldFolderName();
@@ -109,7 +109,7 @@ public class CoroAI {
 	    	PlayerQuestManager.i().saveData(false, unloadInstances);
 	    	WorldDirectorManager.instance().writeToFile(unloadInstances);
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     }
     

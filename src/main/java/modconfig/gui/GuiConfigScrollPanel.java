@@ -79,7 +79,7 @@ public class GuiConfigScrollPanel extends GuiBetterSlot
 	    		}
     		} catch (Exception ex) {
     			//mouseClicked NPE'd on me once, NEVER AGAIN!
-    			ex.printStackTrace();
+    			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     		}
     		/*if (check && !config.configData.get(i).editBox.isFocused()) {
     			String str1 = config.configData.get(i).editBox.text;
@@ -149,7 +149,7 @@ public class GuiConfigScrollPanel extends GuiBetterSlot
         try {
         	super.drawScreen(mX, mY, f);
         } catch (Exception ex) {
-        	ex.printStackTrace();
+        	cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         	//ConfigMod.dbg("exception drawing screen elements");
         }
     }

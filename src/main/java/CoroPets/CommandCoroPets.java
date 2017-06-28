@@ -31,13 +31,13 @@ public class CommandCoroPets extends CommandBase {
 				EntityPlayer player = getCommandSenderAsPlayer(var1);
 				
 				if ((MinecraftServer.getServer().isSinglePlayer() || MinecraftServer.getServer().getConfigurationManager().func_152596_g(player.getGameProfile())) && var2[0].equals("aitest")) {
-						System.out.println("AI TEST MODIFY!");
+						cpw.mods.fml.common.FMLLog.info("AI TEST MODIFY!");
 						BehaviorModifier.test(player.worldObj, Vec3.createVectorHelper(player.posX, player.posY, player.posZ), player);
 				}
 			}
 		} catch (Exception ex) {
-			System.out.println("Exception handling CoroPets command");
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.info("Exception handling CoroPets command");
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}

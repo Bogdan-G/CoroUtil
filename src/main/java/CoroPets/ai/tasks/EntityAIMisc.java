@@ -40,7 +40,7 @@ public class EntityAIMisc extends EntityAIBase
             		executingTasks.clear();
             	}
 			} catch (Exception e) {
-				e.printStackTrace();
+				cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
 			}
         	
         }
@@ -53,7 +53,7 @@ public class EntityAIMisc extends EntityAIBase
         //silence!
         this.thePet.livingSoundTime = -1000;
         
-        //System.out.println("health: " + this.thePet.getHealth());
+        //cpw.mods.fml.common.FMLLog.info("health: " + this.thePet.getHealth());
 
         return false;
     }

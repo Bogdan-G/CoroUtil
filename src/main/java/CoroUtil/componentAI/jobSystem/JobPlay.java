@@ -60,10 +60,10 @@ public class JobPlay extends JobBase {
 						//randChange = 90;
 						if (ent.worldObj.getWorldTime() % 40 < 20) {
 							rotationYaw -= 45;
-							//System.out.println("hit wall! 1");
+							//cpw.mods.fml.common.FMLLog.info("hit wall! 1");
 						} else {
 							rotationYaw += 45;
-							//System.out.println("hit wall! 2");
+							//cpw.mods.fml.common.FMLLog.info("hit wall! 2");
 						}
 						
 					} else {
@@ -83,12 +83,12 @@ public class JobPlay extends JobBase {
 					ent.getMoveHelper().setMoveTo(ent.posX+vecX, ent.posY, ent.posZ+vecZ, speed);
 					if (rand.nextInt(20) == 0) ent.getJumpHelper().setJumping();
 				} else {
-					//System.out.println("not safe to play, stopping!");
+					//cpw.mods.fml.common.FMLLog.info("not safe to play, stopping!");
 					
 					playReset();
 				}
 			} else {
-				//System.out.println("pathing play stop, stopping!");
+				//cpw.mods.fml.common.FMLLog.info("pathing play stop, stopping!");
 				playReset();
 			}
 		} else {
@@ -96,7 +96,7 @@ public class JobPlay extends JobBase {
 			if (tamable.isTame()) {
 				Random rand = new XSTR();
 				if (ent.getNavigator().noPath() && rand.nextInt(playTimeRandomSize) == 0) {
-					//System.out.println("play start");
+					//cpw.mods.fml.common.FMLLog.info("play start");
 					playStart();
 				}
 			}

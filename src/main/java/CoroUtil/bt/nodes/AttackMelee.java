@@ -69,7 +69,7 @@ public class AttackMelee extends Selector {
 	}
 	
 	public void attackMelee(Entity parTarget) {
-		//System.out.println("melee attack - " + ent);
+		//cpw.mods.fml.common.FMLLog.info("melee attack - " + ent);
 		attackCooldown = attackRate;
 		parTarget.attackEntityFrom(new EntityDamageSource("mob", ent), 10);
 		

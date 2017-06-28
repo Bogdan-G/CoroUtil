@@ -66,14 +66,14 @@ public class AbilityAttackMelee extends Ability {
 			return;
 		}
 		
-		//System.out.println("isRemote: " + owner.worldObj.isRemote);
+		//cpw.mods.fml.common.FMLLog.info("isRemote: " + owner.worldObj.isRemote);
 		if (!owner.worldObj.isRemote) {
 			//Random rand = new XSTR();//dead code?
-			//owner.worldObj.spawnParticle("largesmoke", owner.posX + (rand.nextDouble() - 0.5D) * (double)owner.width, owner.posY + rand.nextDouble() * (double)owner.height, owner.posZ + (rand.nextDouble() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
+			//owner.worldObj.spawnParticle("largesmoke", owner.posX + (rand.nextFloat() - 0.5D) * (double)owner.width, owner.posY + rand.nextFloat() * (double)owner.height, owner.posZ + (rand.nextFloat() - 0.5D) * (double)owner.width, 0.0D, 0.0D, 0.0D);
 		//} else {
 			
 			if (switchToMeleeSlot) {
-				//System.out.println("melee slot use!");
+				//cpw.mods.fml.common.FMLLog.info("melee slot use!");
 				if (owner instanceof IBTAgent) {
 					((IBTAgent)owner).getAIBTAgent().entInv.setSlotActive(AIInventory.slot_Melee);
 				}
@@ -99,7 +99,7 @@ public class AbilityAttackMelee extends Ability {
 				if (dist <= hitRange) {
 					
 					if (curTickPerform >= ticksHitTarg - ticksHitRange && curTickPerform <= ticksHitTarg + ticksHitRange) {
-						//System.out.println("hit");
+						//cpw.mods.fml.common.FMLLog.info("hit");
 						this.target.attackEntityFrom(new EntityDamageSource("mob", owner), 2);
 						this.setFinishedPerform();
 					}

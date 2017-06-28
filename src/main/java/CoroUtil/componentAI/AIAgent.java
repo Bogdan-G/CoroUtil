@@ -217,7 +217,7 @@ public class AIAgent {
 	public void setSpeedNormalBase(float var) {
 		moveSpeed = var;
 		
-		//System.out.println("temp disable");
+		//cpw.mods.fml.common.FMLLog.info("temp disable");
 		//c_CoroAIUtil.setMoveSpeed(ent, var);
 		//oldMoveSpeed = var;
 		/*if (!ent.worldObj.isRemote) {
@@ -346,7 +346,7 @@ public class AIAgent {
 	}
 	
 	public void updateAITasks() {
-		//System.out.println("AIAgent inc age and despawn calls missing");
+		//cpw.mods.fml.common.FMLLog.info("AIAgent inc age and despawn calls missing");
 		/*OldUtil.addAge(ent, 1);
 		OldUtil.despawnEntity(ent);*/
         
@@ -433,14 +433,14 @@ public class AIAgent {
 
     				if (/*this.canDespawn() && */d3 > 128/*128*/)
     				{
-    					//System.out.println("despawned a");
+    					//cpw.mods.fml.common.FMLLog.info("despawned a");
     					despawn = true;
     				}
 
     				if (tickDespawn > 600) {
 	    				if (d3 > 32/* && this.canDespawn()*/)
 	    				{
-	    					//System.out.println("despawned b");
+	    					//cpw.mods.fml.common.FMLLog.info("despawned b");
 	    					despawn = true;
 	    				}
 	    				else if (d3 < 128)
@@ -515,7 +515,7 @@ public class AIAgent {
 			}
 			
 			if (noMoveTicks > 60) {
-				//System.out.println("noMoveTicks path reset!");
+				//cpw.mods.fml.common.FMLLog.info("noMoveTicks path reset!");
 				ent.getNavigator().clearPathEntity();
 				noMoveTicks = 0;
 			}
@@ -562,7 +562,7 @@ public class AIAgent {
 				//if (pe.getCurrentPathLength() == 1) {
 					//if (job.priJob == EnumJob.TRADING) {
 						//if (pe.getFinalPathPoint().yCoord - ent.posY > 0.01F) {
-							//System.out.println("tickMovementHelp:" + (pe.getFinalPathPoint().yCoord - ent.posY));
+							//cpw.mods.fml.common.FMLLog.info("tickMovementHelp:" + (pe.getFinalPathPoint().yCoord - ent.posY));
 							ent.getNavigator().clearPathEntity();
 						//}
 					//}
@@ -587,8 +587,8 @@ public class AIAgent {
 			try {
 				var1 = pEnt.getVectorFromIndex(ent, index);
 			} catch (Exception ex) {
-				ex.printStackTrace();
-				//System.out.println("errrrrrrrrrrrrrrr");
+				cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
+				//cpw.mods.fml.common.FMLLog.info("errrrrrrrrrrrrrrr");
 				cpw.mods.fml.common.FMLLog.warning("errrrrrrrrrrrrrrr");
 				var1 = pEnt.getVectorFromIndex(ent, pEnt.getCurrentPathLength()-1);
 			}
@@ -943,7 +943,7 @@ public class AIAgent {
 	
 	public void setPathToEntityForce(PathEntity pathentity)
     {
-		//System.out.println("force set path");
+		//cpw.mods.fml.common.FMLLog.info("force set path");
         pathToEntity = pathentity;
         pathAvailable = true;
     }
@@ -999,13 +999,13 @@ public class AIAgent {
 	public void huntTarget(Entity parEnt, int pri) {
 		//if (ent.isInWater() || !jobMan.getPrimaryJob().isInFormation() || activeFormation.leader == entInt) {
 		boolean isLeader = (jobMan.getPrimaryJob().isInFormation() && activeFormation.leader == entInt);
-		//if (isLeader) System.out.println("@!@!@!@");
+		//if (isLeader) cpw.mods.fml.common.FMLLog.info("@!@!@!@");
 		if (lastMovementState == 2 || isLeader) {
 			pathRequested = true; //redundancy preventer
 			PFQueue.getPath(ent, parEnt, maxPFRange, pri);
 		}
 		
-		//System.out.println("huntTarget call: " + ent);
+		//cpw.mods.fml.common.FMLLog.info("huntTarget call: " + ent);
 		setTarget(parEnt);
 	}
 	
@@ -1134,7 +1134,7 @@ public class AIAgent {
 	public void cleanup() {
 		entInv.cleanup();
 		//kill cyclical references
-		//System.out.println("cleaning up entity " + ent.entityId);
+		//cpw.mods.fml.common.FMLLog.info("cleaning up entity " + ent.entityId);
 		PFQueue.pfDelays.remove(ent);
 		
 		if (coordsManagedLocation != null) {

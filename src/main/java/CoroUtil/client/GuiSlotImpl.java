@@ -39,7 +39,7 @@ public class GuiSlotImpl extends GuiSlot
         if (guiRef.getSelectButton() != null) {
         	guiRef.getSelectButton().enabled = var3;
         } else {
-        	System.out.println("guiRef.getSelectButton() is null");
+        	cpw.mods.fml.common.FMLLog.info("guiRef.getSelectButton() is null");
         }
         //GuiSelectZCMap.getRenameButton(this.parentWorldGui).enabled = var3;
         //GuiSelectZCMap.getDeleteButton(this.parentWorldGui).enabled = var3;

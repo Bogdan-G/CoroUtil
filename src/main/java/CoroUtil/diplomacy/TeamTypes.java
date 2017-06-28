@@ -44,7 +44,7 @@ public class TeamTypes {
 	
 	public static TeamInstance getType(String parType) {
 		TeamInstance ti = TeamTypes.typesLookup.get(parType);
-		if (ti == null) System.out.println("CoroAI WARNING: null team instance for type " + parType);
+		if (ti == null) cpw.mods.fml.common.FMLLog.info("CoroAI WARNING: null team instance for type " + parType);
 		return ti;
 	}
 	

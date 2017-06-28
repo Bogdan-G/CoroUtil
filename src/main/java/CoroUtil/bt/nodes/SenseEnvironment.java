@@ -80,7 +80,7 @@ public class SenseEnvironment extends LeafAction {
 		            	if (false || ((EntityLivingBase) entity1).canEntityBeSeen(blackboard.agent.ent)) {
 		            		//if (sanityCheck()/* && entity1 instanceof EntityPlayer*/) {
 		            			float dist = blackboard.agent.ent.getDistanceToEntity(entity1);
-		            			//System.out.println("dist: " + dist);
+		            			//cpw.mods.fml.common.FMLLog.info("dist: " + dist);
 		            			if (dist < closest) {
 		            				closest = dist;
 		            				clEnt = entity1;
@@ -130,7 +130,7 @@ public class SenseEnvironment extends LeafAction {
 		blackboard.isFighting.setValue(/*blackboard.shouldFollowOrders.getValue() && */!blackboard.shouldTrySurvival.getValue() && blackboard.getTarget() != null);
 		
 		if (blackboard.isFighting.getValue()) {
-			//System.out.println("4234");
+			//cpw.mods.fml.common.FMLLog.info("4234");
 		}
 		
 		double horizSpeed = Math.sqrt(blackboard.agent.ent.motionX * blackboard.agent.ent.motionX + blackboard.agent.ent.motionZ * blackboard.agent.ent.motionZ);

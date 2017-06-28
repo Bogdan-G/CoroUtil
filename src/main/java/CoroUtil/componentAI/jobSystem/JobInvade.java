@@ -150,7 +150,7 @@ public class JobInvade extends JobBase {
 		        		if (!((ICoroAI)ent).isBreaking()) {
 		        			ai.huntTarget(clEnt, -1);
 		        		}
-		        		//System.out.println("huntTarget instant");
+		        		//cpw.mods.fml.common.FMLLog.info("huntTarget instant");
 		        	} else {
 		        		float dist = clEnt.getDistanceToEntity(ent);
 		        		if (retargetDelayCount == 0 && ((dist < retargetDist && dist > 2F) || ai.entityToAttack == null)) {
@@ -182,7 +182,7 @@ public class JobInvade extends JobBase {
 						retargetDelayCount = retargetDelay;
 						if (!((ICoroAI)ent).isBreaking()) {
 							if (PFQueue.getPath(ent, ai.entityToAttack, ai.maxPFRange)) {
-								//System.out.println("huntTarget repath");
+								//cpw.mods.fml.common.FMLLog.info("huntTarget repath");
 							}
 						}
 					}
@@ -195,7 +195,7 @@ public class JobInvade extends JobBase {
 	        	EntityPlayer entP = getClosestPlayerToEntity(ent, -1F, false);
 	        	if (entP != null && entP.getHealth() > 0) {
 		        	if (ent.getNavigator().noPath()) {
-		        		//System.out.println("huntTarget far");
+		        		//cpw.mods.fml.common.FMLLog.info("huntTarget far");
 	        			ai.huntTarget(entP);
 	        		}
 	        	}

@@ -156,7 +156,7 @@ public class BuildManager {
     	Block id = null;
     	//worldRef.editingBlocks = true;
     	buildJob.curLayerCountMax = build.map_sizeX * build.map_sizeZ;
-    	//System.out.println("rand?: " + doRandomBuild + " build layer " + curLayerCount + " / " + curLayerCountMax + " | " + ((float)curLayerCount / (float)curLayerCountMax));
+    	//cpw.mods.fml.common.FMLLog.info("rand?: " + doRandomBuild + " build layer " + curLayerCount + " / " + curLayerCountMax + " | " + ((float)curLayerCount / (float)curLayerCountMax));
     	
     	buildJob.doRandomBuild = false;
     	//build_rate = 50;
@@ -211,7 +211,7 @@ public class BuildManager {
 				    			//}
 				    		//}
 				    	/*} catch (Exception ex) {
-				    		ex.printStackTrace();
+				    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 				    		worldRef.editingBlocks = false;
 				    		build_active = false;
 				    		return;
@@ -255,8 +255,8 @@ public class BuildManager {
 			    			if (buildJob.customGenCallback != null) buildJob.customGenCallback.genPassPre(worldRef, buildJob, buildJob.pass);
 			    			
 			    			if (buildJob.pass == 1) {
-			    				//System.out.println("Map size: " + build.map_sizeX + " - " + build.map_sizeY + " - " + build.map_sizeZ);
-			    				//System.out.println("Starting Build Pass, sys time: " + System.currentTimeMillis());
+			    				//cpw.mods.fml.common.FMLLog.info("Map size: " + build.map_sizeX + " - " + build.map_sizeY + " - " + build.map_sizeZ);
+			    				//cpw.mods.fml.common.FMLLog.info("Starting Build Pass, sys time: " + System.currentTimeMillis());
 			    			}
 			    		} 
 			    		//worldRef.editingBlocks = false;
@@ -358,11 +358,11 @@ public class BuildManager {
 					    			//}
 					    			//}
 					    			//worldRef.setBlockAndMetadata(build_startX+build_loopTickX, build_startY+build_loopTickY, build_startZ+build_loopTickZ, 0, 0);
-					    			//System.out.println("newFormat: " + build.newFormat);
+					    			//cpw.mods.fml.common.FMLLog.info("newFormat: " + build.newFormat);
 					    			ChunkCoordinates coords = new ChunkCoordinates(xx, yy, zz);
-					    			//System.out.println("printing: " + id + ", preMeta: " + meta);
+					    			//cpw.mods.fml.common.FMLLog.info("printing: " + id + ", preMeta: " + meta);
 					    			if (buildJob.useRotationBuild/* && buildJob.direction != 0*/) {
-					    				//System.out.println("using new rotate");
+					    				//cpw.mods.fml.common.FMLLog.info("using new rotate");
 					    				if (buildJob.build.backwardsCompatibleOldRotate) {
 					    					coords = rotate(coords, buildJob.direction, 
 						    						Vec3.createVectorHelper(buildJob.build_startX, buildJob.build_startY, buildJob.build_startZ), 
@@ -401,7 +401,7 @@ public class BuildManager {
 					    				if (!skipGen) {
 					    					worldRef.setBlock(coords.posX, coords.posY, coords.posZ, id, meta, 2);
 					    				}
-					    				//System.out.println("post print - " + coords.posX + " - " + coords.posZ);
+					    				//cpw.mods.fml.common.FMLLog.info("post print - " + coords.posX + " - " + coords.posZ);
 					    				/*if (buildJob.customGenCallback != null) {
 					    					NBTTagCompound nbt = buildJob.customGenCallback.getInitNBTTileEntity();
 					    					if (nbt != null) {
@@ -412,7 +412,7 @@ public class BuildManager {
 					    					}
 					    				}*/
 					    			} else {
-					    				System.out.println("BUILDMOD SEVERE: schematic contains non existant blockID: " + id + ", replacing with blockID: " + placeholderID);
+					    				cpw.mods.fml.common.FMLLog.info("BUILDMOD SEVERE: schematic contains non existant blockID: " + id + ", replacing with blockID: " + placeholderID);
 					    				boolean skipGen = false;
 					    				if (buildJob.blockIDsNoBuildOver.size() > 0) {
 						    				Block checkCoord = worldRef.getBlock(coords.posX, coords.posY, coords.posZ);
@@ -426,7 +426,7 @@ public class BuildManager {
 					    			}
 					    			/*if (id != 0) {
 					    				boolean returnVal = Block.blocksList[id].rotateBlock(worldRef, coords.posX, coords.posY, coords.posZ, ForgeDirection.EAST);
-					    				if (id == Block.torchWood.blockID) System.out.println("returnVal " + returnVal);
+					    				if (id == Block.torchWood.blockID) cpw.mods.fml.common.FMLLog.info("returnVal " + returnVal);
 					    			}*/
 					    			
 					    			//worldRef.setBlock(xx, yy, zz, id);
@@ -439,7 +439,7 @@ public class BuildManager {
 					    			loopCount--;
 					    		}
 					    	/*} catch (Exception ex) {
-					    		ex.printStackTrace();
+					    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 					    		worldRef.editingBlocks = false;
 					    		build_active = false;
 					    		return;
@@ -452,7 +452,7 @@ public class BuildManager {
 	    	}
     	} catch (Exception ex) {
     		buildJob.build_active = false;
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	//worldRef.editingBlocks = false;
     }
@@ -496,7 +496,7 @@ public class BuildManager {
 	/* coords: unrotated world coord, rotation: quantify to 90, start: uncentered world coords for structure start point, size: structure size */
 	public static ChunkCoordinates rotateNew(ChunkCoordinates coords, int direction, Vec3 start, Vec3 size) {
 		
-		//System.out.println("direction: " + direction);
+		//cpw.mods.fml.common.FMLLog.info("direction: " + direction);
 		
 		//center is not offsetted
 		//coords should be offset 0.5 before rotate math, guarantees no strange offset issues, flooring cleans it up afterwards perfectly
@@ -528,7 +528,7 @@ public class BuildManager {
 			
 			int rotateMeta = meta & 4;
 			
-			System.out.println("rotation: " + rotation + ", dir: " + dir + ", meta: " + meta + ", rotateMeta: " + rotateMeta);
+			cpw.mods.fml.common.FMLLog.info("rotation: " + rotation + ", dir: " + dir + ", meta: " + meta + ", rotateMeta: " + rotateMeta);
 			
 			int fMeta = -1;
 
@@ -571,7 +571,7 @@ public class BuildManager {
 				}
 			}
 			
-	        //System.out.println("fMeta: " + fMeta);
+	        //cpw.mods.fml.common.FMLLog.info("fMeta: " + fMeta);
 	        
 	        return fMeta | rotateMeta;
 		}
@@ -582,7 +582,7 @@ public class BuildManager {
 	
 	public void buildComplete(BuildJob buildJob) {
 		
-		//System.out.println("Build complete, sys time: " + System.currentTimeMillis());
+		//cpw.mods.fml.common.FMLLog.info("Build complete, sys time: " + System.currentTimeMillis());
 		
 		spawnLevelEntities(buildJob);
 		
@@ -668,7 +668,7 @@ public class BuildManager {
 	                		MinecraftServer.getServer().getConfigurationManager().sendPacketToAllPlayers(packet);
 	                	}
 	                } catch (Exception ex) {
-	                	ex.printStackTrace();
+	                	cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 	                }
 	                
 	                //what is this crap!, GET the tile entity and 

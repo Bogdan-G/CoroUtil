@@ -83,7 +83,7 @@ public class OldUtil {
     		}
     	} catch (Exception ex) {
     		hasTropicraft = false;
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	return true;
     }
@@ -91,7 +91,7 @@ public class OldUtil {
 	public static boolean isNoPathBlock(Entity ent, Block parBlock, int meta) {
 		if (ent instanceof EntityPlayer) {
 			//barricades
-			System.out.println("FIX BARRICADES SPECIAL RULE HERE!");
+			cpw.mods.fml.common.FMLLog.info("FIX BARRICADES SPECIAL RULE HERE!");
 			/*if (id >= 192 && id <= 197) {
 				return true;
 			}*/
@@ -151,7 +151,7 @@ public class OldUtil {
 			runningMCP = getPrivateValue(Vec3.class, Vec3.fakePool, "fakePool") != null;
 		} catch (Exception e) {
 			runningMCP = false;
-			System.out.println("CoroAI: 'fakePool' field not found, mcp mode disabled");
+			cpw.mods.fml.common.FMLLog.info("CoroAI: 'fakePool' field not found, mcp mode disabled");
 		}
 	}*/
 	
@@ -161,7 +161,7 @@ public class OldUtil {
 			runningMCP = getPrivateValue(MinecraftServer.class, MinecraftServer.getServer(), "tickables") != null;
 		} catch (Exception e) {
 			runningMCP = false;
-			System.out.println("CoroAI: 'tickables' field not found, mcp mode disabled");
+			cpw.mods.fml.common.FMLLog.info("CoroAI: 'tickables' field not found, mcp mode disabled");
 		}
 	}
 	
@@ -177,7 +177,7 @@ public class OldUtil {
     			setPrivateValue(var0, var1, mcp, var3);
     		}
         } catch (Exception ex) {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
     }
 	
@@ -191,7 +191,7 @@ public class OldUtil {
     			return getPrivateValue(var0, var1, mcp);
     		}
         } catch (Exception ex) {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
         return null;
     }
@@ -206,7 +206,7 @@ public class OldUtil {
     			setPrivateValue(var0, var1, mcp, var3);
     		}
         } catch (Exception ex) {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
 	}
     
@@ -220,7 +220,7 @@ public class OldUtil {
     			return getPrivateValue(var0, var1, mcp);
     		}
         } catch (Exception ex) {
-            ex.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
         }
         return null;
     }
@@ -361,8 +361,8 @@ public class OldUtil {
     		}
     	} catch (Exception ex) {
     		hasTropicraft = false;
-    		System.out.println("this really shouldnt ever happen unless fishing job is used outside tropicraft");
-    		//ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.info("this really shouldnt ever happen unless fishing job is used outside tropicraft");
+    		//cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	return cache;
     	//ent.setCurrentItem(TropicraftMod.fishingRodTropical.itemID);
@@ -407,7 +407,7 @@ public class OldUtil {
 				}
 			}
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		return null;
 	}

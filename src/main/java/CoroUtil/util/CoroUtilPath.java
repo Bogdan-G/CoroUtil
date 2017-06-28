@@ -43,7 +43,7 @@ public class CoroUtilPath {
 			if (distToPlayer <= followDist) {
 				//boolean success = ent.getNavigator().tryMoveToEntityLiving(player, moveSpeedAmp);
 				success = ent.getNavigator().tryMoveToXYZ(x, y, z, moveSpeedAmp);
-				//System.out.println("success? " + success + "- move to player: " + ent + " -> " + player);
+				//cpw.mods.fml.common.FMLLog.info("success? " + success + "- move to player: " + ent + " -> " + player);
 			} else {
 		        /*int x = MathHelper.floor_double(player.posX);
 		        int y = MathHelper.floor_double(player.posY);
@@ -96,7 +96,7 @@ public class CoroUtilPath {
 		        
 		        if (tries < 30) {
 		        	success = ent.getNavigator().tryMoveToXYZ(gatherX, gatherY, gatherZ, moveSpeedAmp);
-		        	//System.out.println("pp success? " + success + "- move to player: " + ent + " -> " + player);
+		        	//cpw.mods.fml.common.FMLLog.info("pp success? " + success + "- move to player: " + ent + " -> " + player);
 		        }
 			}
 		}

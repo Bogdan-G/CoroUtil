@@ -51,8 +51,8 @@ public class CommandCoroUtilClient extends CommandBase {
 			}
 			
 		} catch (Exception ex) {
-			System.out.println("Exception handling command");
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.info("Exception handling command");
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 		
 	}

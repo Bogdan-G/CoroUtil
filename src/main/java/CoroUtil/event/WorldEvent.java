@@ -321,7 +321,7 @@ public class WorldEvent {
 				itemstack = entP.inventory.getCurrentItem();
 				if (itemstack != null) entP.getAttributeMap().applyAttributeModifiers(itemstack.getAttributeModifiers());
 				
-				//System.out.println("calculated bestWeaponValue: " + bestWeaponValue);
+				//cpw.mods.fml.common.FMLLog.info("calculated bestWeaponValue: " + bestWeaponValue);
 				/////////////////WorldDirector.getPlayerNBT(entP.username).setInteger("HWPlayerRating", (int)(armorValue + bestWeaponValue + (hasGlove ? 20 : 0)));
 			}
 		}

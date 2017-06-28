@@ -32,7 +32,7 @@ public class JobFormation extends JobBase {
 		} else {
 			//target what leader is targetting if no target
 			if (ai.entityToAttack == null && ai.activeFormation.leaderTarget != null) {
-				//System.out.println("targeting what leader is targeting!");
+				//cpw.mods.fml.common.FMLLog.info("targeting what leader is targeting!");
 				ai.entityToAttack = ai.activeFormation.leaderTarget;
 			}
 			
@@ -52,7 +52,7 @@ public class JobFormation extends JobBase {
 					
 					if (idGround.getMaterial() != Material.water) {
 						if (CoroUtilBlock.isAir(id1) && CoroUtilBlock.isAir(id2)) {
-							//System.out.println("LEADER EXTENDED IDLE PATHING!");
+							//cpw.mods.fml.common.FMLLog.info("LEADER EXTENDED IDLE PATHING!");
 							ai.walkTo(ent, randX, randY, randZ, ai.maxPFRange, 600);
 						}
 					}

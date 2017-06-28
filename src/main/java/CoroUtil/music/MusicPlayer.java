@@ -24,7 +24,7 @@ public class MusicPlayer {
 			mc = synth.getChannels();
 			instr = synth.getDefaultSoundbank().getInstruments();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	

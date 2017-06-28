@@ -49,7 +49,7 @@ public class ParticleBehaviorFog extends ParticleBehaviors {
 		particle.brightness = 1F;
 		particle.setAlphaF(0);
 		
-		float sizeBase = (float) (500+(rand.nextDouble()*40));
+		float sizeBase = (float) (500+(rand.nextFloat()*40));
 		
 		particle.setScale(sizeBase);
 		//particle.spawnY = (float) particle.posY;
@@ -81,7 +81,7 @@ public class ParticleBehaviorFog extends ParticleBehaviors {
 				float ticksFadeOutMax = 50;
 				
 				if (particle.getAge() < ticksFadeInMax) {
-					//System.out.println("particle.getAge(): " + particle.getAge());
+					//cpw.mods.fml.common.FMLLog.info("particle.getAge(): " + particle.getAge());
 					particle.setAlphaF(particle.getAge() / ticksFadeInMax);
 					//particle.setAlphaF(1);
 				} else if (particle.getAge() > particle.getMaxAge() - ticksFadeOutMax) {
@@ -111,8 +111,8 @@ public class ParticleBehaviorFog extends ParticleBehaviors {
 				
 				double moveSpeedRand = 0.005D;
 				
-				particle.motionX += rand.nextDouble() * moveSpeedRand - rand.nextDouble() * moveSpeedRand;
-				particle.motionZ += rand.nextDouble() * moveSpeedRand - rand.nextDouble() * moveSpeedRand;
+				particle.motionX += rand.nextFloat() * moveSpeedRand - rand.nextFloat() * moveSpeedRand;
+				particle.motionZ += rand.nextFloat() * moveSpeedRand - rand.nextFloat() * moveSpeedRand;
 				
 				particle.setScale(particle.getScale() - 0.1F);
 				

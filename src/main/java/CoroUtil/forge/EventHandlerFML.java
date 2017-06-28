@@ -48,7 +48,7 @@ public class EventHandlerFML {
 	public void tickServer(ServerTickEvent event) {
 		
 		if (event.phase == Phase.START) {
-			//System.out.println("tick coroutil");
+			//cpw.mods.fml.common.FMLLog.info("tick coroutil");
 			if (formationManager == null) formationManager = new Manager();
 			
 			//might not account for dynamic dimension addition during runtime
@@ -78,10 +78,10 @@ public class EventHandlerFML {
 			    	listMsgs = FMLInterModComms.fetchRuntimeMessages("CoroAI");
 			    	for (int i = 0; i < listMsgs.size(); i++) {
 			    		
-			    		System.out.println("CoroAI side: " + listMsgs.get(i).key + " - modID: " + listMsgs.get(i).getSender() + " - source: " + listMsgs.get(i).toString() + " - " + listMsgs.get(i).getNBTValue());
+			    		cpw.mods.fml.common.FMLLog.info("CoroAI side: " + listMsgs.get(i).key + " - modID: " + listMsgs.get(i).getSender() + " - source: " + listMsgs.get(i).toString() + " - " + listMsgs.get(i).getNBTValue());
 			    	}
 		    	} catch (Exception ex) {
-		    		ex.printStackTrace();
+		    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		    	}
 	        }
 			

@@ -50,7 +50,7 @@ public class StructureObject implements ICustomGen {
 	}
 	
 	public void dbg(Object obj) {
-		System.out.println("RTSDBG " + name + ": " + obj);
+		cpw.mods.fml.common.FMLLog.info("RTSDBG " + name + ": " + obj);
 	}
 	
 	public void init() {
@@ -135,7 +135,7 @@ public class StructureObject implements ICustomGen {
 	@Override
 	public void genPassPre(World world, BuildJob parBuildJob, int parPass) {
 		if (parPass == -1) {
-			System.out.println("building gen complete, calculating cur and max health");
+			cpw.mods.fml.common.FMLLog.info("building gen complete, calculating cur and max health");
 			List<ChunkCoordinatesBlock> data = getStructureGenerationComplete(false);
 			updateStructureState(data, callbackNeedsFirstTimeInit);
 			//healthCur = getStructureHealth(data, callbackNeedsFirstTimeInit);

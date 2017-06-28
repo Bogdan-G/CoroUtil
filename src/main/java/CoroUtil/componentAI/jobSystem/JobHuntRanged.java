@@ -50,7 +50,7 @@ public class JobHuntRanged extends JobBase {
 		//if (this.name.equals("Makani")) {
 		
 		//}
-		//System.out.println("hitAndRunDelay: " + hitAndRunDelay);
+		//cpw.mods.fml.common.FMLLog.info("hitAndRunDelay: " + hitAndRunDelay);
 		if (hitAndRunDelay == 0 && ent.getDistanceToEntity(ai.lastFleeEnt) > 3F) {
 			hitAndRunDelay = entInt.getCooldownRanged()+1;
 			ai.entityToAttack = ai.lastFleeEnt;
@@ -62,7 +62,7 @@ public class JobHuntRanged extends JobBase {
     				entInt.attackRanged(ai.entityToAttack, ent.getDistanceToEntity(ai.lastFleeEnt));
     			//}
 				//ent.attackEntity(ent.entityToAttack, ent.getDistanceToEntity(ent.entityToAttack));
-				//System.out.println("H&R " + ent.name + " health: " + ent.getHealth());
+				//cpw.mods.fml.common.FMLLog.info("H&R " + ent.name + " health: " + ent.getHealth());
 			}
 		} else {
 			ai.entityToAttack = null;
@@ -97,7 +97,7 @@ public class JobHuntRanged extends JobBase {
 	@Override
 	public boolean checkDangers() {
 		if (!useMelee && ai.entityToAttack != null && ai.entityToAttack.getDistanceToEntity(ai.ent) < keepDistantRange - 2) {
-			//System.out.println("too close!");
+			//cpw.mods.fml.common.FMLLog.info("too close!");
 			return true; 
 		}
 		return checkHealth();
@@ -133,7 +133,7 @@ public class JobHuntRanged extends JobBase {
 			
 			if (targetNoMoveTicks >= targetNoMoveTicksMax) {
 				useMeleeCountdown = useMeleeCountdownMax;
-				//System.out.println("attack! " + targetNoMoveTicks + " - " + useMelee);
+				//cpw.mods.fml.common.FMLLog.info("attack! " + targetNoMoveTicks + " - " + useMelee);
 			}
 		} else {
 			useMeleeCountdown = 0;

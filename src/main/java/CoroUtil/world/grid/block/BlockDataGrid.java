@@ -75,7 +75,7 @@ public class BlockDataGrid
 	                grid.put(newVec.hash, newVec);
 	                return newVec;
 	        	} else {
-	        		//System.out.println("Epoch BlockDataGrid detected air block load, skipping");
+	        		//cpw.mods.fml.common.FMLLog.info("Epoch BlockDataGrid detected air block load, skipping");
 	        		return null;
 	        	}
         	} else {
@@ -98,7 +98,7 @@ public class BlockDataGrid
         	bdp.cleanup();
         	grid.remove(hash);
         	
-        	//System.out.println("grid had removal, new size: " + grid.size());
+        	//cpw.mods.fml.common.FMLLog.info("grid had removal, new size: " + grid.size());
         }
     }
     
@@ -128,7 +128,7 @@ public class BlockDataGrid
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -154,7 +154,7 @@ public class BlockDataGrid
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 

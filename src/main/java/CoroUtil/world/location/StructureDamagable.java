@@ -32,12 +32,12 @@ public class StructureDamagable extends StructureObject {
 			}
 			
 			if (needCacheUpdate) {
-				//System.out.println("Updating building cache - thread me!");
+				//cpw.mods.fml.common.FMLLog.info("Updating building cache - thread me!");
 				List<ChunkCoordinatesBlock> data = getStructureGenerationComplete(false);
 				healthCur = getStructureHealth(data, false);
 				
 				if (/*true || */healthCur < healthMax / 4 * 3) {
-					//System.out.println("rebuilding!");
+					//cpw.mods.fml.common.FMLLog.info("rebuilding!");
 					System.out.println(name + " rebuilding, health: " + healthCur + " / " + healthMax);
 					buildStructureComplete(false);
 				} else {
@@ -81,17 +81,17 @@ public class StructureDamagable extends StructureObject {
 				int z = coords.posZ;
 				
 				Block id = world.getBlock(x, y, z);
-				//System.out.println("coords: " + x + " - " + y + " - " + z + " = " + id);
+				//cpw.mods.fml.common.FMLLog.info("coords: " + x + " - " + y + " - " + z + " = " + id);
 				if (!CoroUtilBlock.isAir(id)) {
 					blockCount++;
-					System.out.println("TODO: BlockDataGrid usage");
+					cpw.mods.fml.common.FMLLog.info("TODO: BlockDataGrid usage");
 					/*BlockDataPoint bdp = ServerTickHandler.wd.getBlockDataGrid(world).getBlockDataIfExists(x, y, z);
 					float maxHealth = BlockStaticDataMap.getBlockMaxHealth(id);
 					if (bdp == null) {
 						totalHealthCur += maxHealth;
 					} else {
 						totalHealthCur += bdp.health;
-						//System.out.println("bdp.health " + bdp.health);
+						//cpw.mods.fml.common.FMLLog.info("bdp.health " + bdp.health);
 					}
 					totalHealthMax += maxHealth;*/
 				}
@@ -101,7 +101,7 @@ public class StructureDamagable extends StructureObject {
 		if (andUpdateMaxHealth) {
 			healthMax = (int)totalHealthMax;
 		}
-		//System.out.println("blockCount: " + blockCount);
+		//cpw.mods.fml.common.FMLLog.info("blockCount: " + blockCount);
 		
 		return (int)totalHealthCur;
 	}
@@ -114,9 +114,9 @@ public class StructureDamagable extends StructureObject {
 			for (int i = 0; i < parStructure.size(); i++) {
 				ChunkCoordinatesBlock coords = parStructure.get(i);
 				//System.out.println(coords.posX + " - " + coords.posY + " - " + coords.posZ + " - " + world.provider.dimensionId);
-				System.out.println("TODO: BlockDataGrid usage");
+				cpw.mods.fml.common.FMLLog.info("TODO: BlockDataGrid usage");
 				/*BlockDataPoint bdp = ServerTickHandler.wd.getBlockDataGrid(world).getBlockDataIfExists(coords.posX, coords.posY, coords.posZ);
-				//if (coords.blockID == 0) System.out.println("sadfsdfsdf");
+				//if (coords.blockID == 0) cpw.mods.fml.common.FMLLog.info("sadfsdfsdf");
 				//NOTE, THIS WONT PRINT OVER DAMAGED BUT STILL EXISTING BLOCKS!
 				//if ((bdp != null && bdp.health < BlockStaticDataMap.getBlockMaxHealth(bdp.blockID)) || (bdp == null && isSafeToGenerateOver(coords.blockID))) {
 					world.setBlock(coords.posX, coords.posY, coords.posZ, coords.block, coords.meta, 3);

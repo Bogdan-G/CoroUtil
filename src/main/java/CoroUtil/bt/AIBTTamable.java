@@ -85,7 +85,7 @@ public class AIBTTamable {
 				if (!shouldStayStill() && (ent.onGround || ent.isInWater()) && teleportFromFarDist != -1 && agent.ent.getDistanceToEntity(ent) > teleportFromFarDist) {
 					double range = 0D;
 					Random rand = new XSTR();
-					agent.ent.setPosition(ent.posX + (rand.nextDouble() * range) - (rand.nextDouble() * range), ent.posY, ent.posZ + (rand.nextDouble() * range) - (rand.nextDouble() * range));
+					agent.ent.setPosition(ent.posX + (rand.nextFloat() * range) - (rand.nextFloat() * range), ent.posY, ent.posZ + (rand.nextFloat() * range) - (rand.nextFloat() * range));
 					agent.ent.fallDistance = -100;
 					agent.blackboard.setMoveTo(null, true);
 					agent.blackboard.setTarget(null);

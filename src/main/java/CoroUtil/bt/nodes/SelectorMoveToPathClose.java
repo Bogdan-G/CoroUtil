@@ -60,7 +60,7 @@ public class SelectorMoveToPathClose extends Selector {
 						if (partialPathing) {
 							if (lastPathTime % 5 == 0) {
 								//PFQueue based retry code goes here
-								//System.out.println("trying partial pf - " + ent);
+								//cpw.mods.fml.common.FMLLog.info("trying partial pf - " + ent);
 								Random rand = new XSTR();
 								Vec3 vec = Vec3.createVectorHelper(blackboard.posMoveTo.xCoord - ent.posX, blackboard.posMoveTo.yCoord - ent.posY, blackboard.posMoveTo.zCoord - ent.posZ);
 								vec = vec.normalize();
@@ -76,15 +76,15 @@ public class SelectorMoveToPathClose extends Selector {
 		    			        	Block idUp = ent.worldObj.getBlock(coordX, coordY+1, coordZ);
 		    			        	Block idDown = ent.worldObj.getBlock(coordX, coordY-1, coordZ);
 		    			        	if (CoroUtilBlock.isAir(idDown) && CoroUtilBlock.isAir(idUp)) {
-		    			        		//System.out.println("trying partial");
+		    			        		//cpw.mods.fml.common.FMLLog.info("trying partial");
 		    			        		PathEntity result = ent.worldObj.getEntityPathToXYZ(ent, coordX, coordY, coordZ, pathfindRange, false, false, true, true);
 		    							if (result == null || result.isFinished() || result.getCurrentPathLength() <= 2) {
-		    								//System.out.println("try failed");
+		    								//cpw.mods.fml.common.FMLLog.info("try failed");
 		    								lastAttemptFailed = true;
 		    								lastPathTime = ent.worldObj.getTotalWorldTime() + repathDelayFailAdd; //add on penalty
 		    							} else {
 			    			        		retryStage = 0;
-		    								//System.out.println("try success");
+		    								//cpw.mods.fml.common.FMLLog.info("try success");
 		    								lastAttemptFailed = false;
 		    							}
 		    							blackboard.pathMoveToPath = result;
@@ -97,11 +97,11 @@ public class SelectorMoveToPathClose extends Selector {
 						} else {
 							PathEntity result = ent.worldObj.getEntityPathToXYZ(ent, MathHelper.floor_double(blackboard.posMoveTo.xCoord), MathHelper.floor_double(blackboard.posMoveTo.yCoord), MathHelper.floor_double(blackboard.posMoveTo.zCoord), pathfindRange, false, false, true, true);
 							if (result == null || result.isFinished() || result.getCurrentPathLength() <= 2) {
-								//System.out.println("try failed");
+								//cpw.mods.fml.common.FMLLog.info("try failed");
 								lastAttemptFailed = true;
 								lastPathTime = ent.worldObj.getTotalWorldTime() + repathDelayFailAdd; //add on penalty
 							} else {
-								//System.out.println("try success");
+								//cpw.mods.fml.common.FMLLog.info("try success");
 								lastAttemptFailed = false;
 							}
 							blackboard.pathMoveToPath = result;

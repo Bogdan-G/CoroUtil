@@ -36,19 +36,19 @@ public class Melody {
 	}
 	
 	public void tick() {
-		//System.out.println("melody " + this + " ticksPlaying: " + ticksPlaying);
+		//cpw.mods.fml.common.FMLLog.info("melody " + this + " ticksPlaying: " + ticksPlaying);
 		for (int i = 0; i < listNotes.size(); i++) {
 			NoteEntry note = listNotes.get(i);
 			
 			
 			
 			if (ticksPlaying == getNoteStart(note)) {
-				System.out.println("Start note! " + note.note);
+				cpw.mods.fml.common.FMLLog.info("Start note! " + note.note);
 				MusicPlayer.mc[channel].noteOn((octive * NoteHelper.NOTES_IN_OCTIVE) + note.note, velocity);
 			}
 			
 			if (ticksPlaying == getNoteEnd(note)) {
-				System.out.println("End note! " + note.note);
+				cpw.mods.fml.common.FMLLog.info("End note! " + note.note);
 				MusicPlayer.mc[channel].noteOff((octive * NoteHelper.NOTES_IN_OCTIVE) + note.note);
 			}
 		}

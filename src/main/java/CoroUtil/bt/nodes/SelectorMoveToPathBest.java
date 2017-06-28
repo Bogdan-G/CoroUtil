@@ -45,7 +45,7 @@ public class SelectorMoveToPathBest extends Selector {
 		
 		if (blackboard.isPathReceived.getValue()) {
 			blackboard.resetReceived();
-			//System.out.println("setting final path from threaded pf - " + ent.entityId);
+			//cpw.mods.fml.common.FMLLog.info("setting final path from threaded pf - " + ent.entityId);
 			
 			//WE NEED TO MEND PATHS HERE! outdated origin coord on threaded path vs instant temp short path that had them moving
 			
@@ -65,7 +65,7 @@ public class SelectorMoveToPathBest extends Selector {
 			if ((entInt.getAIBTAgent().pathNav.noPath()/* && !lastAttemptFailed*/)/* || lastPathTime + repathDelay < ent.worldObj.getTotalWorldTime()*/) {
 				if (ent.onGround || ent.isInWater() || blackboard.canFlyPath.getValue() || blackboard.canSwimPath.getValue()) {
 					if (!blackboard.isWaitingForPath.getValue()) {
-						//System.out.println("request out - " + ent.entityId);
+						//cpw.mods.fml.common.FMLLog.info("request out - " + ent.entityId);
 						
 						//TEMP CANCELLING THREAD
 						blackboard.requestPathFar(blackboard.posMoveTo, pathfindRangeFar);
@@ -73,7 +73,7 @@ public class SelectorMoveToPathBest extends Selector {
 					} else {
 						//System.out.println((lastRequestTime + repathWaitTime) - ent.worldObj.getTotalWorldTime());
 						if (lastRequestTime + repathWaitTime < ent.worldObj.getTotalWorldTime()) {
-							//System.out.println("threaded path request timed out, retrying");
+							//cpw.mods.fml.common.FMLLog.info("threaded path request timed out, retrying");
 							blackboard.isWaitingForPath.setValue(false); //reset attempt
 							blackboard.resetReceived();
 						}
@@ -81,7 +81,7 @@ public class SelectorMoveToPathBest extends Selector {
 					lastPathTime = ent.worldObj.getTotalWorldTime();
 				}
 				//tick child while waiting (temp insta pathing) - causing issues
-				//System.out.println("insta path while wait");
+				//cpw.mods.fml.common.FMLLog.info("insta path while wait");
 				//temp moveto vec way
 				return children.get(0).tick();
 			} else {

@@ -78,7 +78,7 @@ public class ChunkDataGrid
         	bdp.cleanup();
         	grid.remove(hash);
         	
-        	//System.out.println("grid had removal, new size: " + grid.size());
+        	//cpw.mods.fml.common.FMLLog.info("grid had removal, new size: " + grid.size());
         }
     }
     
@@ -110,7 +110,7 @@ public class ChunkDataGrid
 			}
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 	
@@ -136,7 +136,7 @@ public class ChunkDataGrid
 	    	fos.close();
 			
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
 		}
 	}
 

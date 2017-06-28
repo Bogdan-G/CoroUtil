@@ -250,7 +250,7 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
     		
             if (shape.getNodeName().equals("Shape")) {
             	String childNodeName = getNodeName(shape);
-            	System.out.println("creating shape: " + childNodeName);
+            	cpw.mods.fml.common.FMLLog.info("creating shape: " + childNodeName);
             	ModelRendererBones cube = new ModelRendererBones(this, childNodeName);
             	cube.textureWidth = this.textureWidth;
             	cube.textureHeight = this.textureHeight;
@@ -275,11 +275,11 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
             	String childNodeName = getNodeName(shape);
             	ModelRendererBones lookupParent = partsAllChildren.get(childNodeName);
             	if (lookupParent != null) {
-            		System.out.println("found folder and its shape modelrenderer: " + childNodeName);
+            		cpw.mods.fml.common.FMLLog.info("found folder and its shape modelrenderer: " + childNodeName);
             		//go down next level with relevant parent and node collection from the folder
             		processListRecursive(lookupParent, shape.getChildNodes());
             	} else {
-            		System.out.println("TechneModelEpoch critical error: failed to find piece with name: " + childNodeName + " to link this folder to");
+            		cpw.mods.fml.common.FMLLog.info("TechneModelEpoch critical error: failed to find piece with name: " + childNodeName + " to link this folder to");
             	}
             }
             
@@ -422,7 +422,7 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
         catch (NumberFormatException e)
         {
             FMLLog.warning("Model shape [" + shapeName + "] in " + fileName + " contains malformed integers within its data, ignoring");
-            e.printStackTrace();
+            cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)e, "CoroUtil stacktrace: %s", (Throwable)e);
         }
         
     }
@@ -489,17 +489,17 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
     		float ampArm = 1.2F;
     		float ampLeg = 1.6F;
     		
-    		float lean = -10+(float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 0.4F) % 360)))) * 0.6F * 0.3F;
+    		float lean = -10+(float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 0.4F) % 360)))) * 0.6F * 0.3F;
     		
-    		float armRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
-    		float armRotBottom = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
+    		float armRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
+    		float armRotBottom = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampArm;
     		
-    		float legRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
-    		float legRotBottom = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
+    		float legRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
+    		float legRotBottom = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate) % 360)))) * ampLeg;
     		
-    		float bob = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * ampLeg;
+    		float bob = (float) Math.toDegrees(Math.sin(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * ampLeg;
     		
-    		float headRot = (float) Math.toDegrees(org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * 0.6F * 0.4F;
+    		float headRot = (float) Math.toDegrees(Math.cos(Math.toRadians(((par1Entity.worldObj.getTotalWorldTime() * rate * 2F) % 360)))) * 0.6F * 0.4F;
     		
     		//this.parts.get("top").rotationPointYRel = (float)Math.toRadians(bob * 1F);
     		
@@ -519,7 +519,7 @@ public class TechneModelCoroAI extends ModelBase implements IModelCustom {
     		partsAllChildren.get("leftleglower").rotateAngleXDesired = (float)-Math.toRadians(legRotBottom-offset2);*/
     		
     	} catch (Exception ex) {
-    		ex.printStackTrace();
+    		cpw.mods.fml.common.FMLLog.log(org.apache.logging.log4j.Level.WARN, (Throwable)ex, "CoroUtil stacktrace: %s", (Throwable)ex);
     	}
     	
     	

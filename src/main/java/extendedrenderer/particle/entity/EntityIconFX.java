@@ -64,7 +64,7 @@ public class EntityIconFX extends EntityRotFX
         Minecraft mc = Minecraft.getMinecraft();
         float br = ((0.9F + (mc.gameSettings.gammaSetting * 0.1F)) - (mc.theWorld.calculateSkylightSubtracted(par2) * 0.01F)) * mc.theWorld.getSunBrightness(1F);
         /*if (mc.theWorld.getTotalWorldTime() % 20 == 0) {
-        	System.out.println("brightness: " + br);
+        	cpw.mods.fml.common.FMLLog.info("brightness: " + br);
         }*/
         
         br = 0.55F * Math.max(0.01F, br) * (2F);

@@ -280,26 +280,26 @@ public class AIBTAgent {
 				ent.motionZ *= 1.4F;
 			}
 			ent.motionY += 0.25F;
-			/*ent.motionX += rand.nextDouble() - rand.nextDouble();
+			/*ent.motionX += rand.nextFloat() - rand.nextFloat();
 			ent.motionY += 0.6F;
-			ent.motionZ += rand.nextDouble() - rand.nextDouble();*/
+			ent.motionZ += rand.nextFloat() - rand.nextFloat();*/
 		}
 		
 		double speed = 0.2D;
 		Block block = ent.worldObj.getBlock(MathHelper.floor_double(ent.posX), (int)ent.boundingBox.minY, MathHelper.floor_double(ent.posZ));
 		if (PFQueue.isFenceLike(block)) {
 			Random rand = new XSTR();
-			ent.motionX += rand.nextDouble()*speed - rand.nextDouble()*speed;
+			ent.motionX += rand.nextFloat()*speed - rand.nextFloat()*speed;
 			ent.motionY = 0.2F;
-			ent.motionZ += rand.nextDouble()*speed - rand.nextDouble()*speed;
+			ent.motionZ += rand.nextFloat()*speed - rand.nextFloat()*speed;
 			blackboard.posMoveTo = null;
 		} else {
 			block = ent.worldObj.getBlock(MathHelper.floor_double(ent.posX), (int)ent.boundingBox.minY-1, MathHelper.floor_double(ent.posZ));
 			if (PFQueue.isFenceLike(block)) {
 				Random rand = new XSTR();
-				ent.motionX += rand.nextDouble()*speed - rand.nextDouble()*speed;
+				ent.motionX += rand.nextFloat()*speed - rand.nextFloat()*speed;
 				ent.motionY = 0.2F;
-				ent.motionZ += rand.nextDouble()*speed - rand.nextDouble()*speed;
+				ent.motionZ += rand.nextFloat()*speed - rand.nextFloat()*speed;
 				blackboard.posMoveTo = null;
 			}
 		}
@@ -339,7 +339,7 @@ public class AIBTAgent {
 	public void tickLiving() {
         if (profile.abilities.size() > 0) {
         	/*if (ent.worldObj.isRemote) {
-        		System.out.println("SDfsdfsdf");
+        		cpw.mods.fml.common.FMLLog.info("SDfsdfsdf");
         	}*/
 			profile.tickAbilities();
 		}
@@ -481,14 +481,14 @@ public class AIBTAgent {
 
     				if (/*this.canDespawn() && */d3 > 128/*128*/)
     				{
-    					//System.out.println("despawned a");
+    					//cpw.mods.fml.common.FMLLog.info("despawned a");
     					despawn = true;
     				}
 
     				if (tickDespawn > 600) {
 	    				if (d3 > 32/* && this.canDespawn()*/)
 	    				{
-	    					//System.out.println("despawned b");
+	    					//cpw.mods.fml.common.FMLLog.info("despawned b");
 	    					despawn = true;
 	    				}
 	    				else if (d3 < 128)

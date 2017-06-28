@@ -90,11 +90,11 @@ public class AttackRangedBest extends Selector implements IAbilityUsageCallback 
 					
 					
 					/*if (dist <= ability.bestDist + ability.bestDistRange/2 && dist >= ability.bestDist - ability.bestDistRange/2) {
-						//System.out.println("use ability: " + ability + " - " + ent);
+						//cpw.mods.fml.common.FMLLog.info("use ability: " + ability + " - " + ent);
 						abilityStart(ability, target);
 						//usedAbility = true;
 					} else {
-						//System.out.println("out of range - " + ent);
+						//cpw.mods.fml.common.FMLLog.info("out of range - " + ent);
 					}*/
 				}
 				
@@ -139,14 +139,14 @@ public class AttackRangedBest extends Selector implements IAbilityUsageCallback 
 		ability.setCallback(this);
 		profile.abilityStart(ability, parTarget);
 		//}
-		//System.out.println("combo start! " + selectorIndex);
+		//cpw.mods.fml.common.FMLLog.info("combo start! " + selectorIndex);
 		
 		//activeComboIndex = selectorIndex;
 		//if (children.get(selectorIndex) instanceof SelectorSequenceControl) ((SelectorSequenceControl)children.get(selectorIndex)).startSequence();
 	}
 	
 	public void abilityFinish() {
-		//System.out.println("callback finished");
+		//cpw.mods.fml.common.FMLLog.info("callback finished");
 		//activeComboIndex = -1;
 		activeIsDefault = false;
 		activeAbility = null;
@@ -154,7 +154,7 @@ public class AttackRangedBest extends Selector implements IAbilityUsageCallback 
 
 	@Override
 	public void abilityFinished(Ability parAbility) {
-		//System.out.println("callback received");
+		//cpw.mods.fml.common.FMLLog.info("callback received");
 		//incase post cooldown callback from old ability calls while different ability is being used
 		if (parAbility == activeAbility) {
 			abilityFinish();

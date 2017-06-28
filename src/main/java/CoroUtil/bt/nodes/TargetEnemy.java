@@ -87,7 +87,7 @@ public class TargetEnemy extends Selector {
 	            			} else {*/
 	            				dist = protectEnt.getDistanceToEntity(entity1);
 	            			//}
-	            			//System.out.println("dist: " + dist);
+	            			//cpw.mods.fml.common.FMLLog.info("dist: " + dist);
 	            			if (dist < closest && dist < rangeHunt) {
 	            				closest = dist;
 	            				clEnt = entity1;
@@ -107,14 +107,14 @@ public class TargetEnemy extends Selector {
 	        		//ai.blackboard.trackTarget(false);
 	        	}
 	        	//ai.huntTarget(clEnt);
-	        	//System.out.println("hunting");
+	        	//cpw.mods.fml.common.FMLLog.info("hunting");
 	        	if (children.size() > 1) return children.get(1).tick();
 	        } else {
 	        	if (!sanityAborted) {
-	        		//System.out.println("subjob");
+	        		//cpw.mods.fml.common.FMLLog.info("subjob");
 	        		if (children.size() > 0) return children.get(0).tick();
 	        	} else {
-	        		//System.out.println("fleeing");
+	        		//cpw.mods.fml.common.FMLLog.info("fleeing");
 	        		if (children.size() > 2) return children.get(2).tick();
 	        	}
 	        }
@@ -126,7 +126,7 @@ public class TargetEnemy extends Selector {
 		}
 		
 		if (ai.blackboard.getTarget() == null && sanityCheck(null)) {
-			//System.out.println("subjob");
+			//cpw.mods.fml.common.FMLLog.info("subjob");
 			if (children.size() > 0) return children.get(0).tick();
 		}
 		

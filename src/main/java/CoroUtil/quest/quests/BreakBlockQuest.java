@@ -63,7 +63,7 @@ public class BreakBlockQuest extends ActiveQuest {
 	}
 	
 	public void handleEvent(BreakEvent event) {
-		System.out.println("EVENT!: " + event.getPlayer() + " - " + event.x + " - " + event.y + " - " + event.z);
+		cpw.mods.fml.common.FMLLog.info("EVENT!: " + event.getPlayer() + " - " + event.x + " - " + event.y + " - " + event.z);
 		if (event.getPlayer() == null || !CoroUtilEntity.getName(event.getPlayer()).equals(playerQuests.playerName)) {
 			return;
 		}
