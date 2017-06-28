@@ -98,9 +98,9 @@ public class CoroUtilItem {
                 f = 0.02F;
                 f1 = rand.nextFloat() * (float)Math.PI * 2.0F;
                 f *= rand.nextFloat();
-                entityitem.motionX += org.bogdang.modifications.math.MathHelperLite.cos((double)f1) * (double)f;
+                entityitem.motionX += Math.cos((double)f1) * (double)f;
                 entityitem.motionY += (double)((rand.nextFloat() - rand.nextFloat()) * 0.1F);
-                entityitem.motionZ += org.bogdang.modifications.math.MathHelperLite.sin((double)f1) * (double)f;
+                entityitem.motionZ += Math.sin((double)f1) * (double)f;
             }
 
             parEnt.worldObj.spawnEntityInWorld(entityitem);

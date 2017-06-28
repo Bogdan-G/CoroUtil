@@ -106,8 +106,8 @@ public class ParticleBehaviorFog extends ParticleBehaviors {
 					particle.rotationYaw += 0.1;
 				}
 				
-				particle.motionX -= org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians((particle.rotationYaw + particle.getEntityId()) % 360)) * moveSpeed;
-				particle.motionZ += org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians((particle.rotationYaw + particle.getEntityId()) % 360)) * moveSpeed;
+				particle.motionX -= Math.sin(Math.toRadians((particle.rotationYaw + particle.getEntityId()) % 360)) * moveSpeed;
+				particle.motionZ += Math.cos(Math.toRadians((particle.rotationYaw + particle.getEntityId()) % 360)) * moveSpeed;
 				
 				double moveSpeedRand = 0.005D;
 				

@@ -104,18 +104,18 @@ public class ParticleBehaviorTrail extends ParticleBehaviors {
 			rotRoll -= rot;
 			
 			amp = 0.01D;
-			double ampYaw = amp + amp * org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(90+((particle.worldObj.getTotalWorldTime() * 5) % 180)));
-			double ampPitch = 0.1D * amp * Math.min(10, particle.getAge() * 0.1D);//org.bogdang.modifications.math.MathHelperLite.cos(Math.toRadians(90+((particle.worldObj.getTotalWorldTime() * 5) % 180)));
-			double ampRoll = 0.1D * amp * Math.min(10, particle.getAge() * 0.1D);//amp + amp * org.bogdang.modifications.math.MathHelperLite.sin(Math.toRadians(((particle.worldObj.getTotalWorldTime() * 15F) % 180)));
+			double ampYaw = amp + amp * Math.sin(Math.toRadians(90+((particle.worldObj.getTotalWorldTime() * 5) % 180)));
+			double ampPitch = 0.1D * amp * Math.min(10, particle.getAge() * 0.1D);//Math.cos(Math.toRadians(90+((particle.worldObj.getTotalWorldTime() * 5) % 180)));
+			double ampRoll = 0.1D * amp * Math.min(10, particle.getAge() * 0.1D);//amp + amp * Math.sin(Math.toRadians(((particle.worldObj.getTotalWorldTime() * 15F) % 180)));
 			
-			/*particle.motionX += org.bogdang.modifications.math.MathHelperLite.cos(rotYaw * 0.017453D) * ampYaw;
-			particle.motionZ += org.bogdang.modifications.math.MathHelperLite.sin(rotYaw * 0.017453D) * ampYaw;
+			/*particle.motionX += Math.cos(rotYaw * 0.017453D) * ampYaw;
+			particle.motionZ += Math.sin(rotYaw * 0.017453D) * ampYaw;
 			
-			particle.motionX += org.bogdang.modifications.math.MathHelperLite.cos(rotPitch * 0.017453D) * ampPitch;
-			particle.motionY += org.bogdang.modifications.math.MathHelperLite.sin(rotPitch * 0.017453D) * ampPitch;
+			particle.motionX += Math.cos(rotPitch * 0.017453D) * ampPitch;
+			particle.motionY += Math.sin(rotPitch * 0.017453D) * ampPitch;
 			
-			particle.motionZ -= org.bogdang.modifications.math.MathHelperLite.cos(rotRoll * 0.017453D) * ampRoll;
-			particle.motionY -= org.bogdang.modifications.math.MathHelperLite.sin(rotRoll * 0.017453D) * ampRoll;*/
+			particle.motionZ -= Math.cos(rotRoll * 0.017453D) * ampRoll;
+			particle.motionY -= Math.sin(rotRoll * 0.017453D) * ampRoll;*/
 			
 			/*double vecX = centerX - particle.posX;
 			double vecY = centerY - particle.posY;
@@ -123,9 +123,9 @@ public class ParticleBehaviorTrail extends ParticleBehaviors {
 			double rotYaw = (float)(Math.atan2(vecZ, vecX) * 180.0D / Math.PI);
 			rotYaw -= 55D;// + (15D * curTickCharge / ticksToCharge);
 			double speed = 0.4D;// + (0.50D * curTick / ticksMax);
-			particle.motionX = org.bogdang.modifications.math.MathHelperLite.cos(rotYaw * 0.017453D) * speed;
+			particle.motionX = Math.cos(rotYaw * 0.017453D) * speed;
 			particle.motionY = vecY * speed;
-			particle.motionZ = org.bogdang.modifications.math.MathHelperLite.sin(rotYaw * 0.017453D) * speed;
+			particle.motionZ = Math.sin(rotYaw * 0.017453D) * speed;
 			int cycle = 60;*/
 		}
 	}

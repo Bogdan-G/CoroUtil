@@ -401,9 +401,9 @@ public class JobBase {
 		float look = ai.rand.nextInt(8)-4;
         //int height = 10;
         int dist = ai.rand.nextInt(8)+8;
-        int gatherX = (int)((float)ent.posX + ((-(float)org.bogdang.modifications.math.MathHelperLite.sin((double)((yaw+look) / 180.0F * 3.14F)) * org.bogdang.modifications.math.MathHelperLite.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
+        int gatherX = (int)((float)ent.posX + ((-(float)Math.sin((double)((yaw+look) / 180.0F * 3.14F)) * Math.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
         int gatherY = (int)((float)ent.posY-0.5 + (-(float)MathHelper.sin(ent.rotationPitch / 180.0F * 3.14F) * dist) - 0F); //center.posY - 0D;
-        int gatherZ = (int)((float)ent.posZ + (((float)org.bogdang.modifications.math.MathHelperLite.cos((double)((yaw+look) / 180.0F * 3.14F)) * (float)org.bogdang.modifications.math.MathHelperLite.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
+        int gatherZ = (int)((float)ent.posZ + (((float)Math.cos((double)((yaw+look) / 180.0F * 3.14F)) * (float)Math.cos((double)(ent.rotationPitch / 180.0F * 3.14F))) * dist));
         
         gatherX = (int)((float)ent.posX - (d / f * dist));
         gatherZ = (int)((float)ent.posZ - (d1 / f * dist));
@@ -691,8 +691,8 @@ public class JobBase {
 			if (vec != null) {
 				if (Math.sqrt(ent.motionX * ent.motionX + ent.motionZ * ent.motionZ) < 0.1D) {
 					double waterSpeed = 0.1D;
-					ent.motionX -= org.bogdang.modifications.math.MathHelperLite.cos((-ent.rotationYaw + 90D) * 0.01745329D) * waterSpeed;
-					ent.motionZ += org.bogdang.modifications.math.MathHelperLite.sin((-ent.rotationYaw + 90D) * 0.01745329D) * waterSpeed;
+					ent.motionX -= Math.cos((-ent.rotationYaw + 90D) * 0.01745329D) * waterSpeed;
+					ent.motionZ += Math.sin((-ent.rotationYaw + 90D) * 0.01745329D) * waterSpeed;
 					//ent.motionX *= 1.3D;
 					//ent.motionZ *= 1.3D;
 				}
@@ -852,9 +852,9 @@ public class JobBase {
 			for (adjAngle = -lookStartStop - lookStep; adjAngle <= lookStartStop; adjAngle += lookStep) {
 				dist = lookAheadDist;
 				
-				double posX = (center.posX - org.bogdang.modifications.math.MathHelperLite.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
-				double posY = (center.boundingBox.minY/* - 0.3D - org.bogdang.modifications.math.MathHelperLite.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
-				double posZ = (center.posZ + org.bogdang.modifications.math.MathHelperLite.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+				double posX = (center.posX - Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+				double posY = (center.boundingBox.minY/* - 0.3D - Math.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
+				double posZ = (center.posZ + Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
 				
 				int xx = (int)posX;
 				int yy = (int)(posY - 0.5D);
@@ -892,8 +892,8 @@ public class JobBase {
 					Block lookAheadIDCollideTooHigh = ent.worldObj.getBlock(xx, headAheadY, zz);
 					//System.out.println("id " + lookAheadIDCollideTooHigh + " - " + xx + ", " + headAheadY + ", " + zz);
 					//System.out.println(center.rotationYaw);
-					//System.out.println("X-: " + org.bogdang.modifications.math.MathHelperLite.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
-					//System.out.println("Z+: " + org.bogdang.modifications.math.MathHelperLite.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+					//System.out.println("X-: " + Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+					//System.out.println("Z+: " + Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
 					
 					//System.out.println(lookAheadIDCollideTooHigh);
 					if (ent.onGround && (lookAheadIDCollideTooHigh.getMaterial().isSolid())) {
@@ -905,9 +905,9 @@ public class JobBase {
 			}
 		}
 		
-		double posX = (center.posX - org.bogdang.modifications.math.MathHelperLite.cos((-center.rotationYaw) * 0.01745329D) * 1D);
-		double posY = (center.boundingBox.minY/* - 0.3D - org.bogdang.modifications.math.MathHelperLite.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
-		double posZ = (center.posZ + org.bogdang.modifications.math.MathHelperLite.sin((-center.rotationYaw) * 0.01745329D) * 1D);
+		double posX = (center.posX - Math.cos((-center.rotationYaw) * 0.01745329D) * 1D);
+		double posY = (center.boundingBox.minY/* - 0.3D - Math.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
+		double posZ = (center.posZ + Math.sin((-center.rotationYaw) * 0.01745329D) * 1D);
 		
 		//this might not work yet....
 		//if (ent.getDistanceToEntity(ai.entityToAttack) > ai.entityToAttack.getDistance(posX, posY, posZ)) {
@@ -930,9 +930,9 @@ public class JobBase {
 			for (adjAngle = -lookStartStop - lookStep; adjAngle <= lookStartStop; adjAngle += lookStep) {
 				dist = lookAheadDist;
 				
-				double posX = (center.posX - org.bogdang.modifications.math.MathHelperLite.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
-				double posY = (center.boundingBox.minY/* - 0.3D - org.bogdang.modifications.math.MathHelperLite.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
-				double posZ = (center.posZ + org.bogdang.modifications.math.MathHelperLite.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+				double posX = (center.posX - Math.sin((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
+				double posY = (center.boundingBox.minY/* - 0.3D - Math.sin((center.rotationPitch) / 180.0F * 3.1415927F) * dist*/);
+				double posZ = (center.posZ + Math.cos((-center.rotationYaw + adjAngle) * 0.01745329D) * dist);
 				
 				int xx = (int)posX;
 				int yy = (int)(posY - 0.5D);

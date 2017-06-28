@@ -477,8 +477,8 @@ public class BuildManager {
 		double vecZ = coords.posZ - centerZ + 0.05;
 		double distToCenter = Math.sqrt(vecX * vecX + vecZ * vecZ);
 		double rotYaw = (float)(Math.atan2(vecZ, vecX) * 180.0D / Math.PI) - rotation;
-		double newX = start.xCoord + org.bogdang.modifications.math.MathHelperLite.cos(rotYaw * 0.017453D) * distToCenter;
-		double newZ = start.zCoord + org.bogdang.modifications.math.MathHelperLite.sin(rotYaw * 0.017453D) * distToCenter;
+		double newX = start.xCoord + Math.cos(rotYaw * 0.017453D) * distToCenter;
+		double newZ = start.zCoord + Math.sin(rotYaw * 0.017453D) * distToCenter;
 		
 		//fix some bad centering rotations
 		if (direction == 1) {

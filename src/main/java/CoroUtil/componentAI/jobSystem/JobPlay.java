@@ -77,8 +77,8 @@ public class JobPlay extends JobBase {
 					rotationYaw += rand.nextInt(randChange) - randChange/2;
 					float speed = 0.38F;
 					
-					double vecX = -org.bogdang.modifications.math.MathHelperLite.cos(rotationYaw*0.01745329D);
-					double vecZ = org.bogdang.modifications.math.MathHelperLite.sin(rotationYaw*0.01745329D);
+					double vecX = -Math.cos(rotationYaw*0.01745329D);
+					double vecZ = Math.sin(rotationYaw*0.01745329D);
 					
 					ent.getMoveHelper().setMoveTo(ent.posX+vecX, ent.posY, ent.posZ+vecZ, speed);
 					if (rand.nextInt(20) == 0) ent.getJumpHelper().setJumping();

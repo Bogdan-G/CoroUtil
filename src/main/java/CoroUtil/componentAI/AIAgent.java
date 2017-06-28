@@ -1029,9 +1029,9 @@ public class AIAgent {
         float d1;
         d1 = y+0.5F - ((float)ent.posY + ent.getEyeHeight());
         
-        float d3 = (float)MathHelper.sqrt_double((double)(d * d) + (double)(d2 * d2));
-        float f2 = (((float)Math.atan2((double)d2, (double)d) * 180F) / 3.14F) - 90F;//rly? what double?
-        float f3 = (-(((float)Math.atan2((double)d1, (double)d3) * 180F) / 3.14F));
+        float d3 = (float)MathHelper.sqrt_double((double)(d * d + d2 * d2));
+        float f2 = (((float)Math.atan2((double)d2, (double)d) * 180F) / 3.1415927410125732F) - 90F;//rly? what double?
+        float f3 = (-(((float)Math.atan2((double)d1, (double)d3) * 180F) / 3.1415927410125732F));
         ent.rotationPitch = -updateRotation(ent.rotationPitch, f3, f1);
         ent.rotationYaw = updateRotation(ent.rotationYaw, f2, f);
     }
