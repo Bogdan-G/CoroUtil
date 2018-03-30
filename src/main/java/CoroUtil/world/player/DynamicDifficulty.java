@@ -64,7 +64,8 @@ public class DynamicDifficulty {
 					int killTimeRange = 10;
 					if (timeOfDay >= (long)ConfigCoroAI.cleanupStrayMobsTimeOfDay && timeOfDay < (long)(2000+killTimeRange)) {
 						cpw.mods.fml.common.FMLLog.info("KILLING ALL ZOMBIES!");
-						for (Object obj : world.getLoadedEntityList()) {
+						//world.getLoadedEntityList() - in server NoSuchMethodError
+						for (Object obj : world.loadedEntityList) {
 							if (obj instanceof EntityZombie) {
 								((EntityZombie) obj).setDead();
 							}
